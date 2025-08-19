@@ -13,7 +13,7 @@ El siguiente repositorio contiene los desarrollos de las tareas del ramo "Desarr
 Cada entrega tendrá su propio `README` modificado, esto es, cada rama/branch tendrá su propia versión del `README` respectivo.
 
 ## Nombres Ramas (branches)
-- Entrega tarea 1: Tarea_1
+- Entrega tarea 1: `Tarea-1`
 
 > No se incluyen los enunciados de las tareas. Cualquier desarrollo que utilice recursos externos (por ejemplo, consultar una página web) se le incluiran las referencias respectivas. Yo soy el desarrollador de esta(s) tarea(s), pero en caso de haber empleado algún recurso externo y no haber incluido las referencias o créditos correspondientes, se solicita notificarlo para poder incorporarlos.  
 
