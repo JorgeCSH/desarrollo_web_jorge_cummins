@@ -1,0 +1,38 @@
+/* Barra de Navegacion. */
+#nav-bar {
+    list-style-type: none;
+    font-family:"Helvetica", "sans-serif";
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Lado en que se agregaran los items. */
+#nav-bar li {
+    float: left;
+}
+
+/* Estilo de los items. */
+#nav-bar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Estilo al posicionar cursor. */
+#nav-bar li a:hover {
+    background-color: #000000;
+}
+
+/* Pagina actual. */
+#nav-bar li a.current {
+    background-color: #998700;
+}
