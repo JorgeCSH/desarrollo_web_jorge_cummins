@@ -1,0 +1,50 @@
+/*
+ * =============================================
+ * Tabla de ultimos 5.
+ * =============================================
+ */
+/* ----- Texto Principal.  ------. */
+/* Header de bienvenida */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Texto del header */
+.header-container {
+    text-align: center;
+}
+
+/* Texto principal */
+.intro-container {
+    flex-direction: column;
+    border-style: none;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* ----- Tabla de ultimos 5.  ------. */
+/* Tabla. */
+.last-pub-container {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(5, 1fr);
+    border: 1px solid #cccccc;
+}
+
+/* Contenidos de la tabla.*/
+.item-adoption {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    background-color: #f9f9f9;
+}
+
+/* Titulo de items en la tabla. */
+.item-adoption.header {
+    background-color: #e5e5e5;
+}
