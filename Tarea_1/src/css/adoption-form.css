@@ -1,0 +1,24 @@
+.main-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-family: "Helvetica", "sans-serif";
+}
+
+.sub-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.geo-form {
+
+}
+
+.contac-form {
+
+}
+
+.animal-form {
+
+}
