@@ -1,3 +1,22 @@
-body {
+/*
+ * =============================================
+ * Archivo para estilos del body y html
+ * =============================================
+ */
+
+/*
+ * Aca seteamos el tamaño del body y html al 100% de la pantalla.
+ * https://stackoverflow.com/questions/2593106/styling-the-html-element-in-css
+ */
+html, body {
+    height: 100%;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Para controlar el tag main */
+main {
+    flex: 1;
+    padding: 20px; /* optional spacing */
 }

@@ -73,7 +73,7 @@
     background-color: #2a9d8f;
 }
 
-/* Mantener el mismo color aunque estemos en esta pagina. */
+/* Mantener el mismo color. */
 #nav-bar li a.home.current {
     background-color: #2a9d8f;
 }
