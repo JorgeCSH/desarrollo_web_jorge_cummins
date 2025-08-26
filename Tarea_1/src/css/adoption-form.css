@@ -1,24 +1,125 @@
-.main-form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+form {
+    max-width: 800px;
     font-family: "Helvetica", "sans-serif";
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 0px;
+    background: #fafafa;
 }
 
-.sub-form {
+fieldset {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #dddddd;
+}
+
+
+label {
+    display: block;
+    margin: 8px 0 4px;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+/* Estilo general del formulario */
+#adoption-form {
+    max-width: 800px; /* ancho máximo del formulario */
+    margin: 20px auto; /* centrado horizontal */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para todos los fieldsets */
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Títulos de fieldset */
+legend {
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+/* Estilo uniforme para input, select, textarea y button */
+input, select, textarea, button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Botones con un color destacado */
+button {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #f4a261;
+}
+
+/* Contenedor de fotos */
+#fotos-container input {
+    margin-bottom: 5px;
+}
+
+/* Mensajes de confirmación y éxito */
+#confirmacion, #mensaje-exito {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #4CAF50;
+    border-radius: 6px;
+    background-color: #e6ffe6;
+    text-align: center;
+}
+
+#confirmacion button, #mensaje-exito button {
+    width: auto;
+    margin: 5px;
+}
+
+
+.photo-input {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.confirm-box {
+    background: #fff;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.adoption-head {
     display: flex;
     flex-direction: column;
+    margin: 50px;
+    font-family: Arial, sans-serif;
     justify-content: space-evenly;
-}
-
-.geo-form {
-
-}
-
-.contac-form {
-
-}
-
-.animal-form {
-
+    align-items: center;
 }
