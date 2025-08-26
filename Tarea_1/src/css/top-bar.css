@@ -1,12 +1,18 @@
-/* Barra de Navegacion. */
+/*
+ * =============================================
+ * Barra de Navegacion.
+ * =============================================
+ */
+
+/* --------- Estilos Generales --------- */
+/* Configuracion basica. */
 #nav-bar {
     list-style-type: none;
     font-family:"Helvetica", "sans-serif";
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
-
+    background-color: #2c3e50;
     position: fixed;
     top: 0;
     width: 100%;
@@ -21,18 +27,61 @@
 /* Estilo de los items. */
 #nav-bar li a {
     display: block;
-    color: white;
+    color: #ffffff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
 }
 
-/* Estilo al posicionar cursor. */
-#nav-bar li a:hover {
-    background-color: #000000;
+/* --------- Al poner el cursor --------- */
+/* Efecto de transicion. */
+#nav-bar li a::after {
+    content: ' ';
+    position: absolute;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    transition: width 0.5s;
+    z-index: -1;
 }
 
-/* Pagina actual. */
+/* Transicionar. */
+#nav-bar li a:hover:after {
+    width: 100%;
+    background-color: #f4a261;
+}
+
+/* Estilo pagina actual. */
 #nav-bar li a.current {
-    background-color: #998700;
+    background-color: #e76f51;
 }
+
+/* No aplicar animacion si es la pagina actual. */
+#nav-bar li a.current:after,
+#nav-bar li a.current:hover::after {
+    content: none;
+}
+
+/* --------- Caso boton inicio/start/home --------- */
+/* Seccion boton the inicio (o home). */
+#nav-bar li a.home {
+    background-color: #2a9d8f;
+}
+
+/* Mantener el mismo color aunque estemos en esta pagina. */
+#nav-bar li a.home.current {
+    background-color: #2a9d8f;
+}
+
+/* No aplicar animacion si es la pagina actual. */
+#nav-bar li a.home.current::after,
+#nav-bar li a.home.current:hover::after {
+    content: none;
+}
+
+
