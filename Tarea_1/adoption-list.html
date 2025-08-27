@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="src/css/body.css">
     <link rel="stylesheet" href="src/css/top-bar.css">
     <link rel="stylesheet" href="src/css/footer.css">
+    <!-- CSS para esta pagina -->
+    <link rel="stylesheet" href="src/css/adoption-list.css">
+    <!-- Importar (?) imagenes -->
     <title>Adoptar</title>
 </head>
 <body>
@@ -20,6 +23,46 @@
     </nav>
 
     <main>
+        <!-- Contenedor de listado -->
+        <div id="listado-container">
+            <table id="listado">
+                <thead>
+                <tr>
+                    <th>Fecha Publicación</th>
+                    <th>Fecha Entrega</th>
+                    <th>Comuna</th>
+                    <th>Sector</th>
+                    <th>Cantidad</th>
+                    <th>Tipo / Edad</th>
+                    <th>Nombre Contacto</th>
+                    <th>Total Fotos</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Se llenará con JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Contenedor detalle -->
+        <div id="detalle-container" style="display:none;">
+            <h2>Detalle del Aviso</h2>
+            <div id="detalle-info">
+                <!-- Se llena con JS -->
+            </div>
+            <div id="detalle-fotos">
+                <!-- Fotos ampliables -->
+            </div>
+            <button id="volver-listado">Volver al listado</button>
+            <button id="volver-portada">Volver a la portada</button>
+        </div>
+
+        <!-- Contenedor para modal de foto -->
+        <div id="modal-foto" style="display:none;">
+            <span id="cerrar-modal">Cerrar</span>
+            <img id="foto-grande" src="" alt="Foto ampliada">
+        </div>
+        <script src="src/javascript/adoption-list.js"></script>
 
     </main>
 
