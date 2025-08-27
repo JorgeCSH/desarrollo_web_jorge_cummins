@@ -19,19 +19,27 @@ En este estado aún falta agregar dinamismo y la posibilidad de interactuar seg�
 ## Arbol de archivos
 ```
 desarrollo-aplicaciones-web
-├────Tarea_1
-│    │  └───src
-│    │      ├───css
-│    │      │   ├───body.css
-│    │      │   ├───footer.css
-│    │      │   └───top-bar.css
-│    │      └───javascript
-│    │          └───navigation-bar.js
-│    ├───index.html
-│    ├───adoption-stats.html
-│    ├───adoption-list.html
-│    └───add-adoption.html
-└───README.md
+├── README.md
+└── Tarea_1
+    ├── add-adoption.html
+    ├── adoption-list.html
+    ├── adoption-stats.html
+    ├── index.html
+    └── src
+        ├── css
+        │   ├── adoption-form.css
+        │   ├── adoption-list.css
+        │   ├── body.css
+        │   ├── footer.css
+        │   ├── recent-five.css
+        │   └── top-bar.css
+        ├── img
+        │   └── le_meme.jpg
+        └── javascript
+            ├── adoption-form.js
+            ├── adoption-list.js
+            ├── navigation-bar.js
+            └── region_comuna.js
 ```
 
 ## To-do List
