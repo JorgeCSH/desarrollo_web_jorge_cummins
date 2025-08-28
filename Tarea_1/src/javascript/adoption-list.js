@@ -43,8 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <p><b>Fecha Entrega:</b> ${aviso.entrega}</p>
             <p><b>Comuna:</b> ${aviso.comuna}</p>
             <p><b>Sector:</b> ${aviso.sector}</p>
-            <p><b>Cantidad:</b> ${aviso.cantidad}</p>
-            <p><b>Tipo / Edad:</b> ${aviso.tipoEdad}</p>
+            <p><b>Cantidad / Tipo / Edad:</b> ${aviso.detalle}</p>
             <p><b>Contacto:</b> ${aviso.contacto}</p>
         `;
 
