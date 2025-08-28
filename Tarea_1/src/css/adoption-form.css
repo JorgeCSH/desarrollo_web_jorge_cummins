@@ -4,7 +4,6 @@ form {
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #cccccc;
-    border-radius: 0px;
     background: #fafafa;
 }
 
@@ -25,15 +24,16 @@ input, select, textarea, button {
     padding: 8px;
     margin-bottom: 10px;
 }
+
 /* Estilo general del formulario */
 #adoption-form {
-    max-width: 800px; /* ancho máximo del formulario */
-    margin: 20px auto; /* centrado horizontal */
+    max-width: 800px;
+    margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 8px;
     background-color: #f9f9f9;
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica", "sans-serif";
 }
 
 /* Estilo para todos los fieldsets */
@@ -120,7 +120,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     margin: 50px;
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica", "sans-serif";
     justify-content: space-evenly;
     align-items: center;
 }

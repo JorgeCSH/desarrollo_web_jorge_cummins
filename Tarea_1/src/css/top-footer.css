@@ -84,4 +84,63 @@
     content: none;
 }
 
+/*
+ * =============================================
+ * Barra del final, footer.
+ * =============================================
+ */
+
+/* --------- Estilos Generales. --------- */
+/* Configuracion basica. */
+#bottom-bar {
+    background-color: #2c3e50;
+    font-family: "Helvetica", "sans-serif";
+    color: #ffffff;
+    padding: 20px 10%;
+    text-align: center;
+}
+
+/* --------- Configuracion del texto de creditos. --------- */
+/* Contenidos. */
+#bottom-bar .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Texto. */
+#bottom-bar p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* --------- Configuracion de los links de desarrollo --------- */
+/* Lista de links. */
+#bottom-bar .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+/* Links. */
+#bottom-bar .footer-links li a {
+    color: #f4a261;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: "Helvetica", "sans-serif";
+}
+
+/* Al poner el cursor. */
+#bottom-bar .footer-links li a:hover {
+    color: #e76f51;
+}
+
+
+
+
+
 

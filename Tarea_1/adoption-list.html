@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <!-- CSS para todas las paginas -->
     <link rel="stylesheet" href="src/css/body.css">
-    <link rel="stylesheet" href="src/css/top-bar.css">
-    <link rel="stylesheet" href="src/css/footer.css">
+    <link rel="stylesheet" href="src/css/top-footer.css">
     <!-- CSS para esta pagina -->
     <link rel="stylesheet" href="src/css/adoption-list.css">
     <!-- Importar (?) imagenes -->
@@ -25,34 +24,28 @@
     <main>
         <!-- Contenedor de listado -->
         <div id="listado-container">
-            <table id="listado">
-                <thead>
-                <tr>
-                    <th>Fecha Publicación</th>
-                    <th>Fecha Entrega</th>
-                    <th>Comuna</th>
-                    <th>Sector</th>
-                    <th>Cantidad</th>
-                    <th>Tipo / Edad</th>
-                    <th>Nombre Contacto</th>
-                    <th>Total Fotos</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Se llenará con JS -->
-                </tbody>
-            </table>
+            <div class="listado">
+                <!-- Encabezados -->
+                <div class="listado-header">
+                    <div class="listado-col">Fecha Publicación</div>
+                    <div class="listado-col">Fecha Entrega</div>
+                    <div class="listado-col">Comuna</div>
+                    <div class="listado-col">Sector</div>
+                    <div class="listado-col">Cantidad</div>
+                    <div class="listado-col">Tipo / Edad</div>
+                    <div class="listado-col">Nombre Contacto</div>
+                    <div class="listado-col">Total Fotos</div>
+                </div>
+                <!-- Filas se llenarán con JS -->
+                <div class="listado-body"></div>
+            </div>
         </div>
 
         <!-- Contenedor detalle -->
         <div id="detalle-container" style="display:none;">
             <h2>Detalle del Aviso</h2>
-            <div id="detalle-info">
-                <!-- Se llena con JS -->
-            </div>
-            <div id="detalle-fotos">
-                <!-- Fotos ampliables -->
-            </div>
+            <div id="detalle-info"></div>
+            <div id="detalle-fotos"></div>
             <button id="volver-listado">Volver al listado</button>
             <button id="volver-portada">Volver a la portada</button>
         </div>
@@ -62,8 +55,8 @@
             <span id="cerrar-modal">Cerrar</span>
             <img id="foto-grande" src="" alt="Foto ampliada">
         </div>
-        <script src="src/javascript/adoption-list.js"></script>
 
+        <script src="src/javascript/adoption-list.js"></script>
     </main>
 
     <!-- Fin de la pagina -->

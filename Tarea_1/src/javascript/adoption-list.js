@@ -52,9 +52,8 @@ const avisos = [
     }
 ];
 
-// Verificacion
 document.addEventListener("DOMContentLoaded", () => {
-    const listadoBody = document.querySelector("#listado tbody");
+    const listadoBody = document.querySelector(".listado-body");
     const detalleContainer = document.getElementById("detalle-container");
     const listadoContainer = document.getElementById("listado-container");
     const detalleInfo = document.getElementById("detalle-info");
@@ -66,26 +65,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const volverListadoBtn = document.getElementById("volver-listado");
     const volverPortadaBtn = document.getElementById("volver-portada");
 
-
     // Llenar listado
     avisos.forEach((aviso, index) => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-            <td>${aviso.publicacion}</td>
-            <td>${aviso.entrega}</td>
-            <td>${aviso.comuna}</td>
-            <td>${aviso.sector}</td>
-            <td>${aviso.cantidad}</td>
-            <td>${aviso.tipoEdad}</td>
-            <td>${aviso.contacto}</td>
-            <td>${aviso.fotos.length}</td>
+        const row = document.createElement("div");
+        row.classList.add("listado-row");
+
+        row.innerHTML = `
+            <div class="listado-col">${aviso.publicacion}</div>
+            <div class="listado-col">${aviso.entrega}</div>
+            <div class="listado-col">${aviso.comuna}</div>
+            <div class="listado-col">${aviso.sector}</div>
+            <div class="listado-col">${aviso.cantidad}</div>
+            <div class="listado-col">${aviso.tipoEdad}</div>
+            <div class="listado-col">${aviso.contacto}</div>
+            <div class="listado-col">${aviso.fotos.length}</div>
         `;
-        tr.style.cursor = "pointer";
-        tr.addEventListener("click", () => {
-            mostrarDetalle(index);
-        });
-        listadoBody.appendChild(tr);
+
+        row.addEventListener("click", () => mostrarDetalle(index));
+        listadoBody.appendChild(row);
     });
+
     function mostrarDetalle(index) {
         const aviso = avisos[index];
         listadoContainer.style.display = "none";
@@ -105,10 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
         aviso.fotos.forEach(foto => {
             const img = document.createElement("img");
             img.src = foto;
-            img.width = 320;
-            img.height = 240;
-            img.style.margin = "5px";
-            img.style.cursor = "pointer";
             img.addEventListener("click", () => {
                 fotoGrande.src = foto;
                 modalFoto.style.display = "flex";

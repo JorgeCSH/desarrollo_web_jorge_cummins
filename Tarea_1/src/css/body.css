@@ -7,11 +7,11 @@
 nav {
     height: 46.5px;
 }
+
 /*
  * Aca seteamos el tamaño del body y html al 100% de la pantalla.
  * https://stackoverflow.com/questions/2593106/styling-the-html-element-in-css
  */
-
 html, body {
     height: 100%;
     margin: 0;

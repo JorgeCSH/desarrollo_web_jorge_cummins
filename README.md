@@ -44,7 +44,10 @@ desarrollo-aplicaciones-web
 
 ## To-do List
 - [x] Crear la estructura/diseño basico de la pagina web.
-- [ ] Agregar ultimas 5 publicaciones.
+- [x] Agregar ultimas 5 publicaciones.
 - [ ] Agregar opcion para estadisticas.
-- [ ] Agregar el listado de avisos de adopcion.
-- [ ] Agregar opcion para agregar publicaciones.
+- [x] Agregar el listado de avisos de adopcion.
+- [x] Agregar opcion para agregar publicaciones.
+- [ ] Corregir el tag style de `adoption-list.html`.
+- [ ] Comentar.
+- [ ] Cambiar el spanglish.

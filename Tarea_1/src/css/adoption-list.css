@@ -1,58 +1,70 @@
 /* =============================================
- * Tabla de listado de avisos
+ * Listado con divs (simulación de tabla)
  * ============================================= */
 
-/* Contenedor principal */
 #listado-container {
     display: flex;
     flex-direction: column;
     margin: 20px;
-    font-family: Arial, sans-serif;
+    font-family: "Helvetica", sans-serif;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
-/* Tabla */
-#listado {
+/* Contenedor general */
+.listado {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
     font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
 }
 
 /* Encabezados */
-#listado th {
+.listado-header {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
     background-color: #e5e5e5;
     border: 1px solid #cccccc;
-    padding: 10px;
+    font-weight: bold;
     text-align: center;
 }
+.listado-header .listado-col {
+    padding: 10px;
+    border-right: 1px solid #cccccc;
+}
+.listado-header .listado-col:last-child {
+    border-right: none;
+}
 
-/* Celdas */
-#listado td {
+/* Filas */
+.listado-row {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
     border: 1px solid #dddddd;
-    padding: 10px;
     text-align: center;
-}
-
-/* Hover sobre filas */
-#listado tr:hover {
-    background-color: #f0f0f0;
     cursor: pointer;
 }
-
-/* Detalle del aviso */
-#detalle-container {
-    margin: 20px;
-    font-family: Arial, sans-serif;
+.listado-row:hover {
+    background-color: #f0f0f0;
+}
+.listado-row .listado-col {
+    padding: 10px;
+    border-right: 1px solid #dddddd;
+}
+.listado-row .listado-col:last-child {
+    border-right: none;
 }
 
-/* Información textual del detalle */
+/* Detalle */
+#detalle-container {
+    margin: 20px;
+    font-family: "Helvetica", sans-serif;
+}
 #detalle-info p {
     margin: 5px 0;
 }
-
-/* Fotos del detalle */
 #detalle-fotos img {
     width: 320px;
     height: 240px;
@@ -61,7 +73,7 @@
     cursor: pointer;
 }
 
-/* Modal de foto ampliada */
+/* Modal */
 #modal-foto {
     position: fixed;
     top:0;
@@ -74,21 +86,24 @@
     align-items: center;
     flex-direction: column;
     z-index: 1000;
-    display: none;
 }
-
 #modal-foto img {
     max-width: 800px;
     max-height: 600px;
 }
-
 #cerrar-modal {
-    color: white;
+    color: black;
+    border: 1px solid black;
+    font-family: "Helvetica", sans-serif;
+    border-radius: 10px;
+    padding: 5px 10px;
     cursor: pointer;
     margin-bottom: 10px;
     font-size: 18px;
-    font-weight: bold;
-    font-family: "Helvetica", "sans-serif";
+}
+#cerrar-modal:hover {
+    background-color: #b3b3b3;
+    transition: 0.3s;
 }
 
 /* Botones */
@@ -101,7 +116,6 @@ button {
     border: 1px solid #cccccc;
     border-radius: 4px;
 }
-
 button:hover {
     background-color: #d5d5d5;
 }
