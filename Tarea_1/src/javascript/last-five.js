@@ -3,8 +3,10 @@ import { avisos } from "./db/avisos.js";
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector(".last-pub-container");
 
-    const ultimos = avisos.slice(0, 5);
+    // Obtener los últimos 5 (tomando desde el final del array)
+    const ultimos = avisos.slice(-5).reverse();
 
+    // Eliminar items anteriores que no sean encabezados
     container.querySelectorAll(".item-adoption:not(.header)").forEach(e => e.remove());
 
     ultimos.forEach(aviso => {
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const info = document.createElement("div");
         info.classList.add("item-adoption");
-        info.textContent = `${aviso.cantidad} / ${aviso.tipoEdad}`;
+        info.textContent = aviso.detalle; // ✅ nuevo campo unificado
         container.appendChild(info);
 
         const foto = document.createElement("div");
@@ -37,4 +39,3 @@ document.addEventListener("DOMContentLoaded", () => {
         container.appendChild(foto);
     });
 });
-

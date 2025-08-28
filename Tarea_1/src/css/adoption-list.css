@@ -9,7 +9,7 @@
     font-family: "Helvetica", sans-serif;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 95%;
 }
 
 /* Contenedor general */
@@ -33,6 +33,7 @@
 .listado-header .listado-col {
     padding: 10px;
     border-right: 1px solid #cccccc;
+
 }
 .listado-header .listado-col:last-child {
     border-right: none;

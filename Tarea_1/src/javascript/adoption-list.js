@@ -24,8 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="listado-col">${aviso.entrega}</div>
             <div class="listado-col">${aviso.comuna}</div>
             <div class="listado-col">${aviso.sector}</div>
-            <div class="listado-col">${aviso.cantidad}</div>
-            <div class="listado-col">${aviso.tipoEdad}</div>
+            <div class="listado-col">${aviso.detalle}</div>
             <div class="listado-col">${aviso.contacto}</div>
             <div class="listado-col">${aviso.fotos.length}</div>
         `;
