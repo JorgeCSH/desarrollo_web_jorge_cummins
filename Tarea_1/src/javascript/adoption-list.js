@@ -1,75 +1,89 @@
-// Listado de avisos de ejemplo
 import { avisos } from "./db/avisos.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const listadoBody = document.querySelector(".listado-body");
-    const detalleContainer = document.getElementById("detalle-container");
-    const listadoContainer = document.getElementById("listado-container");
+    // Elementos mostrados en la preview
+    const listadoBody = document.getElementsByClassName("listado-body")[0];
+    const casillaDetalles = document.getElementById("detalle-container");
+    const listadoContainer = document.getElementById("listado-casilla");
     const detalleInfo = document.getElementById("detalle-info");
     const detalleFotos = document.getElementById("detalle-fotos");
-    const modalFoto = document.getElementById("modal-foto");
+    const modoFoto = document.getElementById("foto-clickeada");
     const fotoGrande = document.getElementById("foto-grande");
-    const cerrarModal = document.getElementById("cerrar-modal");
-
+    const cerrarFoto = document.getElementById("cerrar-foto");
     const volverListadoBtn = document.getElementById("volver-listado");
     const volverPortadaBtn = document.getElementById("volver-portada");
 
-    // Llenar listado
-    avisos.forEach((aviso, index) => {
+    // Rellenamos/actualizamos el preview del listado en adopcion.
+    for (let i = 0; i < avisos.length; i++) {
+        const ultimosPreview = avisos[i];
+
         const row = document.createElement("div");
         row.classList.add("listado-row");
 
         row.innerHTML = `
-            <div class="listado-col">${aviso.publicacion}</div>
-            <div class="listado-col">${aviso.entrega}</div>
-            <div class="listado-col">${aviso.comuna}</div>
-            <div class="listado-col">${aviso.sector}</div>
-            <div class="listado-col">${aviso.detalle}</div>
-            <div class="listado-col">${aviso.contacto}</div>
-            <div class="listado-col">${aviso.fotos.length}</div>
+        <div class="listado-cabeza">${ultimosPreview.publicacion}</div>
+        <div class="listado-cabeza">${ultimosPreview.entrega}</div>
+        <div class="listado-cabeza">${ultimosPreview.comuna}</div>
+        <div class="listado-cabeza">${ultimosPreview.sector}</div>
+        <div class="listado-cabeza">${ultimosPreview.detalle}</div>
+        <div class="listado-cabeza">${ultimosPreview.contacto}</div>
+        <div class="listado-cabeza">${Number(ultimosPreview.fotos.length)}</div>
         `;
 
-        row.addEventListener("click", () => mostrarDetalle(index));
+        row.addEventListener("click", () => mostrarDetalle(i));
         listadoBody.appendChild(row);
-    });
-
-    function mostrarDetalle(index) {
-        const aviso = avisos[index];
-        listadoContainer.style.display = "none";
-        detalleContainer.style.display = "block";
-
-        detalleInfo.innerHTML = `
-            <p><b>Fecha Publicación:</b> ${aviso.publicacion}</p>
-            <p><b>Fecha Entrega:</b> ${aviso.entrega}</p>
-            <p><b>Comuna:</b> ${aviso.comuna}</p>
-            <p><b>Sector:</b> ${aviso.sector}</p>
-            <p><b>Cantidad / Tipo / Edad:</b> ${aviso.detalle}</p>
-            <p><b>Contacto:</b> ${aviso.contacto}</p>
-        `;
-
-        detalleFotos.innerHTML = "";
-        aviso.fotos.forEach(foto => {
-            const img = document.createElement("img");
-            img.src = foto;
-            img.addEventListener("click", () => {
-                fotoGrande.src = foto;
-                modalFoto.style.display = "flex";
-            });
-            detalleFotos.appendChild(img);
-        });
     }
 
-    cerrarModal.addEventListener("click", () => {
-        modalFoto.style.display = "none";
+    // Mostramos la informacion detallada de cada aviso al hacer click en algun elemento del listado.
+    const mostrarDetalle = (avisoCasilla) => {
+        const ultimosDetalles = avisos[avisoCasilla];
+        listadoContainer.style.display = "none";
+        casillaDetalles.style.display = "block";
+
+        detalleInfo.innerHTML = `
+        <p><b>Fecha Publicación:</b> ${ultimosDetalles.publicacion}</p>
+        <p><b>Fecha Entrega:</b> ${ultimosDetalles.entrega}</p>
+        <p><b>Comuna:</b> ${ultimosDetalles.comuna}</p>
+        <p><b>Sector:</b> ${ultimosDetalles.sector}</p>
+        <p><b>Cantidad / Tipo / Edad:</b> ${ultimosDetalles.detalle}</p>
+        <p><b>Contacto:</b> ${ultimosDetalles.contacto}</p>
+        `;
+
+        // Borra las fotos que fueron agregadas cuando se mostraba mas informacion.
+        while (detalleFotos.firstChild) {
+            detalleFotos.removeChild(detalleFotos.firstChild);
+        }
+
+        // Agregar fotos del aviso que ahora se esta viendo.
+        for (let foto of ultimosDetalles.fotos) {
+            const imagen = document.createElement("img");
+            imagen.src = foto;
+
+            imagen.addEventListener("click", () => {
+                fotoGrande.src = foto;
+                modoFoto.style.display = "flex";
+            });
+
+            detalleFotos.appendChild(imagen);
+        }
+    };
+
+    // Boton para cerrar la vista ampliada de la imagen clickeada.
+    cerrarFoto.addEventListener("click", () => {
+        modoFoto.style.display = "none";
         fotoGrande.src = "";
     });
 
+    // Botones para salir de los detalles.
+    // Caso 1: Volver al listado.
     volverListadoBtn.addEventListener("click", () => {
-        detalleContainer.style.display = "none";
+        casillaDetalles.style.display = "none";
         listadoContainer.style.display = "block";
     });
 
+    // Caso 2: Volver a la portada (index.html).
     volverPortadaBtn.addEventListener("click", () => {
         window.location.href = "index.html";
     });
 });
+

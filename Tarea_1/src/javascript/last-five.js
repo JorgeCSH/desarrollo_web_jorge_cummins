@@ -1,41 +1,50 @@
 import { avisos } from "./db/avisos.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const container = document.querySelector(".last-pub-container");
+    const casillas = document.getElementById("get-last-pub");
 
-    // Obtener los últimos 5 (tomando desde el final del array)
-    const ultimos = avisos.slice(-5).reverse();
+    // Ordenamos avisos de publicacion mas reciente a mas antigua y obtenemos los ultimos 5 mas recientes.
+    avisos.sort((a, b) => new Date(b.publicacion) - new Date(a.publicacion));
+    const ultimos = avisos.slice(-5);
 
-    // Eliminar items anteriores que no sean encabezados
-    container.querySelectorAll(".item-adoption:not(.header)").forEach(e => e.remove());
+    // Recorremos el arreglo de los ultimos 5 elementos y los vamos agregando al HTML.
+    for (let i = 0; i < ultimos.length; i++) {
+        // Variable auxiliar para el elemento actual.
+        const ultimoPublicado = ultimos[i];
 
-    ultimos.forEach(aviso => {
+        // Creamos elemento para la fecha.
         const fecha = document.createElement("div");
         fecha.classList.add("item-adoption");
-        fecha.textContent = aviso.publicacion;
-        container.appendChild(fecha);
+        fecha.textContent = ultimoPublicado.publicacion;
+        casillas.appendChild(fecha);
 
+        // Creamos elemento para la comuna.
         const comuna = document.createElement("div");
         comuna.classList.add("item-adoption");
-        comuna.textContent = aviso.comuna;
-        container.appendChild(comuna);
+        comuna.textContent = ultimoPublicado.comuna;
+        casillas.appendChild(comuna);
 
+        // Creamos elemento para el sector.
         const sector = document.createElement("div");
         sector.classList.add("item-adoption");
-        sector.textContent = aviso.sector;
-        container.appendChild(sector);
+        sector.textContent = ultimoPublicado.sector;
+        casillas.appendChild(sector);
 
+        // Creamos elemento para la info, esto es, cantidad, tipo y año.
         const info = document.createElement("div");
         info.classList.add("item-adoption");
-        info.textContent = aviso.detalle; // ✅ nuevo campo unificado
-        container.appendChild(info);
+        info.textContent = ultimoPublicado.detalle;
+        casillas.appendChild(info);
 
+        // Creamos elemento la foto inicial.
         const foto = document.createElement("div");
         foto.classList.add("item-adoption");
         const img = document.createElement("img");
-        img.src = aviso.fotos[0];
+        img.src = ultimoPublicado.fotos[0];
         img.width = 100;
         foto.appendChild(img);
-        container.appendChild(foto);
-    });
+        casillas.appendChild(foto);
+    }
 });
+
+

@@ -15,7 +15,7 @@ export const avisos = [
         sector: "Cavancha",
         detalle: "2 / perros / 3 años",
         contacto: "Persona Genérica Uno",
-        fotos: ["src/img/le_meme.jpg"]
+        fotos: ["src/img/le_meme.jpg", "src/img/el_meme.jpeg"]
     },
     {
         publicacion: "2025-08-24 11:00",
@@ -24,7 +24,7 @@ export const avisos = [
         sector: "Mall",
         detalle: "2 / perros / 4 años",
         contacto: "Iñaki Alday",
-        fotos: ["src/img/le_meme.jpg"]
+        fotos: ["src/img/le_meme.jpg", "src/img/the_meme.jpg"]
     },
     {
         publicacion: "2025-08-23 08:15",
@@ -33,7 +33,7 @@ export const avisos = [
         sector: "8 Norte",
         detalle: "1 / gato / 1 año",
         contacto: "Persona Genérica Dos",
-        fotos: ["src/img/le_meme.jpg"]
+        fotos: ["src/img/le_meme.jpg", "src/img/the_meme.jpg", "src/img/el_meme.jpeg"]
     },
     {
         publicacion: "2025-08-22 15:00",
@@ -42,6 +42,15 @@ export const avisos = [
         sector: "David Girvan",
         detalle: "1 / gato / 10 años",
         contacto: "Persona Genérica Tres",
+        fotos: ["src/img/le_meme.jpg"]
+    },
+    {
+        publicacion: "2025-08-23 04:00",
+        entrega: "2025-08-26 04:00",
+        comuna: "villa alemana",
+        sector: "El Belloto",
+        detalle: "1 / gato / 1 año",
+        contacto: "Persona Genérica 4",
         fotos: ["src/img/le_meme.jpg"]
     }
 ];

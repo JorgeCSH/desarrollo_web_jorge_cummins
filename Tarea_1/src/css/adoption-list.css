@@ -1,8 +1,7 @@
 /* =============================================
  * Listado con divs (simulación de tabla)
  * ============================================= */
-
-#listado-container {
+#listado-casilla {
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -24,25 +23,25 @@
 /* Encabezados */
 .listado-header {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     background-color: #e5e5e5;
     border: 1px solid #cccccc;
     font-weight: bold;
     text-align: center;
 }
-.listado-header .listado-col {
+.listado-header .listado-cabeza {
     padding: 10px;
     border-right: 1px solid #cccccc;
 
 }
-.listado-header .listado-col:last-child {
+.listado-header .listado-cabeza:last-child {
     border-right: none;
 }
 
 /* Filas */
 .listado-row {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     border: 1px solid #dddddd;
     text-align: center;
     cursor: pointer;
@@ -50,11 +49,11 @@
 .listado-row:hover {
     background-color: #f0f0f0;
 }
-.listado-row .listado-col {
+.listado-row .listado-cabeza {
     padding: 10px;
     border-right: 1px solid #dddddd;
 }
-.listado-row .listado-col:last-child {
+.listado-row .listado-cabeza:last-child {
     border-right: none;
 }
 
@@ -69,30 +68,29 @@
 #detalle-fotos img {
     width: 320px;
     height: 240px;
-    border: 1px solid #ddd;
+    border: 1px solid #dddddd;
     margin: 5px;
     cursor: pointer;
 }
 
 /* Modal */
-#modal-foto {
+#foto-clickeada {
     position: fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background-color: rgba(0,0,0,0.7);
+    background-color: #000000B3;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 1000;
 }
-#modal-foto img {
+#foto-clickeada img {
     max-width: 800px;
     max-height: 600px;
 }
-#cerrar-modal {
+#cerrar-foto {
     color: black;
     border: 1px solid black;
     font-family: "Helvetica", sans-serif;
@@ -102,9 +100,8 @@
     margin-bottom: 10px;
     font-size: 18px;
 }
-#cerrar-modal:hover {
+#cerrar-foto:hover {
     background-color: #b3b3b3;
-    transition: 0.3s;
 }
 
 /* Botones */

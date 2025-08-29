@@ -12,11 +12,11 @@
 <body>
     <!-- Barra superior de la pagina -->
     <nav>
-        <ul id="nav-bar">
-            <li><a class="current home" href="index.html">Inicio</a></li>
-            <li><a href="adoption-list.html">Listado</a></li>
-            <li><a href="adoption-stats.html">Estadísticas</a></li>
-            <li><a href="add-adoption.html">Publicar Aviso</a></li>
+        <ul class="nav-bar">
+            <li><a class="nav-link home current" href="index.html">Inicio</a></li>
+            <li><a class="nav-link" href="adoption-list.html">Listado</a></li>
+            <li><a class="nav-link" href="adoption-stats.html">Estadísticas</a></li>
+            <li><a class="nav-link" href="add-adoption.html">Publicar Aviso</a></li>
         </ul>
     </nav>
 
@@ -25,65 +25,35 @@
         <div class="main-container">
             <div class="intro-container">
                 <div>
-                    <h1 class="header-container">Bienvenido a la pagina de adopcion de mascotas</h1>
-                    <p>Esta pagina fue crada con el fin de dar un medio comodo para la adopcion de mascotas, desde el proceso de adoptar como de dar en adopcion. Aca encontraras desde las posibilidades de adoptar con toda la informacion de la mascota (que en caso de querer dar en adopcion deberas de ingresar) como estadisticas de estos procesos.</p>
+                    <h1 class="header-container">Bienvenido a la página de adopcion de mascotas</h1>
+                    <p>Esta página fue creada con el fin de dar un medio cómodo para la adopción de mascotas, desde el proceso de adoptar como de dar en adopción. Acá encontrarás desde las posibilidades de adoptar con toda la información de la mascota (que en caso de querer dar en adopción deberás de ingresar) como estadísticas de estos procesos..</p>
                 </div>
             </div>
             <p>Ultimas 5 mascotas puestas en adopcion</p>
-            <div class="last-pub-container">
+            <div id="get-last-pub" class="last-pub-container">
                 <!-- Titulo de la lista -->
                 <div class="item-adoption header">Fecha de Publicacion</div>
                 <div class="item-adoption header">Comuna</div>
                 <div class="item-adoption header">Sector</div>
                 <div class="item-adoption header">Cantidad, Tipo y Edad</div>
                 <div class="item-adoption header">Foto</div>
-
-                <!-- Items de la lista -->
-                <!-- Item 1 -->
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-
-                <!-- Item 2 -->
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-
-                <!-- Item 3 -->
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-
-                <!-- Item 4 -->
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-
-                <!-- Item 5 -->
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
-                <div class="item-adoption"></div>
+                <!-- Las ultimas 5 publicaciones se cargan con JS -->
             </div>
         </div>
+        <!-- Script en js que carga las ultimas 5 publicaciones -->
         <script type="module" src="src/javascript/last-five.js"></script>
     </main>
 
     <!-- Fin de la pagina -->
-    <footer id="bottom-bar">
+    <footer class="footer-bar">
         <div class="footer-content">
             <p>Desarrollado por Jorge Cummins.</p>
             <ul class="footer-links">
-                <li><a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins">Repositorio de la pagina</a></li>
+                <li>
+                    <a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins" class="footer-links-link">
+                        Repositorio de la página
+                    </a>
+                </li>
             </ul>
         </div>
     </footer>

@@ -7,33 +7,33 @@
     <link rel="stylesheet" href="src/css/top-footer.css">
     <!-- CSS para esta pagina -->
     <link rel="stylesheet" href="src/css/adoption-list.css">
-    <!-- Importar (?) imagenes -->
     <title>Adoptar</title>
 </head>
 <body>
     <!-- Barra superior de la pagina -->
     <nav>
-        <ul id="nav-bar">
-            <li><a class="home" href="index.html">Inicio</a></li>
-            <li><a class="current" href="adoption-list.html">Listado</a></li>
-            <li><a href="adoption-stats.html">Estadísticas</a></li>
-            <li><a href="add-adoption.html">Publicar Aviso</a></li>
+        <ul class="nav-bar">
+            <li><a class="nav-link home" href="index.html">Inicio</a></li>
+            <li><a class="nav-link current" href="adoption-list.html">Listado</a></li>
+            <li><a class="nav-link" href="adoption-stats.html">Estadísticas</a></li>
+            <li><a class="nav-link" href="add-adoption.html">Publicar Aviso</a></li>
         </ul>
     </nav>
 
+    <!-- Contenido de la pagina -->
     <main>
         <!-- Contenedor de listado -->
-        <div id="listado-container">
+        <div id="listado-casilla">
             <div class="listado">
                 <!-- Encabezados -->
                 <div class="listado-header">
-                    <div class="listado-col">Fecha Publicación</div>
-                    <div class="listado-col">Fecha Entrega</div>
-                    <div class="listado-col">Comuna</div>
-                    <div class="listado-col">Sector</div>
-                    <div class="listado-col">Cantidad / Tipo / Edad</div>
-                    <div class="listado-col">Nombre Contacto</div>
-                    <div class="listado-col">Total Fotos</div>
+                    <div class="listado-cabeza">Fecha Publicación</div>
+                    <div class="listado-cabeza">Fecha Entrega</div>
+                    <div class="listado-cabeza">Comuna</div>
+                    <div class="listado-cabeza">Sector</div>
+                    <div class="listado-cabeza">Cantidad / Tipo / Edad</div>
+                    <div class="listado-cabeza">Nombre Contacto</div>
+                    <div class="listado-cabeza">Total Fotos</div>
                 </div>
                 <!-- Filas se llenarán con JS -->
                 <div class="listado-body"></div>
@@ -49,9 +49,9 @@
             <button id="volver-portada">Volver a la portada</button>
         </div>
 
-        <!-- Contenedor para modal de foto -->
-        <div id="modal-foto" style="display:none;">
-            <span id="cerrar-modal">Cerrar</span>
+        <!-- Contenedor para foto clickeada -->
+        <div id="foto-clickeada" style="display:none;">
+            <span id="cerrar-foto">Cerrar</span>
             <img id="foto-grande" src="" alt="Foto ampliada">
         </div>
 
@@ -59,11 +59,15 @@
     </main>
 
     <!-- Fin de la pagina -->
-    <footer id="bottom-bar">
+    <footer class="footer-bar">
         <div class="footer-content">
             <p>Desarrollado por Jorge Cummins.</p>
             <ul class="footer-links">
-                <li><a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins">Repositorio de la pagina</a></li>
+                <li>
+                    <a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins" class="footer-links-link">
+                        Repositorio de la página
+                    </a>
+                </li>
             </ul>
         </div>
     </footer>

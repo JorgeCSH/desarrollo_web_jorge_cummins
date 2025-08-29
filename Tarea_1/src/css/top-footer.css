@@ -1,14 +1,14 @@
 /*
  * =============================================
- * Barra de Navegacion.
+ * Barra de Navegación.
  * =============================================
  */
 
 /* --------- Estilos Generales --------- */
-/* Configuracion basica. */
-#nav-bar {
+/* Configuración básica. */
+.nav-bar {
     list-style-type: none;
-    font-family:"Helvetica", "sans-serif";
+    font-family: "Helvetica", "sans-serif";
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -16,16 +16,15 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
 }
 
-/* Lado en que se agregaran los items. */
-#nav-bar li {
+/* Lado en que se agregarán los items. */
+.nav-bar li {
     float: left;
 }
 
 /* Estilo de los items. */
-#nav-bar li a {
+.nav-link {
     display: block;
     color: #ffffff;
     text-align: center;
@@ -34,13 +33,12 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    z-index: 1;
 }
 
 /* --------- Al poner el cursor --------- */
-/* Efecto de transicion. */
-#nav-bar li a::after {
-    content: ' ';
+/* Efecto de transición. */
+.nav-link::after {
+    content: " ";
     position: absolute;
     height: 100%;
     left: 0;
@@ -51,38 +49,32 @@
 }
 
 /* Transicionar. */
-#nav-bar li a:hover:after {
+.nav-link:hover::after {
     width: 100%;
     background-color: #f4a261;
 }
 
-/* Estilo pagina actual. */
-#nav-bar li a.current {
+/* Estilo página actual. */
+.nav-link.current {
     background-color: #e76f51;
 }
 
-/* No aplicar animacion si es la pagina actual. */
-#nav-bar li a.current:after,
-#nav-bar li a.current:hover::after {
+/* No aplicar animación si es la página actual. */
+.nav-link.current::after {
     content: none;
 }
 
-/* --------- Caso boton inicio/start/home --------- */
-/* Seccion boton the inicio (o home). */
-#nav-bar li a.home {
+/* --------- Caso botón inicio/start/home --------- */
+/* Sección botón de inicio (home). */
+.nav-link.home {
     background-color: #2a9d8f;
 }
 
-/* Mantener el mismo color. */
-#nav-bar li a.home.current {
+/* Mantener el mismo color si es current. */
+.nav-link.home.current {
     background-color: #2a9d8f;
 }
 
-/* No aplicar animacion si es la pagina actual. */
-#nav-bar li a.home.current::after,
-#nav-bar li a.home.current:hover::after {
-    content: none;
-}
 
 /*
  * =============================================
@@ -91,8 +83,8 @@
  */
 
 /* --------- Estilos Generales. --------- */
-/* Configuracion basica. */
-#bottom-bar {
+/* Configuración básica. */
+.footer-bar {
     background-color: #2c3e50;
     font-family: "Helvetica", "sans-serif";
     color: #ffffff;
@@ -100,9 +92,9 @@
     text-align: center;
 }
 
-/* --------- Configuracion del texto de creditos. --------- */
+/* --------- Configuración del texto de créditos. --------- */
 /* Contenidos. */
-#bottom-bar .footer-content {
+.footer-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,15 +102,15 @@
 }
 
 /* Texto. */
-#bottom-bar p {
+.footer-text {
     margin: 0;
     font-size: 14px;
     opacity: 0.8;
 }
 
-/* --------- Configuracion de los links de desarrollo --------- */
+/* --------- Configuración de los links de desarrollo --------- */
 /* Lista de links. */
-#bottom-bar .footer-links {
+.footer-links {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -127,7 +119,7 @@
 }
 
 /* Links. */
-#bottom-bar .footer-links li a {
+.footer-links-link {
     color: #f4a261;
     text-decoration: none;
     cursor: pointer;
@@ -135,7 +127,7 @@
 }
 
 /* Al poner el cursor. */
-#bottom-bar .footer-links li a:hover {
+.footer-links-link:hover {
     color: #e76f51;
 }
 
