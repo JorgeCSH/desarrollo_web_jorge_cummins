@@ -1,3 +1,12 @@
+import {
+    validarNombre,
+    validarEmail,
+    validarTelefono,
+    validarRed,
+    validarFotos,
+    validarFecha
+} from "./validation.js";
+
 // Datos xd
 let region_comuna = {
     "regiones": [
@@ -71,59 +80,144 @@ let region_comuna = {
 
 
 
-
-// Creamos los elementos del listado
-
+// Funcion que agrega las regiones al clickear el boton para poder seleccionar una.
+const seleccionarRegion = document.getElementById("region");
 const poblarRegion = () => {
-    let regionSelect = document.getElementById("region");
-    for (const region of region_comuna) {
-        let option = document.createElement("option");
+    for (const region of region_comuna.regiones) {
+        const option = document.createElement("option");
         option.value = region.numero;
-        option.text = region.nombre;
-        regionSelect.appendChild(option);
+        option.textContent = region.nombre;
+        seleccionarRegion.appendChild(option);
     }
-}
+};
 
-const updateRegion = () => {
-    let regionSelect = document.getElementById("region");
-    let comunaSelect = document.getElementById("comuna");
-    let selectedRegion = regionSelect.value;
-
-    comunaSelect.innerHTML = `<option value="">Seleccione una comuna</option>`;
-    for (const region of region_comuna) {
-        if (region.numero === selectedRegion) {
-            for (const comuna of region.comunas) {
-                let option = document.createElement("option");
-                option.value = comuna.id;
-                option.text = comuna.nombre;
-                comunaSelect.appendChild(option);
+// Funcion para agregar las comunas al clickear y tener una region seleccionada para poder asi seleccionar una comuna.
+const seleccionarComuna = document.getElementById("comuna");
+const poblarComuna = () => {
+    seleccionarRegion.addEventListener("change", () => {
+        seleccionarComuna.innerHTML = "";
+        let regionSeleccionada;
+        for (let i = 0; i < region_comuna.regiones.length; i++) {
+            if (region_comuna.regiones[i].numero === Number(seleccionarRegion.value)) {
+                regionSeleccionada = region_comuna.regiones[i];
+                break;
             }
         }
-    }
-}
+        // Si deseleccionamos una region, volvemos al mensaje original.
+        if (!regionSeleccionada) {
+            seleccionarComuna.innerHTML = '<option value="">Seleccione primero la región</option>';
+            return;
+        }
+        // Si seleccionamos una region, el texto cambia para decir que seleccione una comuna.
+        const noComunaSeleccionada = document.createElement("option");
+        noComunaSeleccionada.value = "";
+        noComunaSeleccionada.textContent = "Seleccione una comuna";
+        seleccionarComuna.appendChild(noComunaSeleccionada);
 
-document.getElementById("region").addEventListener("change", updateRegion);
+        for (const comuna of regionSeleccionada.comunas) {
+            const option = document.createElement("option");
+            option.value =  comuna.nombre;
+            option.textContent = comuna.nombre;
+            seleccionarComuna.appendChild(option);
+        }
+    });
+};
+
+// Funcion para agregar la hora actual + 3.
+const fechaDejar = document.getElementById("fecha");
+const poblarHora = () => {
+    const ahora = new Date();
+    ahora.setHours(ahora.getHours() + 3);
+    fechaDejar.value = ahora.toISOString().slice(0,16);
+};
+
+// Funcion para mostrar las opciones de redes sociales.
+const redes = document.getElementById("red");
+const redesSeleccionar = document.getElementById("red-id-container");
+const poblarRedes = () => {
+    redes.addEventListener("change", () => {
+        if (redes.value) {
+            redesSeleccionar.style.display = "block";
+        } else {
+            redesSeleccionar.style.display = "none";
+        }
+    });
+};
 
 
-window.onload = () => {
-    poblarRegion();
-}
+// Funcion para manejar las fotos del formulario.
+const espacioFotos = document.getElementById("fotos-container");
+const botonAgregarFotos = document.getElementById("agregar-foto");
+const poblarFotos = () => {
+    botonAgregarFotos.addEventListener("click", () => {
+        const fotos = espacioFotos.querySelectorAll("input[type='file']");
+        if (fotos.length < 5) {
+            const nuevaFoto = document.createElement("input");
+            nuevaFoto.type = "file";
+            nuevaFoto.name = "foto";
+            nuevaFoto.accept = "image/*";
+            espacioFotos.appendChild(nuevaFoto);
+        } else {
+            alert("Máximo 5 fotos permitidas.");
+        }
+    });
+};
 
-/*
-// Confirmar envio.
-document.getElementById("confirmar-si").addEventListener("click", () => {
-    confirmar.style.display = "none";
-    formulario.style.display = "none";
-    mensajeExito.style.display = "block";
-});
 
-// Confirmar no envio
-document.getElementById("confirmar-no").addEventListener("click", () => {
-    confirmar.style.display = "none";
-});
+/* Funcion para validar que toda la informacion haya necesaria hay sido ingresada y este correcta usando las funciones
+del archivo validador. */
+const form = document.getElementById("adoption-form");
+const confirmacion = document.getElementById("confirmacion");
+const manejarSubmit = () => {
+    form.addEventListener("submit", evento => {
+        evento.preventDefault();
 
-// Volver a la portada.
-document.getElementById("volver-portada").addEventListener("click", () => {
-    window.location.href = "index.html";
-});
-*/
+        // Valores a validar.
+        const nombre = document.getElementById("nombre").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const telefono = document.getElementById("telefono").value.trim();
+        const redValue = redes.value;
+        const redId = document.getElementById("red-id").value.trim();
+        const fotos = espacioFotos.querySelectorAll("input[type='file']");
+        const fecha = fechaDejar.value;
+
+        // Caso donde la validacion falla.
+        if (!validarNombre(nombre) || !validarEmail(email) || !validarTelefono(telefono) || !validarRed(redValue, redId) || !validarFotos(fotos) || !validarFecha(fecha, fechaDejar.value)) {
+            alert("Por favor, corrija los errores en el formulario.");
+            return;
+        }
+        form.style.display = "none";
+        confirmacion.style.display = "block";
+    });
+};
+
+
+// Funcion para manejar la opcion de enviar o no el formulario
+const mensajeExito = document.getElementById("mensaje-exito");
+const confirmarSi = document.getElementById("confirmar-si");
+const confirmarNo = document.getElementById("confirmar-no");
+const volverPortada = document.getElementById("volver-portada");
+const confirmacionForm = () => {
+    confirmarSi.addEventListener("click", () => {
+        confirmacion.style.display = "none";
+        mensajeExito.style.display = "block";
+    });
+
+    confirmarNo.addEventListener("click", () => {
+        confirmacion.style.display = "none";
+        form.style.display = "block";
+    });
+
+    volverPortada.addEventListener("click", () => {
+        window.location.href = "index.html"; // ajustar según tu portada real
+    });
+};
+
+// Ejecutamos las funciones.
+poblarHora();
+poblarRegion();
+poblarComuna();
+poblarRedes();
+poblarFotos();
+manejarSubmit();
+confirmacionForm();
