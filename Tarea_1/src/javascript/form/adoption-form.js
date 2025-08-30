@@ -4,7 +4,7 @@ import {
     validarTelefono,
     validarRed,
     validarFotos,
-    validarFecha
+    validarFecha, validarForm
 } from "./validation.js";
 
 // Datos xd
@@ -76,8 +76,6 @@ let region_comuna = {
         }
     ]
 };
-
-
 
 
 // Funcion que agrega las regiones al clickear el boton para poder seleccionar una.
@@ -172,20 +170,9 @@ const manejarSubmit = () => {
     form.addEventListener("submit", evento => {
         evento.preventDefault();
 
-        // Valores a validar.
-        const nombre = document.getElementById("nombre").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const telefono = document.getElementById("telefono").value.trim();
-        const redValue = redes.value;
-        const redId = document.getElementById("red-id").value.trim();
-        const fotos = espacioFotos.querySelectorAll("input[type='file']");
-        const fecha = fechaDejar.value;
-
         // Caso donde la validacion falla.
-        if (!validarNombre(nombre) || !validarEmail(email) || !validarTelefono(telefono) || !validarRed(redValue, redId) || !validarFotos(fotos) || !validarFecha(fecha, fechaDejar.value)) {
-            alert("Por favor, corrija los errores en el formulario.");
-            return;
-        }
+        validarForm()
+
         form.style.display = "none";
         confirmacion.style.display = "block";
     });
