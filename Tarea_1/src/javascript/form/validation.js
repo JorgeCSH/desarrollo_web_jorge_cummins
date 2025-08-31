@@ -26,14 +26,18 @@ export const validarFecha = (fechaIngresada, fechaMinima) => {
     return new Date(fechaIngresada) >= new Date(fechaMinima);
 };
 
+
+
+
 export const validarForm = () => {
-    const nombre = document.getElementById('nombre').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const red = document.getElementById('red').value.trim();
-    const redId = document.getElementById('redId').value.trim();
-    const fotos = document.getElementById('fotos').files;
-    const fechaIngresada = document.getElementById('fecha').value;
+    let myForm = document.forms["adoption-form"];
+    let nombre = myForm["nombre"].value;
+    let email = myForm["email"].value.trim();
+    let telefono = myForm["telefono"].value.trim();
+    //let red = myForm["red"].value.trim();
+    //let redId = myForm["redId"].value.trim();
+    let fotos = myForm["foto"].files;
+    let fechaIngresada = myForm["fecha"].value;
 
     let invalidInputs = [];
     let isValid = true;
@@ -50,29 +54,31 @@ export const validarForm = () => {
         setInvalidInput("Email");
     }
     if (!validarTelefono(telefono)) {
-        setInvalidInput("Teléfono");
+        setInvalidInput("Telefono");
     }
-    if (!validarRed(red, redId)) {
+    /*if (!validarRed(red, redId)) {
         setInvalidInput("Red Social o ID");
-    }
+    }*/
     if (!validarFotos(fotos)) {
-        setInvalidInput("Fotos");
+        setInvalidInput("fotos");
     }
     const fechaMinima = new Date();
     fechaMinima.setDate(fechaMinima.getDate() + 7);
+    /*
     if (!validarFecha(fechaIngresada, fechaMinima.toISOString().split('T')[0])) {
         setInvalidInput("Fecha");
     }
+    */
 
     let validationBox = document.getElementById('val-box');
     let validationMessageElem = document.getElementById('val-msg');
     let validationListElem = document.getElementById('val-list');
-    let formContainer = document.querySelector(".main-container");
+    let formContainer = document.querySelector(".main-container-form");
 
     if (!isValid) {
         validationListElem.textContent = "";
-        for (input of invalidInputs) {
-            validationListElem.document.createElement("li");
+        for (let input of invalidInputs) {
+            let listElement = document.createElement("li");
             listElement.innerText = input;
             validationListElem.append(listElement);
         }
@@ -83,5 +89,33 @@ export const validarForm = () => {
         validationBox.style.borderLeftColor = "#f44336";
 
         validationBox.hidden = false;
+    } else {
+        myForm.style.display = "none";
+        const mensajeExito = document.getElementById("mensaje-exito");
+        confirmacion.style.display = "block";
+
+        const confirmarSi = document.getElementById("confirmar-si");
+        const confirmarNo = document.getElementById("confirmar-no");
+        const volverPortada = document.getElementById("volver-portada");
+        confirmarSi.addEventListener("click", () => {
+            confirmacion.style.display = "none";
+            mensajeExito.style.display = "block";
+        });
+
+        confirmarNo.addEventListener("click", () => {
+            confirmacion.style.display = "none";
+            myForm.style.display = "block";
+        });
+
+        volverPortada.addEventListener("click", () => {
+            window.location.href = "index.html"; // ajustar según tu portada real
+        });
     }
 }
+
+const confirmacion = document.getElementById("confirmacion");
+document.forms["adoption-form"].addEventListener("submit", evento => {
+    evento.preventDefault();
+    validarForm();
+
+})

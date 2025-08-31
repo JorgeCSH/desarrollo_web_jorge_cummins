@@ -1,12 +1,3 @@
-import {
-    validarNombre,
-    validarEmail,
-    validarTelefono,
-    validarRed,
-    validarFotos,
-    validarFecha, validarForm
-} from "./validation.js";
-
 // Datos xd
 let region_comuna = {
     "regiones": [
@@ -142,7 +133,6 @@ const poblarRedes = () => {
     });
 };
 
-
 // Funcion para manejar las fotos del formulario.
 const espacioFotos = document.getElementById("fotos-container");
 const botonAgregarFotos = document.getElementById("agregar-foto");
@@ -161,44 +151,13 @@ const poblarFotos = () => {
     });
 };
 
-
 /* Funcion para validar que toda la informacion haya necesaria hay sido ingresada y este correcta usando las funciones
 del archivo validador. */
-const form = document.getElementById("adoption-form");
-const confirmacion = document.getElementById("confirmacion");
-const manejarSubmit = () => {
-    form.addEventListener("submit", evento => {
-        evento.preventDefault();
 
-        // Caso donde la validacion falla.
-        validarForm()
-
-        form.style.display = "none";
-        confirmacion.style.display = "block";
-    });
-};
 
 
 // Funcion para manejar la opcion de enviar o no el formulario
-const mensajeExito = document.getElementById("mensaje-exito");
-const confirmarSi = document.getElementById("confirmar-si");
-const confirmarNo = document.getElementById("confirmar-no");
-const volverPortada = document.getElementById("volver-portada");
-const confirmacionForm = () => {
-    confirmarSi.addEventListener("click", () => {
-        confirmacion.style.display = "none";
-        mensajeExito.style.display = "block";
-    });
 
-    confirmarNo.addEventListener("click", () => {
-        confirmacion.style.display = "none";
-        form.style.display = "block";
-    });
-
-    volverPortada.addEventListener("click", () => {
-        window.location.href = "index.html"; // ajustar según tu portada real
-    });
-};
 
 // Ejecutamos las funciones.
 poblarHora();
@@ -206,5 +165,4 @@ poblarRegion();
 poblarComuna();
 poblarRedes();
 poblarFotos();
-manejarSubmit();
-confirmacionForm();
+
