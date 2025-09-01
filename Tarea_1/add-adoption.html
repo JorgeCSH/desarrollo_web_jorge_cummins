@@ -29,10 +29,7 @@
 
         </div>
         <div class="main-container-form">
-            <div id="val-box" hidden>
-                <h2 id="val-msg"></h2>
-                <ul id="val-list"></ul>
-            </div>
+
             <form id="adoption-form">
                 <p class="obligatorio">* De caracter <strong>obligatorio</strong>. </p>
                 <!-- Ubicacion -->
@@ -57,7 +54,7 @@
                     <legend>¿Contacto de esta publicación?</legend>
 
                     <label for="nombre">Nombre*</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                    <input type="text" id="nombre" name="nombre" minlength="3" maxlength="100" required>
 
                     <label for="email">Email*</label>
                     <input type="email" id="email" name="email" maxlength="100" required>
@@ -121,6 +118,10 @@
 
                 <button type="submit">Agregar este aviso de adopción</button>
             </form>
+            <div id="val-box" hidden>
+                <h2 id="val-msg"></h2>
+                <ul id="val-list"></ul>
+            </div>
 
 
             <!-- Mensaje de confirmación -->

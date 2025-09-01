@@ -1,43 +1,95 @@
-export const validarNombre = nombre =>
-    nombre.length >= 3 && nombre.length <= 200;
-
-export const validarEmail = email => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email) && email.length <= 100;
+const validarRegion = region => {
+    return region !== "";
 };
 
-export const validarTelefono = telefono => {
-    if (!telefono) return true; // opcional
-    const regex = /^\+\d{3}\.\d{8}$/;
-    return regex.test(telefono);
+const validarComuna = comuna => {
+    return comuna !== "";
 };
 
-export const validarRed = (red, redId) => {
-    if (!red) return true; // opcional
-    return redId.length >= 4 && redId.length <= 50;
+const validarSector = sector => {
+    if (!sector) {
+        return true;
+    } else {
+        return sector.length > 0 && sector.length <= 100;
+    }
 };
 
-export const validarFotos = fotos => {
+const validarNombre = nombre => {
+    return nombre.length >= 3 && nombre.length <= 200;
+};
+
+const validarEmail = email => {
+    const expRegMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return expRegMail.test(email) && email.length <= 100;
+};
+
+const validarTelefono = telefono => {
+    if (!telefono) {
+        return true;
+    } else {
+        const expRegTel = /^\+\d{3}\.\d{8}$/;
+        return expRegTel.test(telefono);
+    }
+};
+
+const validarRed = (red, redId) => {
+    if (!red) {
+       return true
+    } else {
+        return redId.length >= 4 && redId.length <= 50;
+    }
+};
+
+const validarTipo = tipo => {
+    return tipo !== "";
+};
+
+const validarCantidad = (cantidad) => {
+    const num = parseInt(cantidad, 10); // convierte a entero en base 10
+    return Number.isInteger(num) && num >= 1;
+};
+
+const validarEdad = (edad) => {
+    const num = parseInt(edad, 10);
+    return Number.isInteger(num) && num >= 0;
+};
+
+const validarMedida = medida => {
+    return medida !== "";
+};
+
+const validarFecha = (fechaIngresada, fechaMinima) => {
+    if (!fechaIngresada) {
+        return false;
+    } else {
+        return new Date(fechaIngresada) >= new Date(fechaMinima);
+    }
+};
+
+const validarFotos = fotos => {
     return fotos.length >= 1 && fotos.length <= 5;
 };
 
-export const validarFecha = (fechaIngresada, fechaMinima) => {
-    if (!fechaIngresada) return false;
-    return new Date(fechaIngresada) >= new Date(fechaMinima);
-};
 
-
-
-
-export const validarForm = () => {
+const validarForm = () => {
+    // Validaciones obligatorias.
     let myForm = document.forms["adoption-form"];
+    let region = myForm["region"].value;
+    let comuna = myForm["comuna"].value;
     let nombre = myForm["nombre"].value;
     let email = myForm["email"].value.trim();
-    let telefono = myForm["telefono"].value.trim();
-    //let red = myForm["red"].value.trim();
-    //let redId = myForm["redId"].value.trim();
-    let fotos = myForm["foto"].files;
+    let tipo = myForm["tipo"].value;
+    let cantidad = myForm["cantidad"].value;
+    let edad = myForm["edad"].value;
+    let medida = myForm["medida"].value;
     let fechaIngresada = myForm["fecha"].value;
+    let fotos = myForm["foto"].files;
+
+    // Validaciones opcionales.
+    let sector = myForm["sector"].value.trim();
+    let telefono = myForm["telefono"].value.trim();
+    let red = myForm["red"].value.trim();
+    let redId = myForm["redId"].value.trim();
 
     let invalidInputs = [];
     let isValid = true;
@@ -47,6 +99,16 @@ export const validarForm = () => {
         isValid &&= false;
     }
 
+    if (!validarRegion(region)) {
+        setInvalidInput("Region");
+    }
+    if (!validarComuna(comuna)) {
+        setInvalidInput("Comuna");
+    }
+
+    if (!validarSector(sector)) {
+        setInvalidInput("Sector");
+    }
     if (!validarNombre(nombre)) {
         setInvalidInput("Nombre");
     }
@@ -56,24 +118,38 @@ export const validarForm = () => {
     if (!validarTelefono(telefono)) {
         setInvalidInput("Telefono");
     }
-    /*if (!validarRed(red, redId)) {
+    if (!validarRed(red, redId)) {
         setInvalidInput("Red Social o ID");
-    }*/
+    }
+    if (!validarTipo(tipo)) {
+        setInvalidInput("Tipo");
+    }
+    if (!validarCantidad(cantidad)) {
+       setInvalidInput("Cantidad");
+    }
+    if (!validarMedida(medida)) {
+        setInvalidInput("Medida");
+    }
+    if (!validarEdad(edad)) {
+        setInvalidInput("Edad");
+    }
     if (!validarFotos(fotos)) {
         setInvalidInput("fotos");
     }
     const fechaMinima = new Date();
     fechaMinima.setDate(fechaMinima.getDate() + 7);
-    /*
-    if (!validarFecha(fechaIngresada, fechaMinima.toISOString().split('T')[0])) {
+    const year = fechaMinima.getFullYear();
+    const month = String(fechaMinima.getMonth() + 1).padStart(2, "0");
+    const day = String(fechaMinima.getDate()).padStart(2, "0");
+    const fechaMinimaStr = `${year}-${month}-${day}`;
+    if (!validarFecha(fechaIngresada, fechaMinimaStr)) {
         setInvalidInput("Fecha");
     }
-    */
+
 
     let validationBox = document.getElementById('val-box');
     let validationMessageElem = document.getElementById('val-msg');
     let validationListElem = document.getElementById('val-list');
-    let formContainer = document.querySelector(".main-container-form");
 
     if (!isValid) {
         validationListElem.textContent = "";

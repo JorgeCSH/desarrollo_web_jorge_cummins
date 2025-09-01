@@ -139,3 +139,27 @@ button:hover {
     font-size: 12px;
     text-align: right;
 }
+
+/* Estilos específicos para mensajes de error */
+.val-box {
+    color: red;
+    font-size: 12px;
+    margin-top: -8px;
+    margin-bottom: 8px;
+    font-family: "Helvetica", "sans-serif";
+}
+.val-msg {
+    border: 1px solid red;
+    background-color: #ffe6e6;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-family: "Helvetica", "sans-serif";
+}
+
+.val-list {
+    margin: 0;
+    padding-left: 20px;
+    font-family: "Helvetica", "sans-serif";
+    text-align: left;
+}

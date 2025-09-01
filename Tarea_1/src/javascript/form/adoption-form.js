@@ -117,7 +117,16 @@ const fechaDejar = document.getElementById("fecha");
 const poblarHora = () => {
     const ahora = new Date();
     ahora.setHours(ahora.getHours() + 3);
-    fechaDejar.value = ahora.toISOString().slice(0,16);
+
+    const year = ahora.getFullYear();
+    const month = String(ahora.getMonth() + 1).padStart(2, "0");
+    const day = String(ahora.getDate()).padStart(2, "0");
+    const hours = String(ahora.getHours()).padStart(2, "0");
+    const minutes = String(ahora.getMinutes()).padStart(2, "0");
+
+    // Formato final: YYYY-MM-DD HH:MM
+    fechaDejar.value = `${year}-${month}-${day} ${hours}:${minutes}`;
+
 };
 
 // Funcion para mostrar las opciones de redes sociales.
