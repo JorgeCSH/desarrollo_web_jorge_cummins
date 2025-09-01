@@ -83,7 +83,7 @@ button:hover {
     margin-bottom: 5px;
 }
 
-/* Mensajes de confirmación y éxito */
+/* Mensajes de confirmacion y exito */
 #confirmacion, #mensaje-exito {
     max-width: 800px;
     margin: 20px auto;
@@ -140,7 +140,7 @@ button:hover {
     text-align: right;
 }
 
-/* Estilos específicos para mensajes de error */
+/* Estilos especificos para mensajes de error */
 #val-box {
     color: red;
     font-size: 12px;

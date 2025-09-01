@@ -16,6 +16,8 @@ Se utilizan tags para seleccionar la estructura básica. Entre estas se divide (
 
 En este estado aún falta agregar dinamismo y la posibilidad de interactuar según los requisitos para interactuar con la página.
 
+Las imagenes estan para funcionar como ejemplo, no son las imagenes finales.
+
 ## Arbol de archivos
 ```
 desarrollo-aplicaciones-web
@@ -27,19 +29,24 @@ desarrollo-aplicaciones-web
     ├── index.html
     └── src
         ├── css
-        │   ├── adoption-form.css
-        │   ├── adoption-list.css
-        │   ├── body.css
-        │   ├── footer.css
-        │   ├── recent-five.css
-        │   └── top-bar.css
+        │ ├── adoption-form.css
+        │ ├── adoption-list.css
+        │ ├── body.css
+        │ ├── recent-five.css
+        │ └── top-footer.css
         ├── img
-        │   └── le_meme.jpg
+        │ ├── el_meme.jpeg
+        │ ├── le_meme.jpg
+        │ └── the_meme.jpg
         └── javascript
-            ├── adoption-form.js
             ├── adoption-list.js
-            ├── navigation-bar.js
-            └── region_comuna.js
+            ├── db
+            │ ├── avisos.js
+            │ └── region_comuna.js
+            ├── form
+            │ ├── adoption-form.js
+            │ └── validation.js
+            └── last-five.js
 ```
 
 ## To-do List
@@ -51,3 +58,5 @@ desarrollo-aplicaciones-web
 - [ ] Corregir el tag style de `adoption-list.html`.
 - [ ] Comentar.
 - [ ] Cambiar el spanglish.
+- [ ] Cambiar imagenes.
+- [ ] Completar `README`.

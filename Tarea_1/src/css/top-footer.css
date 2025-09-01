@@ -5,7 +5,7 @@
  */
 
 /* --------- Estilos Generales --------- */
-/* Configuración básica. */
+/* Configuracion basica. */
 .nav-bar {
     list-style-type: none;
     font-family: "Helvetica", "sans-serif";
@@ -18,7 +18,7 @@
     width: 100%;
 }
 
-/* Lado en que se agregarán los items. */
+/* Lado en que se agregaran los items. */
 .nav-bar li {
     float: left;
 }
@@ -36,7 +36,7 @@
 }
 
 /* --------- Al poner el cursor --------- */
-/* Efecto de transición. */
+/* Efecto de transicion. */
 .nav-link::after {
     content: " ";
     position: absolute;
@@ -54,18 +54,18 @@
     background-color: #f4a261;
 }
 
-/* Estilo página actual. */
+/* Estilo pagina actual. */
 .nav-link.current {
     background-color: #e76f51;
 }
 
-/* No aplicar animación si es la página actual. */
+/* No aplicar animacion si es la pagina actual. */
 .nav-link.current::after {
     content: none;
 }
 
 /* --------- Caso botón inicio/start/home --------- */
-/* Sección botón de inicio (home). */
+/* Sección boton de inicio (home). */
 .nav-link.home {
     background-color: #2a9d8f;
 }
@@ -83,7 +83,7 @@
  */
 
 /* --------- Estilos Generales. --------- */
-/* Configuración básica. */
+/* Configuracion basica. */
 .footer-bar {
     background-color: #2c3e50;
     font-family: "Helvetica", "sans-serif";
@@ -108,7 +108,7 @@
     opacity: 0.8;
 }
 
-/* --------- Configuración de los links de desarrollo --------- */
+/* --------- Configuracion de los links de desarrollo --------- */
 /* Lista de links. */
 .footer-links {
     list-style: none;
