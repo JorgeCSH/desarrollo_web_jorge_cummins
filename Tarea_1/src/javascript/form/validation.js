@@ -58,11 +58,14 @@ const validarMedida = medida => {
     return medida !== "";
 };
 
-const validarFecha = (fechaIngresada, fechaMinima) => {
+const validarFecha = (fechaIngresada) => {
     if (!fechaIngresada) {
         return false;
     } else {
-        return new Date(fechaIngresada) >= new Date(fechaMinima);
+        const fechaMinimaPermitida = new Date();
+        fechaMinimaPermitida.setHours(fechaMinimaPermitida.getHours() + 3);
+        const fecha = new Date(fechaIngresada);
+        return fecha >= fechaMinimaPermitida;
     }
 };
 
@@ -81,7 +84,7 @@ const validarForm = () => {
     let tipo = myForm["tipo"].value;
     let cantidad = myForm["cantidad"].value;
     let edad = myForm["edad"].value;
-    let medida = myForm["medida"].value;
+    let medida = myForm["unidad"].value;
     let fechaIngresada = myForm["fecha"].value;
     let fotos = myForm["foto"].files;
 
@@ -89,7 +92,7 @@ const validarForm = () => {
     let sector = myForm["sector"].value.trim();
     let telefono = myForm["telefono"].value.trim();
     let red = myForm["red"].value.trim();
-    let redId = myForm["redId"].value.trim();
+    let redId = myForm["red-id"].value.trim();
 
     let invalidInputs = [];
     let isValid = true;
@@ -136,13 +139,8 @@ const validarForm = () => {
     if (!validarFotos(fotos)) {
         setInvalidInput("fotos");
     }
-    const fechaMinima = new Date();
-    fechaMinima.setDate(fechaMinima.getDate() + 7);
-    const year = fechaMinima.getFullYear();
-    const month = String(fechaMinima.getMonth() + 1).padStart(2, "0");
-    const day = String(fechaMinima.getDate()).padStart(2, "0");
-    const fechaMinimaStr = `${year}-${month}-${day}`;
-    if (!validarFecha(fechaIngresada, fechaMinimaStr)) {
+
+    if (!validarFecha(fechaIngresada)) {
         setInvalidInput("Fecha");
     }
 
@@ -166,6 +164,7 @@ const validarForm = () => {
 
         validationBox.hidden = false;
     } else {
+        validationBox.hidden = true;
         myForm.style.display = "none";
         const mensajeExito = document.getElementById("mensaje-exito");
         confirmacion.style.display = "block";

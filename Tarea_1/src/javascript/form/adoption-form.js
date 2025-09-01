@@ -142,30 +142,6 @@ const poblarRedes = () => {
     });
 };
 
-// Funcion para manejar las fotos del formulario.
-const espacioFotos = document.getElementById("fotos-container");
-const botonAgregarFotos = document.getElementById("agregar-foto");
-const poblarFotos = () => {
-    botonAgregarFotos.addEventListener("click", () => {
-        const fotos = espacioFotos.querySelectorAll("input[type='file']");
-        if (fotos.length < 5) {
-            const nuevaFoto = document.createElement("input");
-            nuevaFoto.type = "file";
-            nuevaFoto.name = "foto";
-            nuevaFoto.accept = "image/*";
-            espacioFotos.appendChild(nuevaFoto);
-        } else {
-            alert("Máximo 5 fotos permitidas.");
-        }
-    });
-};
-
-/* Funcion para validar que toda la informacion haya necesaria hay sido ingresada y este correcta usando las funciones
-del archivo validador. */
-
-
-
-// Funcion para manejar la opcion de enviar o no el formulario
 
 
 // Ejecutamos las funciones.
@@ -173,5 +149,4 @@ poblarHora();
 poblarRegion();
 poblarComuna();
 poblarRedes();
-poblarFotos();
 
