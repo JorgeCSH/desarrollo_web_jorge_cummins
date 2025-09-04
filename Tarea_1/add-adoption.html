@@ -33,87 +33,81 @@
             <form id="adoption-form">
                 <p class="obligatorio">* De caracter <strong>obligatorio</strong>. </p>
                 <!-- Ubicacion -->
-                <fieldset>
-                    <legend>¿Dónde?</legend>
-                    <label for="region">Región*</label>
-                    <select id="region" name="region" required>
-                        <option value="">Seleccione una región</option>
-                    </select>
+                <h4>¿Dónde?</h4>
+                <label for="region">Región*</label>
+                <select id="region" name="region" required>
+                    <option value="">Seleccione una región</option>
+                </select>
 
-                    <label for="comuna">Comuna*</label>
-                    <select id="comuna" name="comuna" required>
-                        <option value="">Seleccione primero la región</option>
-                    </select>
+                <label for="comuna">Comuna*</label>
+                <select id="comuna" name="comuna" required>
+                    <option value="">Seleccione primero la región</option>
+                </select>
 
-                    <label for="sector">Sector</label>
-                    <input type="text" id="sector" name="sector" maxlength="100">
-                </fieldset>
+                <label for="sector">Sector</label>
+                <input type="text" id="sector" name="sector" maxlength="100">
 
                 <!-- Contacto-->
-                <fieldset>
-                    <legend>¿Contacto de esta publicación?</legend>
+                <h4>¿Contacto de esta publicación?</h4>
 
-                    <label for="nombre">Nombre*</label>
-                    <input type="text" id="nombre" name="nombre" minlength="3" maxlength="100" required>
+                <label for="nombre">Nombre*</label>
+                <input type="text" id="nombre" name="nombre" minlength="3" maxlength="100" required>
 
-                    <label for="email">Email*</label>
-                    <input type="email" id="email" name="email" maxlength="100" required>
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" maxlength="100" required>
 
-                    <label for="telefono">Número de celular</label>
-                    <input type="tel" id="telefono" name="telefono" pattern="^\+?\d{3}\.\d{8}$" placeholder="+569.12345678">
+                <label for="telefono">Número de celular</label>
+                <input type="tel" id="telefono" name="telefono"  placeholder="+569.12345678">
 
-                    <label for="red">Contactar por</label>
-                    <select id="red" name="red">
-                        <option value="">Seleccione</option>
-                        <option value="whatsapp">WhatsApp</option>
-                        <option value="telegram">Telegram</option>
-                        <option value="X">X (ex: twitter)</option>
-                        <option value="instagram">Instagram</option>
-                        <option value="tiktok">TikTok</option>
-                        <option value="otra">Otra</option>
-                    </select>
+                <label for="red">Contactar por</label>
+                <select id="red" name="red">
+                    <option value="">Seleccione</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="telegram">Telegram</option>
+                    <option value="X">X (ex: twitter)</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="tiktok">TikTok</option>
+                    <option value="otra">Otra</option>
+                </select>
 
-                    <div id="red-id-container" style="display:none;">
-                        <label for="red-id">ID o URL de contacto</label>
-                        <input type="text" id="red-id" name="red-id" minlength="4" maxlength="50">
-                    </div>
-                </fieldset>
+                <div id="red-id-container" style="display:none;">
+                    <label for="red-id">ID o URL de contacto</label>
+                    <input type="text" id="red-id" name="red-id" minlength="4" maxlength="50">
+                </div>
 
                 <!-- Informacion del animal -->
-                <fieldset>
-                    <legend>¿Qué mascota ofrece en adopción?</legend>
+                <h4>¿Qué mascota ofrece en adopción?</h4>
 
-                    <label for="tipo">Tipo*</label>
-                    <select id="tipo" name="tipo" required>
-                        <option value="">Seleccione</option>
-                        <option value="perro">Perro</option>
-                        <option value="gato">Gato</option>
-                    </select>
+                <label for="tipo">Tipo*</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="">Seleccione</option>
+                    <option value="perro">Perro</option>
+                    <option value="gato">Gato</option>
+                </select>
 
-                    <label for="cantidad">Cantidad*</label>
-                    <input type="text" id="cantidad" name="cantidad" min="1" required>
+                <label for="cantidad">Cantidad*</label>
+                <input type="text" id="cantidad" name="cantidad" min="1" required>
 
-                    <label for="edad">Edad*</label>
-                    <input type="text" id="edad" name="edad" min="1" required>
+                <label for="edad">Edad*</label>
+                <input type="text" id="edad" name="edad" min="1" required>
 
-                    <label for="unidad">Unidad de medida*</label>
-                    <select id="unidad" name="unidad" required>
-                        <option value="">Seleccione</option>
-                        <option value="meses">Meses</option>
-                        <option value="años">Años</option>
-                    </select>
+                <label for="unidad">Unidad de medida*</label>
+                <select id="unidad" name="unidad" required>
+                    <option value="">Seleccione</option>
+                    <option value="meses">Meses</option>
+                    <option value="años">Años</option>
+                </select>
 
-                    <label for="fecha">Fecha disponible*</label>
-                    <input class="fecha" type="datetime-local" id="fecha" name="fecha" required>
+                <label for="fecha">Fecha disponible*</label>
+                <input class="fecha" type="datetime-local" id="fecha" name="fecha" required>
 
-                    <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" cols="50" rows="10"></textarea>
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" cols="50" rows="10"></textarea>
 
-                    <label>Fotos*</label>
-                    <div id="fotos-container">
-                        <input type="file" name="foto" multiple accept="image/*" required>
-                    </div>
-                </fieldset>
+                <label>Fotos*</label>
+                <div id="fotos-container">
+                    <input type="file" name="foto" multiple accept="image/*" required>
+                </div>
 
                 <button type="submit">Agregar este aviso de adopción</button>
             </form>

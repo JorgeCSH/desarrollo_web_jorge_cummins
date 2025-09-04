@@ -3,7 +3,7 @@ import { avisos } from "./db/avisos.js";
 // Elementos mostrados en la preview
 const listadoBody = document.getElementsByClassName("listado-body")[0];
 const casillaDetalles = document.getElementById("detalle-container");
-const listadoContainer = document.getElementById("listado-casilla");
+const listadoContainer = document.querySelector(".listado-casilla"); // antes era id
 const detalleInfo = document.getElementById("detalle-info");
 const detalleFotos = document.getElementById("detalle-fotos");
 const modoFoto = document.getElementById("foto-clickeada");
@@ -85,4 +85,3 @@ volverListadoBtn.addEventListener("click", () => {
 volverPortadaBtn.addEventListener("click", () => {
     window.location.href = "index.html";
 });
-

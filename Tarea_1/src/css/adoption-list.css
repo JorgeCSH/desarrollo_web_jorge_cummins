@@ -1,7 +1,7 @@
 /* =============================================
  * Listado con divs (simulacion de tabla)
  * ============================================= */
-#listado-casilla {
+.listado-casilla {
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -32,7 +32,6 @@
 .listado-header .listado-cabeza {
     padding: 10px;
     border-right: 1px solid #cccccc;
-
 }
 .listado-header .listado-cabeza:last-child {
     border-right: none;

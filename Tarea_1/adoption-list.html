@@ -10,66 +10,66 @@
     <title>Adoptar</title>
 </head>
 <body>
-    <!-- Barra superior de la pagina -->
-    <nav>
-        <ul class="nav-bar">
-            <li><a class="nav-link home" href="index.html">Inicio</a></li>
-            <li><a class="nav-link current" href="adoption-list.html">Listado</a></li>
-            <li><a class="nav-link" href="adoption-stats.html">Estadísticas</a></li>
-            <li><a class="nav-link" href="add-adoption.html">Publicar Aviso</a></li>
-        </ul>
-    </nav>
+<!-- Barra superior de la pagina -->
+<nav>
+    <ul class="nav-bar">
+        <li><a class="nav-link home" href="index.html">Inicio</a></li>
+        <li><a class="nav-link current" href="adoption-list.html">Listado</a></li>
+        <li><a class="nav-link" href="adoption-stats.html">Estadísticas</a></li>
+        <li><a class="nav-link" href="add-adoption.html">Publicar Aviso</a></li>
+    </ul>
+</nav>
 
-    <!-- Contenido de la pagina -->
-    <main>
-        <!-- Contenedor de listado -->
-        <div id="listado-casilla">
-            <div class="listado">
-                <!-- Encabezados -->
-                <div class="listado-header">
-                    <div class="listado-cabeza">Fecha Publicación</div>
-                    <div class="listado-cabeza">Fecha Entrega</div>
-                    <div class="listado-cabeza">Comuna</div>
-                    <div class="listado-cabeza">Sector</div>
-                    <div class="listado-cabeza">Cantidad / Tipo / Edad</div>
-                    <div class="listado-cabeza">Nombre Contacto</div>
-                    <div class="listado-cabeza">Total Fotos</div>
-                </div>
-                <!-- Filas se llenaran con JS -->
-                <div class="listado-body"></div>
+<!-- Contenido de la pagina -->
+<main>
+    <!-- Contenedor de listado -->
+    <div class="listado-casilla">
+        <div class="listado">
+            <!-- Encabezados -->
+            <div class="listado-header">
+                <div class="listado-cabeza">Fecha Publicación</div>
+                <div class="listado-cabeza">Fecha Entrega</div>
+                <div class="listado-cabeza">Comuna</div>
+                <div class="listado-cabeza">Sector</div>
+                <div class="listado-cabeza">Cantidad / Tipo / Edad</div>
+                <div class="listado-cabeza">Nombre Contacto</div>
+                <div class="listado-cabeza">Total Fotos</div>
             </div>
+            <!-- Filas se llenaran con JS -->
+            <div class="listado-body"></div>
         </div>
+    </div>
 
-        <!-- Contenedor detalle -->
-        <div id="detalle-container" style="display:none;">
-            <h2>Detalle del Aviso</h2>
-            <div id="detalle-info"></div>
-            <div id="detalle-fotos"></div>
-            <button id="volver-listado">Volver al listado</button>
-            <button id="volver-portada">Volver a la portada</button>
-        </div>
+    <!-- Contenedor detalle -->
+    <div id="detalle-container" style="display:none;">
+        <h2>Detalle del Aviso</h2>
+        <div id="detalle-info"></div>
+        <div id="detalle-fotos"></div>
+        <button id="volver-listado">Volver al listado</button>
+        <button id="volver-portada">Volver a la portada</button>
+    </div>
 
-        <!-- Contenedor para foto clickeada -->
-        <div id="foto-clickeada" style="display:none;">
-            <span id="cerrar-foto">Cerrar</span>
-            <img id="foto-grande" src="" alt="Foto ampliada">
-        </div>
+    <!-- Contenedor para foto clickeada -->
+    <div id="foto-clickeada" style="display:none;">
+        <span id="cerrar-foto">Cerrar</span>
+        <img id="foto-grande" src="" alt="Foto ampliada">
+    </div>
 
-        <script type="module" src="src/javascript/adoption-list.js"></script>
-    </main>
+    <script type="module" src="src/javascript/adoption-list.js"></script>
+</main>
 
-    <!-- Fin de la pagina -->
-    <footer class="footer-bar">
-        <div class="footer-content">
-            <p>Desarrollado por Jorge Cummins.</p>
-            <ul class="footer-links">
-                <li>
-                    <a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins" class="footer-links-link">
-                        Repositorio de la página
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </footer>
+<!-- Fin de la pagina -->
+<footer class="footer-bar">
+    <div class="footer-content">
+        <p>Desarrollado por Jorge Cummins.</p>
+        <ul class="footer-links">
+            <li>
+                <a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins" class="footer-links-link">
+                    Repositorio de la página
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
 </body>
 </html>
