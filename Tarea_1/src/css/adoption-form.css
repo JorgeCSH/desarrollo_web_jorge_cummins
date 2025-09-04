@@ -1,4 +1,4 @@
-form {
+.form-container {
     max-width: 800px;
     font-family: "Helvetica", "sans-serif";
     margin: 20px auto;
@@ -7,23 +7,7 @@ form {
     background: #fafafa;
 }
 
-fieldset {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #dddddd;
-}
 
-
-label {
-    display: block;
-    margin: 8px 0 4px;
-}
-
-input, select, textarea, button {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-}
 
 /* Estilo general del formulario */
 #adoption-form {
@@ -36,19 +20,8 @@ input, select, textarea, button {
     font-family: "Helvetica", "sans-serif";
 }
 
-/* Estilo para todos los fieldsets */
-fieldset {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 20px;
-}
 
-/* Títulos de fieldset */
-legend {
-    font-weight: bold;
-    padding: 0 10px;
-}
+
 
 /* Estilo uniforme para input, select, textarea y button */
 input, select, textarea, button {

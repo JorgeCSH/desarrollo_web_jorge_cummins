@@ -19,6 +19,17 @@ html, body {
     flex-direction: column;
 }
 
+label {
+    display: block;
+    margin: 8px 0 4px;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
 /* Para controlar el tag main */
 main {
     flex: 1;
