@@ -1,3 +1,9 @@
+/*
+ * =============================================
+ * Archivo las estadisticas.
+ * =============================================
+ */
+
 /* Estilo principal. */
 .contenido-adopc-home {
     display: flex;
@@ -22,6 +28,7 @@
     font-family: "Helvetica", "sans-serif";
     justify-content: flex-start;
 }
+
 /* Imagenes.*/
 .cajas {
     object-fit: contain;
