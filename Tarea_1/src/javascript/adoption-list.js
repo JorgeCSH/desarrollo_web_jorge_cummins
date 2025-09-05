@@ -39,7 +39,18 @@ const mostrarDetalle = (avisoCasilla) => {
         imagen.src = foto;
 
         imagen.addEventListener("click", () => {
-            fotoGrande.src = foto;
+            modoFoto.innerHTML = `
+            <span id="cerrar-foto">Cerrar</span>
+            <img src="${foto}" alt="Foto ampliada">
+            `;
+
+            const cerrarFoto = document.getElementById("cerrar-foto");
+            cerrarFoto.addEventListener("click", () => {
+                modoFoto.style.display = "none";
+                modoFoto.innerHTML = "";
+            });
+
+            // Muestro el modal de la foto
             modoFoto.style.display = "flex";
         });
 
