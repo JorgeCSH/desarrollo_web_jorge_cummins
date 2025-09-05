@@ -14,26 +14,25 @@
     <!-- Barra superior de la pagina -->
     <nav>
         <ul class="nav-bar">
-            <li><a class="nav-link home current" href="index.html">Inicio</a></li>
+            <li><a class="nav-link home actual" href="index.html">Inicio</a></li>
             <li><a class="nav-link" href="adoption-list.html">Listado</a></li>
             <li><a class="nav-link" href="adoption-stats.html">Estadísticas</a></li>
-            <li><a class="nav-link current" href="add-adoption.html">Publicar Aviso</a></li>
+            <li><a class="nav-link actual" href="add-adoption.html">Publicar Aviso</a></li>
         </ul>
     </nav>
 
     <!-- Contenido de la pagina -->
     <main>
-        <div class="main-container">
+        <div class="contenido-adopc-home">
             <h1 class="adoption-head">Publicar Mascota en Adopcion</h1>
             <p>Proceda a completar el formulario para poner una mascota en adopcion.</p>
 
         </div>
         <div>
-
-            <form class="form-container">
+            <form id="form-adopcon" class="form-contenedor">
                 <p class="obligatorio">* De caracter <strong>obligatorio</strong>. </p>
                 <!-- Ubicacion -->
-                <h4>¿Dónde?</h4>
+                <h4><u>¿Dónde?</u></h4>
                 <label for="region">Región*</label>
                 <select id="region" name="region" required>
                     <option value="">Seleccione una región</option>
@@ -48,7 +47,7 @@
                 <input type="text" id="sector" name="sector" maxlength="100">
 
                 <!-- Contacto-->
-                <h4>¿Contacto de esta publicación?</h4>
+                <h4><u>¿Contacto de esta publicación?</u></h4>
 
                 <label for="nombre">Nombre*</label>
                 <input type="text" id="nombre" name="nombre" minlength="3" maxlength="100" required>
@@ -76,7 +75,7 @@
                 </div>
 
                 <!-- Informacion del animal -->
-                <h4>¿Qué mascota ofrece en adopción?</h4>
+                <h4><u>¿Qué mascota ofrece en adopción?</u></h4>
 
                 <label for="tipo">Tipo*</label>
                 <select id="tipo" name="tipo" required>
@@ -139,7 +138,7 @@
 
     <!-- Fin de la pagina -->
     <footer class="footer-bar">
-        <div class="footer-content">
+        <div class="footer-contenido">
             <p>Desarrollado por Jorge Cummins.</p>
             <ul class="footer-links">
                 <li>

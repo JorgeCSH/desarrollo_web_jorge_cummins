@@ -76,7 +76,7 @@ const validarFotos = fotos => {
 
 const validarForm = () => {
     // Validaciones obligatorias.
-    let myForm = document.forms["adoption-form"];
+    let myForm = document.forms["form-adopcon"];
     let region = myForm["region"].value;
     let comuna = myForm["comuna"].value;
     let nombre = myForm["nombre"].value;
@@ -189,7 +189,7 @@ const validarForm = () => {
 }
 
 const confirmacion = document.getElementById("confirmacion");
-document.forms["adoption-form"].addEventListener("submit", evento => {
+document.forms["form-adopcon"].addEventListener("submit", evento => {
     evento.preventDefault();
     validarForm();
 

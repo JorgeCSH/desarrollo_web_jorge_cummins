@@ -14,7 +14,7 @@ for (let i = 0; i < ultimos.length; i++) {
     // Creamos elemento para la fecha
     const crearFecha = () => {
         const fecha = document.createElement("div");
-        fecha.classList.add("item-adoption");
+        fecha.classList.add("item-contenedor");
         fecha.textContent = ultimoPublicado.publicacion;
         casillas.appendChild(fecha);
     };
@@ -22,7 +22,7 @@ for (let i = 0; i < ultimos.length; i++) {
     // Creamos elemento para la comuna
     const crearComuna = () => {
         const comuna = document.createElement("div");
-        comuna.classList.add("item-adoption");
+        comuna.classList.add("item-contenedor");
         comuna.textContent = ultimoPublicado.comuna;
         casillas.appendChild(comuna);
     };
@@ -30,7 +30,7 @@ for (let i = 0; i < ultimos.length; i++) {
     // Creamos elemento para el sector
     const crearSector = () => {
         const sector = document.createElement("div");
-        sector.classList.add("item-adoption");
+        sector.classList.add("item-contenedor");
         sector.textContent = ultimoPublicado.sector;
         casillas.appendChild(sector);
     };
@@ -38,7 +38,7 @@ for (let i = 0; i < ultimos.length; i++) {
     // Creamos elemento para la info (cantidad, tipo y año)
     const crearInfo = () => {
         const info = document.createElement("div");
-        info.classList.add("item-adoption");
+        info.classList.add("item-contenedor");
         info.textContent = ultimoPublicado.detalle;
         casillas.appendChild(info);
     };
@@ -46,7 +46,7 @@ for (let i = 0; i < ultimos.length; i++) {
     // Creamos elemento para la foto inicial
     const crearFoto = () => {
         const foto = document.createElement("div");
-        foto.classList.add("item-adoption");
+        foto.classList.add("item-contenedor");
         const img = document.createElement("img");
         img.src = ultimoPublicado.fotos[0];
         img.width = 100;

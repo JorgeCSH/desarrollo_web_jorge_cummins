@@ -103,16 +103,3 @@
     background-color: #b3b3b3;
 }
 
-/* Botones */
-button {
-    padding: 10px 15px;
-    margin: 10px 5px 0 0;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #e5e5e5;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-}
-button:hover {
-    background-color: #d5d5d5;
-}

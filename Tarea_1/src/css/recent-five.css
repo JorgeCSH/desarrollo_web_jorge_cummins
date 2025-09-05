@@ -3,7 +3,7 @@
  * ============================================= */
 /* ----- Texto Principal.  ------. */
 /* Header de bienvenida */
-.main-container {
+.contenido-adopc-home {
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -13,12 +13,12 @@
 }
 
 /* Texto del header */
-.header-container {
+.titulo-pagina {
     text-align: center;
 }
 
 /* Texto principal */
-.intro-container {
+.introduccion-pagina {
     flex-direction: column;
     border-style: none;
     padding: 20px;
@@ -27,7 +27,7 @@
 
 /* ----- Tabla de ultimos 5.  ------. */
 /* Tabla. */
-.last-pub-container {
+.publicado-contenedor {
     display: grid;
     margin-top: 20px;
     grid-template-columns: repeat(5, 1fr);
@@ -35,7 +35,7 @@
 }
 
 /* Contenidos de la tabla.*/
-.item-adoption {
+.item-contenedor {
     padding: 15px;
     text-align: center;
     border: 1px solid #dddddd;
@@ -43,6 +43,6 @@
 }
 
 /* Titulo de items en la tabla. */
-.item-adoption.header {
+.item-contenedor.titulo {
     background-color: #e5e5e5;
 }

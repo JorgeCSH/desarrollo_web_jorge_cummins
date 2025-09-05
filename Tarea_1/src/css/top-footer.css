@@ -55,12 +55,12 @@
 }
 
 /* Estilo pagina actual. */
-.nav-link.current {
+.nav-link.actual {
     background-color: #e76f51;
 }
 
 /* No aplicar animacion si es la pagina actual. */
-.nav-link.current::after {
+.nav-link.actual::after {
     content: none;
 }
 
@@ -71,7 +71,7 @@
 }
 
 /* Mantener el mismo color si es current. */
-.nav-link.home.current {
+.nav-link.home.actual {
     background-color: #2a9d8f;
 }
 
@@ -94,7 +94,7 @@
 
 /* --------- Configuración del texto de créditos. --------- */
 /* Contenidos. */
-.footer-content {
+.footer-contenido {
     display: flex;
     flex-direction: column;
     align-items: center;

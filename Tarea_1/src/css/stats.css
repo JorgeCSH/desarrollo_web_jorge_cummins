@@ -1,5 +1,5 @@
 /* Estilo principal. */
-.main-container {
+.contenido-adopc-home {
     display: flex;
     flex-direction: column;
     margin: 20px;
@@ -9,7 +9,7 @@
 }
 
 /* Estilo de la parte superior. */
-.main-container head {
+.contenido-adopc-home head {
     font-family: "Helvetica", "sans-serif";
     align-items: center;
 }
