@@ -23,6 +23,18 @@ Para el caso de las cuatro páginas, cada una se seccionó en tres con el fin de
 Finalmente, para el formulario implementado en la sección de dar en adopción, este se dividió en tres usando un formulario principal (puesto a que se interpretó que el enunciado pedía "Desplegar un formulario", el cual usando "headers" entre secciones.
 
 ### Estilo usando `CSS`
+Para el caso del estilado de la página, se incluyo un directorio `src` el que contiene las utilidades de la página. Específicamente, se crearon seis archivos `css` para estilar y poder ordenar lo que se estaba creando. Estos fueron:
+
+1. `body.css`: archivo el cual tiene estilos globales[^2], esto es, estilos que serán usados en toda la página a menos que se decida crear uno para el caso específico. Ejemplo, los botones.
+2. `top-footer`: para evitar tener que reescribir la barra de navegación y el "footer" de la página, además de simplificar la posibilidad de modificar cómo estaban estilados estos últimos, se creó un archivo `css` para poder contener sus clases.
+3. `recent-five`: archivo el que contiene los estilos de la tabla de últimos 5 valores subidos a la plataforma.
+4. `adoption-list`: para estilar la lista de archivos.
+5. `stats`: para poder estilar la pestaña de estadísticas.
+6. `adoption-form`: para poder estilar el formulario.
+
+Cabe destacar que, pese a los intentos, igual se llegó a realizar elementos repetidos, los cuales se intentaron remover. Si bien se estima que estos fueron eliminados, existe una posibilidad de que alguno siga en los archivos.
+
+También es interesante resaltar la división de los archivos, pues se buscó "separar" los casos generales de los específicos. Es por esto que se crearon los archivos 1 y 2 para contener los estilos globales y específicos de las barras, mientras que los 3, 4, 5 y 6 para estilar cada página respectivamente según su nombre.
 
 ## Arbol de archivos
 ```
