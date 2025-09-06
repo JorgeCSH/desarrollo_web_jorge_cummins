@@ -61,7 +61,7 @@ Algunos ejemplos son al presencia de `tags` de estilo `CSS` en la estructura `HT
 
 Algo similar a lo anterior también se vio en la creación de archivos, donde originalmente se llegaban a tener más archivos o menos y se volvía engorroso de leer (por eso también se agregó documentación, aunque sea básica en cada archivo `CSS`). Particularmente, hubo ocasiones donde se definían "estilos globales"[^3] en distintos archivos, lo que causaba que se superpusieran o repitieran nombres (o directamente se volviera engorroso e informal).
 
-Es importante también mencionar que, en un inicio se optó por realizar un desarrollo de la tarea en inglés inspirado en lo visto en el curso "Metodologías de Diseño y Programación", sin embargo, a medida que se avanzaba en el desarrollo, hubo un instante en el cual se empezó a realizar en español (error mío). Dado a esto, se decidió que de ahora en adelante se seguirá el desarrollo en español y se intentó traducir la mayor cantidad de variables para mantener consistencia (aunque puede haber llevado a errores eso). Es por esta razón que puede que existan variables escritas en ambos idiomas, en esos casos (es decir, cuando se encuentre una), no tendré problema (y de hecho, buscaría realizar el cambio) al español.
+Es importante también mencionar que, en un inicio se optó por realizar un desarrollo de la tarea en inglés inspirado en lo visto en el curso "Metodologías de Diseño y Programación", sin embargo, a medida que se avanzaba en el desarrollo, hubo un instante en el cual se empezó a realizar en español (error mío). Dado a esto, se decidió que de ahora en adelante se seguirá el desarrollo en español y se intentó traducir la mayor cantidad de variables para mantener consistencia (aunque puede haber llevado a errores eso). Es por esta razón que puede que existan variables escritas en ambos idiomas, en esos casos (es decir, cuando se encuentre una), no tendré problema (y de hecho, buscaría realizar el cambio) al español[^4].
 
 
 ## Arbol de archivos
@@ -115,6 +115,11 @@ desarrollo-aplicaciones-web
                     validation.js
 ```
 
+## Palabras Finales
+La tarea no es perfecta, hay errores o implementaciones "ilógicas" como pro ejemplo la pestaña que permite agrandar la imagen del listado, que originalmente dado al `src` vacío causaba problemas en los tests y se creó una solución rápida en el archivo `adoption-list.js` inspirado en la función que permite agregar nuevas publicaciones. El desarrollo pasó por diversas etapas, las cuales fueron enredando el desarrollo[^5].
+
+De esta forma, cualquier llamado de atención, error, sugerencia, etc. Es totalmente bienvenido y será recibido con la mejor de las intenciones para mejorar el desarrollo de tareas futuras o desarrollos futuros.
+
 ## Referencias:
 ### Imagenes: 
 - https://commons.wikimedia.org/wiki/File:1_Year_old_male_Siberian_cat.jpg
@@ -138,6 +143,7 @@ desarrollo-aplicaciones-web
 ### Dinamismo `JavaScript`:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+### Estilo
 
 
 [^1]: Se incluira el enlace a la pagina en cada uno de los tags, aunque se siguio el flujo de la pagina de la "w3school" para obtener mas informacion de cada tag (desde la pagina del tag incluida).
@@ -145,3 +151,7 @@ desarrollo-aplicaciones-web
 [^2]: No se si el termino esta bien acuñado, pero es con el fin de referirme a aquellos que no estan en una clase especifica.
 
 [^3]: Nuevamente, no se si el termino esta bien acuñado.
+
+[^4]: Pese a todos los problemas enunciados en esta seccion, se comprobo que los tests pasaran.
+
+[^5]: No ayudo que `html`, `css` y `js` sean un mundo de posibilidades el cual podia llevar a infinitas soluciones o implementaciones al punto que uno caia en lo que coloquialmente se llama "rabbit hole".
