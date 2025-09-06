@@ -61,7 +61,7 @@ Además, la tipografía que se intentó mantener era "Helvetica" por sobre "Aria
 
 Con respecto a las imágenes, estas fueron sacadas de Google imágenes con el filtro "creative commons license" donde se incluyó la bibliografía de cada una. Estas están dentro de `src` en un directorio especial.
 
-Con respecto a las estadísticas, estas fueron realizadas con datos independientes e inventados a los que se incluyeron en la página final (aunque igual se tomó inspiración en los creados por mí). Estos gráficos fueron hechos en `python` en un código hecho por mí, el cual, de se necesario, no tengo problema en compartir (digo esto porque me equivoque en escribir los meses en el grafico).
+Con respecto a las estadísticas, estas fueron realizadas con datos independientes e inventados a los que se incluyeron en la página final (aunque igual se tomó inspiración en los creados por mí). Estos gráficos fueron hechos en `python` en un código hecho por mí, el cual, de se necesario, no tengo problema en incluir de ser necesario.
 
 ## Consideraciones
 La aplicación fue desarrollada teniendo conocimiento básico de las herramientas previos y lo que se fue aprendiendo durante las cátedras y clases auxiliares. Es por eso que durante el desarrollo, la implementación de diversas componentes pudo haber ido variando y que, posteriormente, haya causado problemas al intentar solucionar y se haya preferido dejar como estaba originalmente.
