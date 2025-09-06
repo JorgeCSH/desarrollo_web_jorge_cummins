@@ -52,7 +52,11 @@ Además de los directorios nombrados, se incluyeron dos archivos `js` para compl
 Si bien ya se mencionó el cómo está distribuida la página, es importante mencionar el cómo se pensó esto, pues se desconoce (y estoy totalmente dispuesto a cambiar la estructura actual por una más "estándar") si existe una forma más estándar de realizar una aplicación web. Esta se inspiró en lo realizado en el curso "Metodologías de Diseño y Programación" en donde se tiene un documento `src` para la incorporación de archivos, pero mezclando con la estructuración que se iban viendo en las diferentes páginas vistas en cátedra. Por lo cual, además del directorio `src`, las páginas `HTML` fueron incorporadas de manera externa para representar que eran las principales componentes de la página. Además, utilidades como las imágenes (de las cuales se ahondaran en la sección de "Estilo de la Página") se incorporaron en el directorio `src`.
 
 ## Estilo de la Pagina
-
+Una de las decisiones más difíciles fue la de implementar un diseño, pues si bien se pensó en entregar un diseño básico, este no era la idea principalmente por objetivo propio.
+La barra de navegación se inspiró en aquella que se usa de ejemplo en la `w3school`, la cual se realizó con dinamismo para poder saber dónde se estaba actualmente y cuál opción se estaba seleccionando, el enlace a la inspiración se encuentra en la bibliografía.
+Con respecto al footer, este fue inspirado en diversas páginas dando ejemplos en la parte de la bibliografía.
+La paleta de colores fue una de las decisiones más difíciles, donde se tomaron tonos "pasteles" que fueron obscurecidos usando la herramienta otorgada por Google para obtener los colores en hexadecimal (formato preferido para realizar esto por mí).
+Además, la tipografía que se intentó mantener era "Helvetica" por sobre "Arial" o la que, en un inicio, se pensó "JetBrains mono" dado que se requería instalar y si bien se puede incluir otra tipografía en caso de que existan problemas, se decidió dejar un default.
 
 ## Consideraciones
 La aplicación fue desarrollada teniendo conocimiento básico de las herramientas previos y lo que se fue aprendiendo durante las cátedras y clases auxiliares. Es por eso que durante el desarrollo, la implementación de diversas componentes pudo haber ido variando y que, posteriormente, haya causado problemas al intentar solucionar y se haya preferido dejar como estaba originalmente.
@@ -144,7 +148,8 @@ De esta forma, cualquier llamado de atención, error, sugerencia, etc. Es totalm
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 ### Estilo
-
+- https://www.w3schools.com/howto/howto_js_topnav.asp
+- https://www.google.com/search?q=hex+color&oq=hex+color&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIMCAEQABhDGIAEGIoFMgwIAhAAGEMYgAQYigUyBwgDEAAYgAQyBwgEEAAYgAQyDAgFEAAYQxiABBiKBTIMCAYQABhDGIAEGIoFMgwIBxAAGEMYgAQYigUyDAgIEAAYQxiABBiKBTIMCAkQABhDGIAEGIoF0gEIMTEzNGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8
 
 [^1]: Se incluira el enlace a la pagina en cada uno de los tags, aunque se siguio el flujo de la pagina de la "w3school" para obtener mas informacion de cada tag (desde la pagina del tag incluida).
 
