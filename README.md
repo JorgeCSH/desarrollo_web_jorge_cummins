@@ -36,6 +36,20 @@ Cabe destacar que, pese a los intentos, igual se llegó a realizar elementos rep
 
 También es interesante resaltar la división de los archivos, pues se buscó "separar" los casos generales de los específicos. Es por esto que se crearon los archivos 1 y 2 para contener los estilos globales y específicos de las barras, mientras que los 3, 4, 5 y 6 para estilar cada página respectivamente según su nombre.
 
+### Dinamismo usando `JavaScript`:
+El dinamismo de la página se logro/implemento utilizando el lenguaje de programación `JavaScript`. Al igual que en el caso del estilo haciendo uso de `CSS`, los códigos se implementaron en diversos archivos en un directorio llamado `javascript` dentro de `src.`. Debido a las diferentes opciones que, utilidades y herramientas que provee `JavaScript` (el cual puede que sea abreviado como `js` en este documento), se dividió el directorio en otros subdirectorios además de archivos generales. Esto es:
+
+#### db
+Si bien no se pensó en implementar bases de datos, pues corresponde al "back-end" de la página (y además se explicitó que no era necesario), se creyó este directorio con el fin de contener archivos `js` que tuvieran datos con el fin de acceder de manera más simple y mantener el orden en el resto de archivos. Estos tienen la única finalidad de tener arreglos con los datos que son usados y después exportados-importados, mecánica la cual se obtuvo desde la página de "mozilla developer", de esta forma se pueden tener en documentos apartes la lista de región-comuna dada por el cuerpo docente y una lista extra creada específicamente para el desarrollo de esta tarea que contenga datos inventados sobre posibles publicaciones. Esto fue consultado al profesor auxiliar, el cual no tuvo problemas con esta implementación.
+
+#### form
+Para la realización del `form`, se tomó inspiración en las clases auxiliares donde se usaban dos archivos, uno para realizar las validaciones y otro para la selección de valores. Esta mecánica fue adaptada e implementada para el desarrollo de esta tarea y los archivos incluidos en el directorio respectivo, en este caso, el archivo `validation.js` contiene las funciones para validar (además de la función de validación) y el archivo `adoption-form.js` para interactuar con los inputs.
+
+#### Archivos generales
+Además de los directorios nombrados, se incluyeron dos archivos `js` para complementar el dinamismo y la interacción con los datos inventados, esto no solo tuvo la intención de acceder a los datos, más bien con el fin de evitar implementar todo usando valores estáticos en la estructura `HTML` y poder practicar y familiarizarse con el lenguaje, por ende, para los valores desplegados como últimos 5 en la página de inicio (también llamada "home" o `index`) se realizaron implementaciones dinámicas con `js` que seleccionan los últimos 5 valores de la lista con respecto a la fecha de publicada, el cómo trabajar con `Date()` fue siguiendo la documentación de "mozilla developer". Esto también se incluyó para el listado general, con lo cual se puede agregar una cantidad x de datos y de igual manera se mostrarán en el inicio las últimas 5 publicaciones.
+
+
+
 ## Arbol de archivos
 ```
 desarrollo-aplicaciones-web
@@ -111,7 +125,13 @@ desarrollo-aplicaciones-web
 - https://www.w3schools.com/tags/tag_nav.asp
 - https://www.w3schools.com/tags/tag_main.asp
 - https://www.w3schools.com/tags/tag_footer.asp
-
+### Estilo `CSS`:
+(Se siguieron las instrucciones de la `w3school` e implementaron segun visto en catedras).
+### Dinamismo `JavaScript`:
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 
 
 [^1]: Se incluira el enlace a la pagina en cada uno de los tags, aunque se siguio el flujo de la pagina de la "w3school" para obtener mas informacion de cada tag (desde la pagina del tag incluida).
+
+[^2]: No se si el termino esta bien acuñado, pero es con el fin de referirme a aquellos que no estan en una clase especifica.
