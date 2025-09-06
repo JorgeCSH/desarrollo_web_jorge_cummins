@@ -48,6 +48,13 @@ Para la realización del `form`, se tomó inspiración en las clases auxiliares 
 #### Archivos generales
 Además de los directorios nombrados, se incluyeron dos archivos `js` para complementar el dinamismo y la interacción con los datos inventados, esto no solo tuvo la intención de acceder a los datos, más bien con el fin de evitar implementar todo usando valores estáticos en la estructura `HTML` y poder practicar y familiarizarse con el lenguaje, por ende, para los valores desplegados como últimos 5 en la página de inicio (también llamada "home" o `index`) se realizaron implementaciones dinámicas con `js` que seleccionan los últimos 5 valores de la lista con respecto a la fecha de publicada, el cómo trabajar con `Date()` fue siguiendo la documentación de "mozilla developer". Esto también se incluyó para el listado general, con lo cual se puede agregar una cantidad x de datos y de igual manera se mostrarán en el inicio las últimas 5 publicaciones.
 
+## Estructura General
+Si bien ya se mencionó el cómo está distribuida la página, es importante mencionar el cómo se pensó esto, pues se desconoce (y estoy totalmente dispuesto a cambiar la estructura actual por una más "estándar") si existe una forma más estándar de realizar una aplicación web. Esta se inspiró en lo realizado en el curso "Metodologías de Diseño y Programación" en donde se tiene un documento `src` para la incorporación de archivos, pero mezclando con la estructuración que se iban viendo en las diferentes páginas vistas en cátedra. Por lo cual, además del directorio `src`, las páginas `HTML` fueron incorporadas de manera externa para representar que eran las principales componentes de la página. Además, utilidades como las imágenes (de las cuales se ahondaran en la sección de "Estilo de la Página") se incorporaron en el directorio `src`.
+
+## Estilo de la Pagina
+
+
+## Consideraciones
 
 
 ## Arbol de archivos
@@ -55,12 +62,6 @@ Además de los directorios nombrados, se incluyeron dos archivos `js` para compl
 desarrollo-aplicaciones-web
 │   README.md
 │
-├───.idea
-│       .gitignore
-│       desarrollo_web_jorge_cummins.iml
-│       modules.xml
-│       vcs.xml
-│       workspace.xml
 │
 └───Tarea_1
     │   add-adoption.html
