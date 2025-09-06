@@ -55,6 +55,13 @@ Si bien ya se mencionó el cómo está distribuida la página, es importante men
 
 
 ## Consideraciones
+La aplicación fue desarrollada teniendo conocimiento básico de las herramientas previos y lo que se fue aprendiendo durante las cátedras y clases auxiliares. Es por eso que durante el desarrollo, la implementación de diversas componentes pudo haber ido variando y que, posteriormente, haya causado problemas al intentar solucionar y se haya preferido dejar como estaba originalmente.
+
+Algunos ejemplos son al presencia de `tags` de estilo `CSS` en la estructura `HTML`, el cual se iba incorporando en un inicio para ver cambios rápidos antes de pasarlos a un archivo formal, caso similar con `tags` `script`. Si bien la gran mayoría se eliminaron, puede haber remanentes de estas etapas de la creación.
+
+Algo similar a lo anterior también se vio en la creación de archivos, donde originalmente se llegaban a tener más archivos o menos y se volvía engorroso de leer (por eso también se agregó documentación, aunque sea básica en cada archivo `CSS`). Particularmente, hubo ocasiones donde se definían "estilos globales"[^3] en distintos archivos, lo que causaba que se superpusieran o repitieran nombres (o directamente se volviera engorroso e informal).
+
+Es importante también mencionar que, en un inicio se optó por realizar un desarrollo de la tarea en inglés inspirado en lo visto en el curso "Metodologías de Diseño y Programación", sin embargo, a medida que se avanzaba en el desarrollo, hubo un instante en el cual se empezó a realizar en español (error mío). Dado a esto, se decidió que de ahora en adelante se seguirá el desarrollo en español y se intentó traducir la mayor cantidad de variables para mantener consistencia (aunque puede haber llevado a errores eso). Es por esta razón que puede que existan variables escritas en ambos idiomas, en esos casos (es decir, cuando se encuentre una), no tendré problema (y de hecho, buscaría realizar el cambio) al español.
 
 
 ## Arbol de archivos
@@ -136,3 +143,5 @@ desarrollo-aplicaciones-web
 [^1]: Se incluira el enlace a la pagina en cada uno de los tags, aunque se siguio el flujo de la pagina de la "w3school" para obtener mas informacion de cada tag (desde la pagina del tag incluida).
 
 [^2]: No se si el termino esta bien acuñado, pero es con el fin de referirme a aquellos que no estan en una clase especifica.
+
+[^3]: Nuevamente, no se si el termino esta bien acuñado.
