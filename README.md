@@ -51,6 +51,7 @@ Además de los directorios nombrados, se incluyeron dos archivos `js` para compl
 ## Estructura General
 Si bien ya se mencionó el cómo está distribuida la página, es importante mencionar el cómo se pensó esto, pues se desconoce (y estoy totalmente dispuesto a cambiar la estructura actual por una más "estándar") si existe una forma más estándar de realizar una aplicación web. Esta se inspiró en lo realizado en el curso "Metodologías de Diseño y Programación" en donde se tiene un documento `src` para la incorporación de archivos, pero mezclando con la estructuración que se iban viendo en las diferentes páginas vistas en cátedra. Por lo cual, además del directorio `src`, las páginas `HTML` fueron incorporadas de manera externa para representar que eran las principales componentes de la página. Además, utilidades como las imágenes (de las cuales se ahondaran en la sección de "Estilo de la Página") se incorporaron en el directorio `src`.
 
+
 ## Estilo de la Pagina
 Una de las decisiones más difíciles fue la de implementar un diseño, pues si bien se pensó en entregar un diseño básico, este no era la idea principalmente por objetivo propio.
 La barra de navegación se inspiró en aquella que se usa de ejemplo en la `w3school`, la cual se realizó con dinamismo para poder saber dónde se estaba actualmente y cuál opción se estaba seleccionando, el enlace a la inspiración se encuentra en la bibliografía.
@@ -66,6 +67,10 @@ Algunos ejemplos son al presencia de `tags` de estilo `CSS` en la estructura `HT
 Algo similar a lo anterior también se vio en la creación de archivos, donde originalmente se llegaban a tener más archivos o menos y se volvía engorroso de leer (por eso también se agregó documentación, aunque sea básica en cada archivo `CSS`). Particularmente, hubo ocasiones donde se definían "estilos globales"[^3] en distintos archivos, lo que causaba que se superpusieran o repitieran nombres (o directamente se volviera engorroso e informal).
 
 Es importante también mencionar que, en un inicio se optó por realizar un desarrollo de la tarea en inglés inspirado en lo visto en el curso "Metodologías de Diseño y Programación", sin embargo, a medida que se avanzaba en el desarrollo, hubo un instante en el cual se empezó a realizar en español (error mío). Dado a esto, se decidió que de ahora en adelante se seguirá el desarrollo en español y se intentó traducir la mayor cantidad de variables para mantener consistencia (aunque puede haber llevado a errores eso). Es por esta razón que puede que existan variables escritas en ambos idiomas, en esos casos (es decir, cuando se encuentre una), no tendré problema (y de hecho, buscaría realizar el cambio) al español[^4].
+
+Con respecto a algunas implementaciones, me gustaria destacar dos:
+- Para agregar imagenes, estas deben seleccionarse todas de una vez, no una en una.
+- Con respecto a las redes sociales, se considero que solo es necesario una pues la se tomo como literal la frase "opcional" el hecho de que sean maximo 5.
 
 
 ## Arbol de archivos
