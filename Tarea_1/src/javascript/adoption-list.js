@@ -7,8 +7,6 @@ const listadoContainer = document.querySelector(".listado-casilla"); // antes er
 const detalleInfo = document.getElementById("detalle-info");
 const detalleFotos = document.getElementById("detalle-fotos");
 const modoFoto = document.getElementById("foto-clickeada");
-const fotoGrande = document.getElementById("foto-grande");
-const cerrarFoto = document.getElementById("cerrar-foto");
 const volverListadoBtn = document.getElementById("volver-listado");
 const volverPortadaBtn = document.getElementById("volver-portada");
 
@@ -79,11 +77,7 @@ for (let i = 0; i < avisos.length; i++) {
     listadoBody.appendChild(row);
 }
 
-// Boton para cerrar la vista ampliada de la imagen clickeada
-cerrarFoto.addEventListener("click", () => {
-    modoFoto.style.display = "none";
-    fotoGrande.src = "";
-});
+
 
 // Botones para salir de los detalles
 // Caso 1: Volver al listado
