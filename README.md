@@ -49,14 +49,14 @@ desarrollo-aplicaciones-web
             └── last-five.js
 ```
 
-## To-do List
-- [x] Crear la estructura/diseño basico de la pagina web.
-- [x] Agregar ultimas 5 publicaciones.
-- [ ] Agregar opcion para estadisticas.
-- [x] Agregar el listado de avisos de adopcion.
-- [x] Agregar opcion para agregar publicaciones.
-- [ ] Corregir el tag style de `adoption-list.html`.
-- [ ] Comentar.
-- [ ] Cambiar el spanglish.
-- [ ] Cambiar imagenes.
-- [ ] Completar `README`.
+## Referencias:
+### Imagenes: 
+- https://commons.wikimedia.org/wiki/File:1_Year_old_male_Siberian_cat.jpg
+- https://itoldya420.getarchive.net/amp/media/dogs-beach-wet-travel-vacation-1ec6b6
+- https://worldanimalfoundation.org/dogs/how-to-socialize-dog/
+- https://picryl.com/media/labrador-retriever-dog-animals-1e4c17
+- https://www.pexels.com/photo/dogs-fighting-on-the-street-12483019/
+- https://commons.wikimedia.org/wiki/File:One_Year_Old_Siamese_Tabby_Cat_1_2015-04-03.JPG
+- https://commons.wikimedia.org/wiki/File:1_year_old_siberian_tabby_cat.jpg
+- https://commons.wikimedia.org/wiki/File:One_Year_Old_Siamese-Tabby_Cat_19_2015-05-09.JPG
+- https://commons.wikimedia.org/wiki/File:A-Cat.jpg

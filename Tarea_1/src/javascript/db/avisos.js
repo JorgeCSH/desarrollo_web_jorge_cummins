@@ -6,7 +6,7 @@ export const avisos = [
         sector: "Las Hualtatas",
         detalle: "1  gato  1 año",
         contacto: "Jorge Cummins",
-        fotos: ["src/img/adopcion/le_meme.jpg"]
+        fotos: ["src/img/adopcion/gato11.jpg"]
     },
     {
         publicacion: "2025-08-25 09:30",
@@ -15,7 +15,7 @@ export const avisos = [
         sector: "Cavancha",
         detalle: "2 perros 3 años",
         contacto: "Persona Genérica Uno",
-        fotos: ["src/img/adopcion/le_meme.jpg", "src/img/adopcion/el_meme.jpeg"]
+        fotos: ["src/img/adopcion/perro21.jpg", "src/img/adopcion/perro22.jpg"]
     },
     {
         publicacion: "2025-08-24 11:00",
@@ -24,7 +24,7 @@ export const avisos = [
         sector: "Mall",
         detalle: "2 perros 4 años",
         contacto: "Iñaki Alday",
-        fotos: ["src/img/adopcion/le_meme.jpg", "src/img/adopcion/the_meme.jpg"]
+        fotos: ["src/img/adopcion/perro31.jpg", "src/img/adopcion/perro32.jpeg"]
     },
     {
         publicacion: "2025-08-23 08:15",
@@ -33,7 +33,7 @@ export const avisos = [
         sector: "8 Norte",
         detalle: "1 gato 1 año",
         contacto: "Persona Genérica Dos",
-        fotos: ["src/img/adopcion/le_meme.jpg", "src/img/adopcion/the_meme.jpg", "src/img/adopcion/el_meme.jpeg"]
+        fotos: ["src/img/adopcion/gato41.jpeg", "src/img/adopcion/gato42.jpg", "src/img/adopcion/gato43.jpeg"]
     },
     {
         publicacion: "2025-08-22 15:00",
@@ -42,15 +42,6 @@ export const avisos = [
         sector: "David Girvan",
         detalle: "1 gato 10 años",
         contacto: "Persona Genérica Tres",
-        fotos: ["src/img/adopcion/adopcion/le_meme.jpg"]
-    },
-    {
-        publicacion: "2025-08-23 04:00",
-        entrega: "2025-08-26 04:00",
-        comuna: "villa alemana",
-        sector: "El Belloto",
-        detalle: "1  gato  1 año",
-        contacto: "Persona Genérica 4",
-        fotos: ["src/img/adopcion/le_meme.jpg"]
+        fotos: ["src/img/adopcion/gato51.jpg"]
     }
 ];
