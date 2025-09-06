@@ -1,11 +1,14 @@
+// Validacion para la region. Falla si esta vacio.
 const validarRegion = region => {
     return region !== "";
 };
 
+// Validacion para la comuna. Falla si esta vacio.
 const validarComuna = comuna => {
     return comuna !== "";
 };
 
+// Validacion para el sector, si esta vacio no falla pero si no es asi, falla dependiendo del largo.
 const validarSector = sector => {
     if (!sector) {
         return true;
@@ -14,15 +17,18 @@ const validarSector = sector => {
     }
 };
 
+// Validadion para el nombre, falla si es menor a 3 o mayor a 200 caracteres.
 const validarNombre = nombre => {
     return nombre.length >= 3 && nombre.length <= 200;
 };
 
+// Validacion para el email, falla si no tiene formato de email o es mayor a 100 caracteres.
 const validarEmail = email => {
     const expRegMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return expRegMail.test(email) && email.length <= 100;
 };
 
+// Validacion para el telefono, si esta vacio no falla pero si no es asi, falla dependiendo del formato.
 const validarTelefono = telefono => {
     if (!telefono) {
         return true;
@@ -32,6 +38,7 @@ const validarTelefono = telefono => {
     }
 };
 
+// Validacion para la red social, si esta vacio no falla pero si no es asi, falla dependiendo del largo del ID.
 const validarRed = (red, redId) => {
     if (!red) {
        return true
@@ -40,24 +47,29 @@ const validarRed = (red, redId) => {
     }
 };
 
+// Validacion para el tipo de mascota, falla si esta vacio.
 const validarTipo = tipo => {
     return tipo !== "";
 };
 
+// Validacion para la cantidad, falla si no es un entero positivo mayor a 0.
 const validarCantidad = (cantidad) => {
     const num = parseInt(cantidad, 10); // convierte a entero en base 10
     return Number.isInteger(num) && num >= 1;
 };
 
+// Validacion para la edad, falla si no es un entero positivo o 0.
 const validarEdad = (edad) => {
     const num = parseInt(edad, 10);
     return Number.isInteger(num) && num >= 0;
 };
 
+// Validacion para la medida, falla si esta vacio.
 const validarMedida = medida => {
     return medida !== "";
 };
 
+// Validacion para la fecha, falla si es menor a 3 horas desde el momento actual.
 const validarFecha = (fechaIngresada) => {
     if (!fechaIngresada) {
         return false;
@@ -69,11 +81,12 @@ const validarFecha = (fechaIngresada) => {
     }
 };
 
+// Validacion para las fotos, falla si no hay al menos 1 foto o si hay mas de 5 fotos.
 const validarFotos = fotos => {
     return fotos.length >= 1 && fotos.length <= 5;
 };
 
-
+// Funcion prinicpal usada para validar.
 const validarForm = () => {
     // Validaciones obligatorias.
     let myForm = document.forms["form-adopcon"];
@@ -97,11 +110,13 @@ const validarForm = () => {
     let invalidInputs = [];
     let isValid = true;
 
+    // Lista de validados.
     const setInvalidInput = (inputName) => {
         invalidInputs.push(inputName);
         isValid &&= false;
     }
 
+    // Aca empezamos a validar cada caso, esto en el orden que esta en el enunciado y formulario.
     if (!validarRegion(region)) {
         setInvalidInput("Region");
     }
@@ -145,10 +160,12 @@ const validarForm = () => {
     }
 
 
+    // Caso de error, aca se crean elementos necesarios para mostrar el error.
     let validationBox = document.getElementById('val-box');
     let validationMessageElem = document.getElementById('val-msg');
     let validationListElem = document.getElementById('val-list');
 
+    // Caso dodne falla la validacion.
     if (!isValid) {
         validationListElem.textContent = "";
         for (let input of invalidInputs) {
@@ -163,6 +180,7 @@ const validarForm = () => {
         validationBox.style.borderLeftColor = "#f44336";
 
         validationBox.hidden = false;
+    // La validacion fu3e exitosa.
     } else {
         validationBox.hidden = true;
         myForm.style.display = "none";
@@ -188,6 +206,7 @@ const validarForm = () => {
     }
 }
 
+// "evento" para el formulario.
 const confirmacion = document.getElementById("confirmacion");
 document.forms["form-adopcon"].addEventListener("submit", evento => {
     evento.preventDefault();
