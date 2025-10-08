@@ -21,26 +21,8 @@
             <div class="listado-cabeza">Nombre Contacto</div>
             <div class="listado-cabeza">Total Fotos</div>
         </div>
-        <!-- Filas con datos -->
-        <div class="listado-body">
-            {% if avisos %}
-            {% for aviso in avisos %}
-            <div class="listado-fila" data-id="{{ aviso.id }}">
-                <div class="listado-celda">{{ aviso.fecha_publicacion.strftime('%d-%m-%Y') if aviso.fecha_publicacion else 'N/A' }}</div>
-                <div class="listado-celda">{{ aviso.fecha_entrega.strftime('%d-%m-%Y') if aviso.fecha_entrega else 'N/A' }}</div>
-                <div class="listado-celda">{{ aviso.comuna }}</div>
-                <div class="listado-celda">{{ aviso.sector }}</div>
-                <div class="listado-celda">{{ aviso.cantidad }} / {{ aviso.tipo }} / {{ aviso.edad }}</div>
-                <div class="listado-celda">{{ aviso.nombre_contacto }}</div>
-                <div class="listado-celda">{{ aviso.total_fotos if aviso.total_fotos else 0 }}</div>
-            </div>
-            {% endfor %}
-            {% else %}
-            <div class="listado-vacio">
-                <p>No hay avisos de adopción disponibles en este momento.</p>
-            </div>
-            {% endif %}
-        </div>
+        <!-- Filas se llenaran con JS -->
+        <div class="listado-body"></div>
     </div>
 </div>
 
@@ -50,7 +32,7 @@
     <div id="detalle-info"></div>
     <div id="detalle-fotos"></div>
     <button id="volver-listado">Volver al listado</button>
-    <button id="volver-portada" onclick="window.location.href='{{ url_for('index') }}'">Volver a la portada</button>
+    <button id="volver-portada">Volver a la portada</button>
 </div>
 
 <!-- Contenedor para foto clickeada -->
@@ -58,6 +40,6 @@
 </div>
 {% endblock %}
 
-{% block extra_js %}
+{% block scripts %}
 <script type="module" src="{{ url_for('static', filename='scripts/javascript/adoption-list.js') }}"></script>
 {% endblock %}

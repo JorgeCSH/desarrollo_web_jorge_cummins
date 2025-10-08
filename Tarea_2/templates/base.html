@@ -13,10 +13,10 @@
 <!-- Barra superior de la pagina -->
 <nav>
     <ul class="nav-bar">
-        <li><a class="nav-link home {% if request.endpoint == 'index' %}actual{% endif %}" href="{{ url_for('index') }}">Inicio</a></li>
-        <li><a class="nav-link {% if request.endpoint == 'adoption_list' %}actual{% endif %}" href="{{ url_for('adoption_list') }}">Listado</a></li>
-        <li><a class="nav-link {% if request.endpoint == 'adoption_stats' %}actual{% endif %}" href="{{ url_for('adoption_stats') }}">Estadísticas</a></li>
-        <li><a class="nav-link {% if request.endpoint == 'add_adoption' %}actual{% endif %}" href="{{ url_for('add_adoption') }}">Publicar Aviso</a></li>
+        <li><a class="nav-link home {% if active_page == 'index' %}actual{% endif %}" href="{{ url_for('index') }}">Inicio</a></li>
+        <li><a class="nav-link {% if active_page == 'adoption_list' %}actual{% endif %}" href="{{ url_for('adoption_list') }}">Listado</a></li>
+        <li><a class="nav-link {% if active_page == 'adoption_stats' %}actual{% endif %}" href="{{ url_for('adoption_stats') }}">Estadísticas</a></li>
+        <li><a class="nav-link {% if active_page == 'add_adoption' %}actual{% endif %}" href="{{ url_for('add_adoption') }}">Publicar Aviso</a></li>
     </ul>
 </nav>
 
@@ -25,8 +25,8 @@
     {% block content %}{% endblock %}
 </main>
 
-<!-- Scripts específicos de cada página -->
-{% block extra_js %}{% endblock %}
+<!-- Scripts comunes -->
+{% block scripts %}{% endblock %}
 
 <!-- Fin de la pagina -->
 <footer class="footer-bar">

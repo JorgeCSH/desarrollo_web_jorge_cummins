@@ -14,9 +14,7 @@
 </div>
 
 <div>
-    <form id="form-adopcon" class="form-contenedor" method="POST" action="{{ url_for('add_adoption') }}" enctype="multipart/form-data">
-        {{ form.hidden_tag() if form else '' }}
-
+    <form id="form-adopcon" class="form-contenedor">
         <p class="obligatorio">* De caracter <strong>obligatorio</strong>. </p>
 
         <!-- Ubicacion -->
@@ -24,11 +22,6 @@
         <label for="region">Región*</label>
         <select id="region" name="region" required>
             <option value="">Seleccione una región</option>
-            {% if regiones %}
-            {% for region in regiones %}
-            <option value="{{ region }}" {% if request.form.get('region') == region %}selected{% endif %}>{{ region }}</option>
-            {% endfor %}
-            {% endif %}
         </select>
 
         <label for="comuna">Comuna*</label>
@@ -37,34 +30,34 @@
         </select>
 
         <label for="sector">Sector</label>
-        <input type="text" id="sector" name="sector" maxlength="100" value="{{ request.form.get('sector', '') }}">
+        <input type="text" id="sector" name="sector" maxlength="100">
 
         <!-- Contacto-->
         <h4><u>¿Contacto de esta publicación?</u></h4>
 
         <label for="nombre">Nombre*</label>
-        <input type="text" id="nombre" name="nombre" minlength="3" maxlength="100" value="{{ request.form.get('nombre', '') }}" required>
+        <input type="text" id="nombre" name="nombre" minlength="3" maxlength="100" required>
 
         <label for="email">Email*</label>
-        <input type="email" id="email" name="email" maxlength="100" value="{{ request.form.get('email', '') }}" required>
+        <input type="email" id="email" name="email" maxlength="100" required>
 
         <label for="telefono">Número de celular</label>
-        <input type="tel" id="telefono" name="telefono" placeholder="+569.12345678" value="{{ request.form.get('telefono', '') }}">
+        <input type="tel" id="telefono" name="telefono"  placeholder="+569.12345678">
 
         <label for="red">Contactar por</label>
         <select id="red" name="red">
             <option value="">Seleccione</option>
-            <option value="whatsapp" {% if request.form.get('red') == 'whatsapp' %}selected{% endif %}>WhatsApp</option>
-            <option value="telegram" {% if request.form.get('red') == 'telegram' %}selected{% endif %}>Telegram</option>
-            <option value="X" {% if request.form.get('red') == 'X' %}selected{% endif %}>X (ex: twitter)</option>
-            <option value="instagram" {% if request.form.get('red') == 'instagram' %}selected{% endif %}>Instagram</option>
-            <option value="tiktok" {% if request.form.get('red') == 'tiktok' %}selected{% endif %}>TikTok</option>
-            <option value="otra" {% if request.form.get('red') == 'otra' %}selected{% endif %}>Otra</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram">Telegram</option>
+            <option value="X">X (ex: twitter)</option>
+            <option value="instagram">Instagram</option>
+            <option value="tiktok">TikTok</option>
+            <option value="otra">Otra</option>
         </select>
 
-        <div id="red-id-container" style="display:{% if request.form.get('red') %}block{% else %}none{% endif %};">
+        <div id="red-id-container" style="display:none;">
             <label for="red-id">ID o URL de contacto</label>
-            <input type="text" id="red-id" name="red-id" minlength="4" maxlength="50" value="{{ request.form.get('red-id', '') }}">
+            <input type="text" id="red-id" name="red-id" minlength="4" maxlength="50">
         </div>
 
         <!-- Informacion del animal -->
@@ -73,28 +66,28 @@
         <label for="tipo">Tipo*</label>
         <select id="tipo" name="tipo" required>
             <option value="">Seleccione</option>
-            <option value="perro" {% if request.form.get('tipo') == 'perro' %}selected{% endif %}>Perro</option>
-            <option value="gato" {% if request.form.get('tipo') == 'gato' %}selected{% endif %}>Gato</option>
+            <option value="perro">Perro</option>
+            <option value="gato">Gato</option>
         </select>
 
         <label for="cantidad">Cantidad*</label>
-        <input type="text" id="cantidad" name="cantidad" minlength="1" value="{{ request.form.get('cantidad', '') }}" required>
+        <input type="text" id="cantidad" name="cantidad" minlength="1" required>
 
         <label for="edad">Edad*</label>
-        <input type="text" id="edad" name="edad" minlength="1" value="{{ request.form.get('edad', '') }}" required>
+        <input type="text" id="edad" name="edad" minlength="1" required>
 
         <label for="unidad">Unidad de medida*</label>
         <select id="unidad" name="unidad" required>
             <option value="">Seleccione</option>
-            <option value="meses" {% if request.form.get('unidad') == 'meses' %}selected{% endif %}>Meses</option>
-            <option value="años" {% if request.form.get('unidad') == 'años' %}selected{% endif %}>Años</option>
+            <option value="meses">Meses</option>
+            <option value="años">Años</option>
         </select>
 
         <label for="fecha">Fecha disponible*</label>
-        <input class="fecha" type="datetime-local" id="fecha" name="fecha" value="{{ request.form.get('fecha', '') }}" required>
+        <input class="fecha" type="datetime-local" id="fecha" name="fecha" required>
 
         <label for="descripcion">Descripción</label>
-        <textarea id="descripcion" name="descripcion" cols="50" rows="10">{{ request.form.get('descripcion', '') }}</textarea>
+        <textarea id="descripcion" name="descripcion" cols="50" rows="10"></textarea>
 
         <label>Fotos*</label>
         <div id="fotos-container">
@@ -104,22 +97,10 @@
         <button type="submit">Agregar este aviso de adopción</button>
     </form>
 
-    <!-- Mensajes de validación -->
-    {% if errores %}
-    <div id="val-box">
-        <h2 id="val-msg">Por favor corrija los siguientes errores:</h2>
-        <ul id="val-list">
-            {% for error in errores %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% else %}
     <div id="val-box" hidden>
         <h2 id="val-msg">Aca habria un mensaje</h2>
         <ul id="val-list"></ul>
     </div>
-    {% endif %}
 
     <!-- Mensaje de confirmacion -->
     <div id="confirmacion" style="display:none;">
@@ -128,15 +109,14 @@
         <button id="confirmar-no">No, quiero volver al formulario</button>
     </div>
 
-    <div id="mensaje-exito" style="display:{% if exito %}block{% else %}none{% endif %};">
+    <div id="mensaje-exito" style="display:none;">
         <p>Hemos recibido la información de adopción, muchas gracias y suerte!</p>
-        <button id="volver-portada" onclick="window.location.href='{{ url_for('index') }}'">Volver a la portada</button>
+        <button id="volver-portada">Volver a la portada</button>
     </div>
 </div>
 {% endblock %}
 
-{% block extra_js %}
-<!-- Importamos codigo javascript -->
+{% block scripts %}
 <script src="{{ url_for('static', filename='scripts/javascript/db/region_comuna.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='scripts/javascript/form/adoption-form.js') }}"></script>
 <script type="module" src="{{ url_for('static', filename='scripts/javascript/form/validation.js') }}"></script>
