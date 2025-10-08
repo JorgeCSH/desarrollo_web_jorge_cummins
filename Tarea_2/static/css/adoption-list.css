@@ -37,6 +37,33 @@
     border-right: none;
 }
 
+/* Filas del body (desde el servidor) */
+.listado-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.listado-fila {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border: 1px solid #dddddd;
+    text-align: center;
+    cursor: pointer;
+}
+
+.listado-fila:hover {
+    background-color: #f0f0f0;
+}
+
+.listado-celda {
+    padding: 10px;
+    border-right: 1px solid #dddddd;
+}
+
+.listado-celda:last-child {
+    border-right: none;
+}
+
 /* Filas */
 .listado-row {
     display: grid;

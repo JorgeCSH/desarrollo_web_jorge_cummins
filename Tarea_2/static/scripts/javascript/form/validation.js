@@ -193,6 +193,7 @@ const validarForm = () => {
         confirmarSi.addEventListener("click", () => {
             confirmacion.style.display = "none";
             mensajeExito.style.display = "block";
+            myForm.submit()
         });
 
         confirmarNo.addEventListener("click", () => {

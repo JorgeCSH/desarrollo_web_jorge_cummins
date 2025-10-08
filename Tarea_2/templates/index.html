@@ -8,18 +8,6 @@
 
 {% block content %}
 <div class="contenido-adopc-home">
-    {% if mensaje %}
-    <div class="mensaje-exito" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-        {{ mensaje }}
-    </div>
-    {% endif %}
-
-    {% if error %}
-    <div class="mensaje-error" style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-        {{ error }}
-    </div>
-    {% endif %}
-
     <div class="introduccion-pagina">
         <div>
             <h1 class="titulo-pagina">Bienvenido a la página de adopcion de mascotas</h1>
@@ -51,8 +39,4 @@
         {% endfor %}
     </div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-<!-- Ya no necesitamos cargar con JS, los datos vienen del servidor -->
 {% endblock %}

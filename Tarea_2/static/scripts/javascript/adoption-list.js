@@ -1,4 +1,4 @@
-import { avisos } from "./db/avisos.js";
+//import { avisos } from "./db/avisos.js";
 
 // Elementos mostrados en la preview
 const listadoBody = document.getElementsByClassName("listado-body")[0];

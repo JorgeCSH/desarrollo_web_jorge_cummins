@@ -8,12 +8,72 @@
 {% block title %}Adoptar{% endblock %}
 
 {% block content %}
-{% if error %}
-<div class="mensaje-error" style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-    {{ error }}
-</div>
-{% endif %}
 
+
+{% if mostrar_detalle and detalle %}
+<!-- Contenedor detalle -->
+<div id="detalle-container">
+    <h2>Detalle del Aviso</h2>
+    <div id="detalle-info">
+        <p><strong>Fecha Publicación:</strong> {{ detalle.fecha_ingreso.strftime('%Y-%m-%d %H:%M') if detalle.fecha_ingreso else 'N/A' }}</p>
+        <p><strong>Fecha Entrega:</strong> {{ detalle.fecha_entrega.strftime('%Y-%m-%d %H:%M') if detalle.fecha_entrega else 'N/A' }}</p>
+        <p><strong>Región:</strong> {{ detalle.region }}</p>
+        <p><strong>Comuna:</strong> {{ detalle.comuna }}</p>
+        <p><strong>Sector:</strong> {{ detalle.sector or 'No especificado' }}</p>
+        <p><strong>Tipo:</strong> {{ detalle.tipo }}</p>
+        <p><strong>Cantidad:</strong> {{ detalle.cantidad }}</p>
+        <p><strong>Edad:</strong> {{ detalle.edad }} {{ 'años' if detalle.unidad_medida == 'a' else 'meses' }}</p>
+        <p><strong>Nombre Contacto:</strong> {{ detalle.nombre }}</p>
+        <p><strong>Email:</strong> {{ detalle.email }}</p>
+        {% if detalle.celular %}
+        <p><strong>Celular:</strong> {{ detalle.celular }}</p>
+        {% endif %}
+        {% if detalle.descripcion %}
+        <p><strong>Descripción:</strong> {{ detalle.descripcion }}</p>
+        {% endif %}
+
+        {% if detalle.redes %}
+        <div class="redes-sociales">
+            <h3>Contactar por:</h3>
+            <ul>
+                {% for red in detalle.redes %}
+                <li><strong>{{ red.red_social }}:</strong> {{ red.identificador }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+
+    <div id="detalle-fotos">
+        <h3>Fotos:</h3>
+        <div class="fotos-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
+            {% if detalle.fotos %}
+            {% for foto in detalle.fotos %}
+            <div class="foto-item">
+                <img src="{{ url_for('static', filename=foto.ruta_archivo) }}"
+                     alt="{{ foto.nombre_archivo }}"
+                     style="max-width: 100%; height: auto; cursor: pointer;"
+                     onclick="window.open('{{ url_for('static', filename=foto.ruta_archivo) }}', '_blank')">
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>No hay fotos disponibles</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('adoption_list') }}" style="padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px;">
+            Volver al listado
+        </a>
+        <a href="{{ url_for('index') }}"
+           style="padding: 10px 20px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px;">
+            Volver a la portada
+        </a>
+    </div>
+</div>
+
+{% else %}
 <!-- Contenedor de listado -->
 <div class="listado-casilla">
     <div class="listado">
@@ -30,15 +90,17 @@
         <!-- Filas desde la base de datos -->
         <div class="listado-body">
             {% for aviso in avisos %}
-            <div class="listado-fila" data-aviso-id="{{ aviso.id }}" style="cursor: pointer;">
-                <div class="listado-celda">{{ aviso.fecha_ingreso.strftime('%Y-%m-%d %H:%M') if aviso.fecha_ingreso else 'N/A' }}</div>
-                <div class="listado-celda">{{ aviso.fecha_entrega.strftime('%Y-%m-%d %H:%M') if aviso.fecha_entrega else 'N/A' }}</div>
-                <div class="listado-celda">{{ aviso.comuna }}</div>
-                <div class="listado-celda">{{ aviso.sector or 'No especificado' }}</div>
-                <div class="listado-celda">{{ aviso.cantidad }} {{ aviso.tipo }}(s) / {{ aviso.edad }} {{ 'años' if aviso.unidad_medida == 'a' else 'meses' }}</div>
-                <div class="listado-celda">{{ aviso.nombre_contacto }}</div>
-                <div class="listado-celda">{{ aviso.total_fotos }}</div>
-            </div>
+            <a href="{{ url_for('adoption_list', page=page, aviso_id=aviso.id) }}" style="text-decoration: none; color: inherit;">
+                <div class="listado-fila" style="cursor: pointer; padding: 10px; border-bottom: 1px solid #ddd;">
+                    <div class="listado-celda">{{ aviso.fecha_ingreso.strftime('%Y-%m-%d %H:%M') if aviso.fecha_ingreso else 'N/A' }}</div>
+                    <div class="listado-celda">{{ aviso.fecha_entrega.strftime('%Y-%m-%d %H:%M') if aviso.fecha_entrega else 'N/A' }}</div>
+                    <div class="listado-celda">{{ aviso.comuna }}</div>
+                    <div class="listado-celda">{{ aviso.sector or 'No especificado' }}</div>
+                    <div class="listado-celda">{{ aviso.cantidad }} {{ aviso.tipo }}(s) / {{ aviso.edad }} {{ 'años' if aviso.unidad_medida == 'a' else 'meses' }}</div>
+                    <div class="listado-celda">{{ aviso.nombre_contacto }}</div>
+                    <div class="listado-celda">{{ aviso.total_fotos }}</div>
+                </div>
+            </a>
             {% endfor %}
         </div>
     </div>
@@ -56,21 +118,8 @@
         {% endif %}
     </div>
 </div>
-
-<!-- Contenedor detalle -->
-<div id="detalle-container" style="display:none;">
-    <h2>Detalle del Aviso</h2>
-    <div id="detalle-info"></div>
-    <div id="detalle-fotos"></div>
-    <button id="volver-listado">Volver al listado</button>
-    <button id="volver-portada">Volver a la portada</button>
-</div>
-
-<!-- Contenedor para foto clickeada -->
-<div id="foto-clickeada" style="display:none;">
-</div>
+{% endif %}
 {% endblock %}
 
 {% block scripts %}
-<script type="module" src="{{ url_for('static', filename='scripts/javascript/adoption-list.js') }}"></script>
 {% endblock %}

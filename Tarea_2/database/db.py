@@ -3,21 +3,20 @@ from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 import json
 import os
 
-# Configuración de la base de datos
 DB_NAME = "tarea2"
 DB_USERNAME = 'cc5002'
 DB_PASSWORD = 'programacionweb'
 DB_HOST = "localhost"
 DB_PORT = 3306
 
-DATABASE_URL = f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?charset=utf8mb4"
+DATABASE_URL = f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 engine = create_engine(DATABASE_URL, echo=False, future=True)
 SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
 
 
-# --- Models ---
+# Tabls usando mysql
 
 class Region(Base):
     __tablename__ = 'region'
@@ -83,10 +82,9 @@ class ContactarPor(Base):
     aviso = relationship("AvisoAdopcion", back_populates="redes")
 
 
-# --- Database Functions ---
+# Funciones
 
 def get_ultimos_avisos(limite=5):
-    """Obtiene los últimos N avisos de adopción"""
     session = SessionLocal()
 
     avisos = session.query(
@@ -100,7 +98,6 @@ def get_ultimos_avisos(limite=5):
         AvisoAdopcion.unidad_medida
     ).join(Comuna).order_by(AvisoAdopcion.fecha_ingreso.desc()).limit(limite).all()
 
-    # Agregar primera foto a cada aviso
     resultado = []
     for aviso in avisos:
         aviso_dict = {
@@ -126,15 +123,12 @@ def get_ultimos_avisos(limite=5):
 
 
 def get_avisos_paginados(page=1, per_page=5):
-    """Obtiene avisos de adopción con paginación"""
     session = SessionLocal()
     offset = (page - 1) * per_page
 
-    # Contar total
     total = session.query(AvisoAdopcion).count()
-    total_pages = (total + per_page - 1) // per_page
+    total_pages = int((total + per_page - 1) / per_page)
 
-    # Obtener avisos
     avisos = session.query(
         AvisoAdopcion.id,
         AvisoAdopcion.fecha_ingreso,
@@ -146,10 +140,7 @@ def get_avisos_paginados(page=1, per_page=5):
         AvisoAdopcion.edad,
         AvisoAdopcion.unidad_medida,
         AvisoAdopcion.nombre.label('nombre_contacto'),
-        func.count(Foto.id).label('total_fotos')
-    ).join(Comuna).outerjoin(Foto).group_by(AvisoAdopcion.id).order_by(
-        AvisoAdopcion.fecha_ingreso.desc()
-    ).limit(per_page).offset(offset).all()
+        func.count(Foto.id).label('total_fotos')).join(Comuna).outerjoin(Foto).group_by(AvisoAdopcion.id).order_by(AvisoAdopcion.fecha_ingreso.desc()).limit(per_page).offset(offset).all()
 
     resultado = []
     for aviso in avisos:
@@ -172,16 +163,12 @@ def get_avisos_paginados(page=1, per_page=5):
 
 
 def get_aviso_detalle(aviso_id):
-    """Obtiene el detalle completo de un aviso"""
     session = SessionLocal()
-
     aviso = session.query(AvisoAdopcion).filter_by(id=aviso_id).first()
-
     if not aviso:
         session.close()
         return None
 
-    # Construir diccionario con toda la información
     aviso_dict = {
         'id': aviso.id,
         'fecha_ingreso': aviso.fecha_ingreso,
@@ -201,14 +188,12 @@ def get_aviso_detalle(aviso_id):
         'redes': []
     }
 
-    # Agregar fotos
     for foto in aviso.fotos:
         aviso_dict['fotos'].append({
             'ruta_archivo': foto.ruta_archivo,
             'nombre_archivo': foto.nombre_archivo
         })
 
-    # Agregar redes sociales
     for red in aviso.redes:
         aviso_dict['redes'].append({
             'red_social': red.nombre,
@@ -220,7 +205,6 @@ def get_aviso_detalle(aviso_id):
 
 
 def get_comuna_by_nombre(nombre):
-    """Obtiene una comuna por su nombre"""
     session = SessionLocal()
     comuna = session.query(Comuna).filter_by(nombre=nombre).first()
     session.close()
@@ -228,24 +212,14 @@ def get_comuna_by_nombre(nombre):
 
 
 def crear_aviso(datos_aviso):
-    """
-    Crea un nuevo aviso de adopción
 
-    Args:
-        datos_aviso: dict con los campos del aviso
-
-    Returns:
-        int: ID del aviso creado, o None si hay error
-    """
     session = SessionLocal()
 
-    # Verificar que existe la comuna
     comuna = session.query(Comuna).filter_by(nombre=datos_aviso['comuna']).first()
     if not comuna:
         session.close()
         return None
 
-    # Convertir unidad a 'a' o 'm'
     unidad = 'a' if datos_aviso['unidad'] == 'años' else 'm'
 
     # Crear aviso
@@ -274,7 +248,6 @@ def crear_aviso(datos_aviso):
 
 
 def crear_foto(aviso_id, ruta_archivo, nombre_archivo):
-    """Crea una nueva foto asociada a un aviso"""
     session = SessionLocal()
 
     nueva_foto = Foto(
@@ -289,7 +262,6 @@ def crear_foto(aviso_id, ruta_archivo, nombre_archivo):
 
 
 def crear_red_social(aviso_id, nombre_red, identificador):
-    """Crea una nueva red social de contacto"""
     session = SessionLocal()
 
     nueva_red = ContactarPor(

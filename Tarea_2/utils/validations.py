@@ -2,37 +2,31 @@ import re
 from datetime import datetime
 
 
+# Valida formato de email
 def validar_email(email):
-    """Valida formato de email"""
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    return re.match(pattern, email) is not None
+    validez = re.match(pattern, email) is not None
+    return validez
 
-
+# Validar telefono
 def validar_telefono(telefono):
-    """Valida formato de teléfono (opcional)"""
     if not telefono:
         return True
     pattern = r'^\+?[0-9]{8,15}$'
-    return re.match(pattern, telefono.replace(' ', '').replace('.', '')) is not None
+    validez =  re.match(pattern, telefono.replace(' ', '').replace('.', '')) is not None
+    return validez
 
 
+# Verifica si el archivo tiene una extensión permitida
 def allowed_file(filename, allowed_extensions):
-    """Verifica si el archivo tiene una extensión permitida"""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_extensions
 
 
+
+#Valida los datos del formulario de adopción en el servidor, inspirado en la forma de validar en js. Crea una
+# lista de errores la cual es vacia si no tiene ninguno
 def validar_formulario_adopcion(form_data, files, allowed_extensions):
-    """
-    Valida los datos del formulario de adopción en el servidor
 
-    Args:
-        form_data: Datos del formulario (request.form)
-        files: Archivos subidos (request.files)
-        allowed_extensions: Set de extensiones permitidas
-
-    Returns:
-        Lista de errores (vacía si no hay errores)
-    """
     errores = []
 
     # Validar comuna

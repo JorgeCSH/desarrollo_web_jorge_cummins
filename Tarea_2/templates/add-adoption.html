@@ -11,17 +11,6 @@
 <div class="contenido-adopc-home">
     <h1 class="cabecera-adopcion">Publicar Mascota en Adopcion</h1>
     <p>Proceda a completar el formulario para poner una mascota en adopcion.</p>
-
-    {% if errores %}
-    <div class="errores-validacion" style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-        <h3>Errores de validación:</h3>
-        <ul>
-            {% for error in errores %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
 </div>
 
 <div>
@@ -122,7 +111,7 @@
 
     <div id="mensaje-exito" style="display:none;">
         <p>Hemos recibido la información de adopción, muchas gracias y suerte!</p>
-        <button id="volver-portada" onclick="window.location.href = '/'">Volver a la portada</button>
+        <!--<button id="volver-portada" onclick="window.location.href = '/'">Volver a la portada</button>-->
     </div>
 </div>
 {% endblock %}
