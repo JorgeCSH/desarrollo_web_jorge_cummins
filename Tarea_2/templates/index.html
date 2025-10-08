@@ -1,61 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- CSS para todas las paginas -->
-    <link rel="stylesheet" href="../static/css/body.css">
-    <link rel="stylesheet" href="../static/css/top-footer.css">
-    <!-- CSS para esta pagina -->
-    <link rel="stylesheet" href="../static/css/recent-five.css">
-    <title>Inicio</title>
-</head>
-<body>
-    <!-- Barra superior de la pagina -->
-    <nav>
-        <ul class="nav-bar">
-            <li><a class="nav-link home actual" href="index.html">Inicio</a></li>
-            <li><a class="nav-link" href="adoption-list.html">Listado</a></li>
-            <li><a class="nav-link" href="adoption-stats.html">Estadísticas</a></li>
-            <li><a class="nav-link" href="add-adoption.html">Publicar Aviso</a></li>
-        </ul>
-    </nav>
+{% extends "base.html" %}
 
-    <!-- Contenido de la pagina -->
-    <main>
-        <div class="contenido-adopc-home">
-            <div class="introduccion-pagina">
-                <div>
-                    <h1 class="titulo-pagina">Bienvenido a la página de adopcion de mascotas</h1>
-                    <p>Esta página fue creada con el fin de dar un medio cómodo para la adopción de mascotas, desde el proceso de adoptar como de dar en adopción. Acá encontrarás desde las posibilidades de adoptar con toda la información de la mascota (que en caso de querer dar en adopción deberás de ingresar) como estadísticas de estos procesos..</p>
-                </div>
-            </div>
-            <p>Ultimas 5 mascotas puestas en adopcion</p>
-            <div id="get-last-pub" class="publicado-contenedor">
-                <!-- Titulo de la lista -->
-                <div class="item-contenedor titulo">Fecha de Publicacion</div>
-                <div class="item-contenedor titulo">Comuna</div>
-                <div class="item-contenedor titulo">Sector</div>
-                <div class="item-contenedor titulo">Cantidad, Tipo y Edad</div>
-                <div class="item-contenedor titulo">Foto</div>
-                <!-- Las ultimas 5 publicaciones se cargan con JS -->
-            </div>
-        </div>
-        <!-- Script en js que carga las ultimas 5 publicaciones -->
-        <script type="module" src="../static/scripts/javascript/last-five.js"></script>
-    </main>
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/recent-five.css') }}">
+{% endblock %}
 
-    <!-- Fin de la pagina -->
-    <footer class="footer-bar">
-        <div class="footer-contenido">
-            <p>Desarrollado por Jorge Cummins.</p>
-            <ul class="footer-links">
-                <li>
-                    <a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins" class="footer-links-link">
-                        Repositorio de la página
-                    </a>
-                </li>
-            </ul>
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="contenido-adopc-home">
+    <div class="introduccion-pagina">
+        <div>
+            <h1 class="titulo-pagina">Bienvenido a la página de adopcion de mascotas</h1>
+            <p>Esta página fue creada con el fin de dar un medio cómodo para la adopción de mascotas, desde el proceso de adoptar como de dar en adopción. Acá encontrarás desde las posibilidades de adoptar con toda la información de la mascota (que en caso de querer dar en adopción deberás de ingresar) como estadísticas de estos procesos.</p>
         </div>
-    </footer>
-</body>
-</html>
+    </div>
+    <p>Ultimas 5 mascotas puestas en adopcion</p>
+    <div id="get-last-pub" class="publicado-contenedor">
+        <!-- Titulo de la lista -->
+        <div class="item-contenedor titulo">Fecha de Publicacion</div>
+        <div class="item-contenedor titulo">Comuna</div>
+        <div class="item-contenedor titulo">Sector</div>
+        <div class="item-contenedor titulo">Cantidad, Tipo y Edad</div>
+        <div class="item-contenedor titulo">Foto</div>
+
+        <!-- Las ultimas 5 publicaciones -->
+        {% if mascotas %}
+        {% for mascota in mascotas %}
+        <div class="item-contenedor">{{ mascota.fecha_publicacion.strftime('%d-%m-%Y') if mascota.fecha_publicacion else 'N/A' }}</div>
+        <div class="item-contenedor">{{ mascota.comuna }}</div>
+        <div class="item-contenedor">{{ mascota.sector }}</div>
+        <div class="item-contenedor">{{ mascota.cantidad }}, {{ mascota.tipo }}, {{ mascota.edad }}</div>
+        <div class="item-contenedor">
+            {% if mascota.foto %}
+            <img src="{{ url_for('static', filename='uploads/' + mascota.foto) }}" alt="Foto mascota">
+            {% else %}
+            <span>Sin foto</span>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="item-contenedor" style="grid-column: 1 / -1; text-align: center;">
+            <p>No hay mascotas publicadas aún.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Script en js que carga las ultimas 5 publicaciones -->
+<script type="module" src="{{ url_for('static', filename='scripts/javascript/last-five.js') }}"></script>
+{% endblock %}

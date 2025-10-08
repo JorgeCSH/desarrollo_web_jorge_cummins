@@ -1,153 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- CSS para todas las paginas -->
-    <link rel="stylesheet" href="../static/css/body.css">
-    <link rel="stylesheet" href="../static/css/top-footer.css">
-    <!-- CSS para esta pagina -->
-    <link rel="stylesheet" href="../static/css/recent-five.css">
-    <link rel="stylesheet" href="../static/css/adoption-form.css">
-    <title>Poner en Adopcion</title>
-</head>
-<body>
-    <!-- Barra superior de la pagina -->
-    <nav>
-        <ul class="nav-bar">
-            <li><a class="nav-link home actual" href="index.html">Inicio</a></li>
-            <li><a class="nav-link" href="adoption-list.html">Listado</a></li>
-            <li><a class="nav-link" href="adoption-stats.html">Estadísticas</a></li>
-            <li><a class="nav-link actual" href="add-adoption.html">Publicar Aviso</a></li>
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/recent-five.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/adoption-form.css') }}">
+{% endblock %}
+
+{% block title %}Poner en Adopcion{% endblock %}
+
+{% block content %}
+<div class="contenido-adopc-home">
+    <h1 class="cabecera-adopcion">Publicar Mascota en Adopcion</h1>
+    <p>Proceda a completar el formulario para poner una mascota en adopcion.</p>
+</div>
+
+<div>
+    <form id="form-adopcon" class="form-contenedor" method="POST" action="{{ url_for('add_adoption') }}" enctype="multipart/form-data">
+        {{ form.hidden_tag() if form else '' }}
+
+        <p class="obligatorio">* De caracter <strong>obligatorio</strong>. </p>
+
+        <!-- Ubicacion -->
+        <h4><u>¿Dónde?</u></h4>
+        <label for="region">Región*</label>
+        <select id="region" name="region" required>
+            <option value="">Seleccione una región</option>
+            {% if regiones %}
+            {% for region in regiones %}
+            <option value="{{ region }}" {% if request.form.get('region') == region %}selected{% endif %}>{{ region }}</option>
+            {% endfor %}
+            {% endif %}
+        </select>
+
+        <label for="comuna">Comuna*</label>
+        <select id="comuna" name="comuna" required>
+            <option value="">Seleccione primero la región</option>
+        </select>
+
+        <label for="sector">Sector</label>
+        <input type="text" id="sector" name="sector" maxlength="100" value="{{ request.form.get('sector', '') }}">
+
+        <!-- Contacto-->
+        <h4><u>¿Contacto de esta publicación?</u></h4>
+
+        <label for="nombre">Nombre*</label>
+        <input type="text" id="nombre" name="nombre" minlength="3" maxlength="100" value="{{ request.form.get('nombre', '') }}" required>
+
+        <label for="email">Email*</label>
+        <input type="email" id="email" name="email" maxlength="100" value="{{ request.form.get('email', '') }}" required>
+
+        <label for="telefono">Número de celular</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="+569.12345678" value="{{ request.form.get('telefono', '') }}">
+
+        <label for="red">Contactar por</label>
+        <select id="red" name="red">
+            <option value="">Seleccione</option>
+            <option value="whatsapp" {% if request.form.get('red') == 'whatsapp' %}selected{% endif %}>WhatsApp</option>
+            <option value="telegram" {% if request.form.get('red') == 'telegram' %}selected{% endif %}>Telegram</option>
+            <option value="X" {% if request.form.get('red') == 'X' %}selected{% endif %}>X (ex: twitter)</option>
+            <option value="instagram" {% if request.form.get('red') == 'instagram' %}selected{% endif %}>Instagram</option>
+            <option value="tiktok" {% if request.form.get('red') == 'tiktok' %}selected{% endif %}>TikTok</option>
+            <option value="otra" {% if request.form.get('red') == 'otra' %}selected{% endif %}>Otra</option>
+        </select>
+
+        <div id="red-id-container" style="display:{% if request.form.get('red') %}block{% else %}none{% endif %};">
+            <label for="red-id">ID o URL de contacto</label>
+            <input type="text" id="red-id" name="red-id" minlength="4" maxlength="50" value="{{ request.form.get('red-id', '') }}">
+        </div>
+
+        <!-- Informacion del animal -->
+        <h4><u>¿Qué mascota ofrece en adopción?</u></h4>
+
+        <label for="tipo">Tipo*</label>
+        <select id="tipo" name="tipo" required>
+            <option value="">Seleccione</option>
+            <option value="perro" {% if request.form.get('tipo') == 'perro' %}selected{% endif %}>Perro</option>
+            <option value="gato" {% if request.form.get('tipo') == 'gato' %}selected{% endif %}>Gato</option>
+        </select>
+
+        <label for="cantidad">Cantidad*</label>
+        <input type="text" id="cantidad" name="cantidad" minlength="1" value="{{ request.form.get('cantidad', '') }}" required>
+
+        <label for="edad">Edad*</label>
+        <input type="text" id="edad" name="edad" minlength="1" value="{{ request.form.get('edad', '') }}" required>
+
+        <label for="unidad">Unidad de medida*</label>
+        <select id="unidad" name="unidad" required>
+            <option value="">Seleccione</option>
+            <option value="meses" {% if request.form.get('unidad') == 'meses' %}selected{% endif %}>Meses</option>
+            <option value="años" {% if request.form.get('unidad') == 'años' %}selected{% endif %}>Años</option>
+        </select>
+
+        <label for="fecha">Fecha disponible*</label>
+        <input class="fecha" type="datetime-local" id="fecha" name="fecha" value="{{ request.form.get('fecha', '') }}" required>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" cols="50" rows="10">{{ request.form.get('descripcion', '') }}</textarea>
+
+        <label>Fotos*</label>
+        <div id="fotos-container">
+            <input type="file" name="foto" multiple accept="image/*" required>
+        </div>
+
+        <button type="submit">Agregar este aviso de adopción</button>
+    </form>
+
+    <!-- Mensajes de validación -->
+    {% if errores %}
+    <div id="val-box">
+        <h2 id="val-msg">Por favor corrija los siguientes errores:</h2>
+        <ul id="val-list">
+            {% for error in errores %}
+            <li>{{ error }}</li>
+            {% endfor %}
         </ul>
-    </nav>
+    </div>
+    {% else %}
+    <div id="val-box" hidden>
+        <h2 id="val-msg">Aca habria un mensaje</h2>
+        <ul id="val-list"></ul>
+    </div>
+    {% endif %}
 
-    <!-- Contenido de la pagina -->
-    <main>
-        <div class="contenido-adopc-home">
-            <h1 class="cabecera-adopcion">Publicar Mascota en Adopcion</h1>
-            <p>Proceda a completar el formulario para poner una mascota en adopcion.</p>
+    <!-- Mensaje de confirmacion -->
+    <div id="confirmacion" style="display:none;">
+        <p>¿Está seguro que desea agregar este aviso de adopción?</p>
+        <button id="confirmar-si">Sí, estoy seguro</button>
+        <button id="confirmar-no">No, quiero volver al formulario</button>
+    </div>
 
-        </div>
-        <div>
-            <form id="form-adopcon" class="form-contenedor">
-                <p class="obligatorio">* De caracter <strong>obligatorio</strong>. </p>
-                <!-- Ubicacion -->
-                <h4><u>¿Dónde?</u></h4>
-                <label for="region">Región*</label>
-                <select id="region" name="region" required>
-                    <option value="">Seleccione una región</option>
-                </select>
+    <div id="mensaje-exito" style="display:{% if exito %}block{% else %}none{% endif %};">
+        <p>Hemos recibido la información de adopción, muchas gracias y suerte!</p>
+        <button id="volver-portada" onclick="window.location.href='{{ url_for('index') }}'">Volver a la portada</button>
+    </div>
+</div>
+{% endblock %}
 
-                <label for="comuna">Comuna*</label>
-                <select id="comuna" name="comuna" required>
-                    <option value="">Seleccione primero la región</option>
-                </select>
-
-                <label for="sector">Sector</label>
-                <input type="text" id="sector" name="sector" maxlength="100">
-
-                <!-- Contacto-->
-                <h4><u>¿Contacto de esta publicación?</u></h4>
-
-                <label for="nombre">Nombre*</label>
-                <input type="text" id="nombre" name="nombre" minlength="3" maxlength="100" required>
-
-                <label for="email">Email*</label>
-                <input type="email" id="email" name="email" maxlength="100" required>
-
-                <label for="telefono">Número de celular</label>
-                <input type="tel" id="telefono" name="telefono"  placeholder="+569.12345678">
-
-                <label for="red">Contactar por</label>
-                <select id="red" name="red">
-                    <option value="">Seleccione</option>
-                    <option value="whatsapp">WhatsApp</option>
-                    <option value="telegram">Telegram</option>
-                    <option value="X">X (ex: twitter)</option>
-                    <option value="instagram">Instagram</option>
-                    <option value="tiktok">TikTok</option>
-                    <option value="otra">Otra</option>
-                </select>
-
-                <div id="red-id-container" style="display:none;">
-                    <label for="red-id">ID o URL de contacto</label>
-                    <input type="text" id="red-id" name="red-id" minlength="4" maxlength="50">
-                </div>
-
-                <!-- Informacion del animal -->
-                <h4><u>¿Qué mascota ofrece en adopción?</u></h4>
-
-                <label for="tipo">Tipo*</label>
-                <select id="tipo" name="tipo" required>
-                    <option value="">Seleccione</option>
-                    <option value="perro">Perro</option>
-                    <option value="gato">Gato</option>
-                </select>
-
-                <label for="cantidad">Cantidad*</label>
-                <input type="text" id="cantidad" name="cantidad" minlength="1" required>
-
-                <label for="edad">Edad*</label>
-                <input type="text" id="edad" name="edad" minlength="1" required>
-
-                <label for="unidad">Unidad de medida*</label>
-                <select id="unidad" name="unidad" required>
-                    <option value="">Seleccione</option>
-                    <option value="meses">Meses</option>
-                    <option value="años">Años</option>
-                </select>
-
-                <label for="fecha">Fecha disponible*</label>
-                <input class="fecha" type="datetime-local" id="fecha" name="fecha" required>
-
-                <label for="descripcion">Descripción</label>
-                <textarea id="descripcion" name="descripcion" cols="50" rows="10"></textarea>
-
-                <label>Fotos*</label>
-                <div id="fotos-container">
-                    <input type="file" name="foto" multiple accept="image/*" required>
-                </div>
-
-                <button type="submit">Agregar este aviso de adopción</button>
-            </form>
-            <div id="val-box" hidden>
-                <h2 id="val-msg">Aca habria un mensaje</h2>
-                <ul id="val-list"></ul>
-            </div>
-
-
-            <!-- Mensaje de confirmacion -->
-            <div id="confirmacion" style="display:none;">
-                <p>¿Está seguro que desea agregar este aviso de adopción?</p>
-                <button id="confirmar-si">Sí, estoy seguro</button>
-                <button id="confirmar-no">No, quiero volver al formulario</button>
-            </div>
-
-            <div id="mensaje-exito" style="display:none;">
-                <p>Hemos recibido la información de adopción, muchas gracias y suerte!</p>
-                <button id="volver-portada">Volver a la portada</button>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Importamos codigo javascript -->
-    <script src="../static/scripts/javascript/db/region_comuna.js"></script>
-    <script type="module" src="../static/scripts/javascript/form/adoption-form.js"></script>
-    <script type="module" src="../static/scripts/javascript/form/validation.js"></script>
-
-    <!-- Fin de la pagina -->
-    <footer class="footer-bar">
-        <div class="footer-contenido">
-            <p>Desarrollado por Jorge Cummins.</p>
-            <ul class="footer-links">
-                <li>
-                    <a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins" class="footer-links-link">
-                        Repositorio de la página
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </footer>
-</body>
-</html>
+{% block extra_js %}
+<!-- Importamos codigo javascript -->
+<script src="{{ url_for('static', filename='scripts/javascript/db/region_comuna.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='scripts/javascript/form/adoption-form.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='scripts/javascript/form/validation.js') }}"></script>
+{% endblock %}

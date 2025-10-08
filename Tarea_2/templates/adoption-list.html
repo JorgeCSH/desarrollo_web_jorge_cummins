@@ -1,74 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- CSS para todas las paginas -->
-    <link rel="stylesheet" href="../static/css/body.css">
-    <link rel="stylesheet" href="../static/css/top-footer.css">
-    <!-- CSS para esta pagina -->
-    <link rel="stylesheet" href="../static/css/adoption-list.css">
-    <link rel="stylesheet" href="../static/css/adoption-form.css">
-    <title>Adoptar</title>
-</head>
-<body>
-<!-- Barra superior de la pagina -->
-<nav>
-    <ul class="nav-bar">
-        <li><a class="nav-link home" href="index.html">Inicio</a></li>
-        <li><a class="nav-link actual" href="adoption-list.html">Listado</a></li>
-        <li><a class="nav-link" href="adoption-stats.html">Estadísticas</a></li>
-        <li><a class="nav-link" href="add-adoption.html">Publicar Aviso</a></li>
-    </ul>
-</nav>
+{% extends "base.html" %}
 
-<!-- Contenido de la pagina -->
-<main>
-    <!-- Contenedor de listado -->
-    <div class="listado-casilla">
-        <div class="listado">
-            <!-- Encabezados -->
-            <div class="listado-header">
-                <div class="listado-cabeza">Fecha Publicación</div>
-                <div class="listado-cabeza">Fecha Entrega</div>
-                <div class="listado-cabeza">Comuna</div>
-                <div class="listado-cabeza">Sector</div>
-                <div class="listado-cabeza">Cantidad / Tipo / Edad</div>
-                <div class="listado-cabeza">Nombre Contacto</div>
-                <div class="listado-cabeza">Total Fotos</div>
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/adoption-list.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/adoption-form.css') }}">
+{% endblock %}
+
+{% block title %}Adoptar{% endblock %}
+
+{% block content %}
+<!-- Contenedor de listado -->
+<div class="listado-casilla">
+    <div class="listado">
+        <!-- Encabezados -->
+        <div class="listado-header">
+            <div class="listado-cabeza">Fecha Publicación</div>
+            <div class="listado-cabeza">Fecha Entrega</div>
+            <div class="listado-cabeza">Comuna</div>
+            <div class="listado-cabeza">Sector</div>
+            <div class="listado-cabeza">Cantidad / Tipo / Edad</div>
+            <div class="listado-cabeza">Nombre Contacto</div>
+            <div class="listado-cabeza">Total Fotos</div>
+        </div>
+        <!-- Filas con datos -->
+        <div class="listado-body">
+            {% if avisos %}
+            {% for aviso in avisos %}
+            <div class="listado-fila" data-id="{{ aviso.id }}">
+                <div class="listado-celda">{{ aviso.fecha_publicacion.strftime('%d-%m-%Y') if aviso.fecha_publicacion else 'N/A' }}</div>
+                <div class="listado-celda">{{ aviso.fecha_entrega.strftime('%d-%m-%Y') if aviso.fecha_entrega else 'N/A' }}</div>
+                <div class="listado-celda">{{ aviso.comuna }}</div>
+                <div class="listado-celda">{{ aviso.sector }}</div>
+                <div class="listado-celda">{{ aviso.cantidad }} / {{ aviso.tipo }} / {{ aviso.edad }}</div>
+                <div class="listado-celda">{{ aviso.nombre_contacto }}</div>
+                <div class="listado-celda">{{ aviso.total_fotos if aviso.total_fotos else 0 }}</div>
             </div>
-            <!-- Filas se llenaran con JS -->
-            <div class="listado-body"></div>
+            {% endfor %}
+            {% else %}
+            <div class="listado-vacio">
+                <p>No hay avisos de adopción disponibles en este momento.</p>
+            </div>
+            {% endif %}
         </div>
     </div>
+</div>
 
-    <!-- Contenedor detalle -->
-    <div id="detalle-container" style="display:none;">
-        <h2>Detalle del Aviso</h2>
-        <div id="detalle-info"></div>
-        <div id="detalle-fotos"></div>
-        <button id="volver-listado">Volver al listado</button>
-        <button id="volver-portada">Volver a la portada</button>
-    </div>
+<!-- Contenedor detalle -->
+<div id="detalle-container" style="display:none;">
+    <h2>Detalle del Aviso</h2>
+    <div id="detalle-info"></div>
+    <div id="detalle-fotos"></div>
+    <button id="volver-listado">Volver al listado</button>
+    <button id="volver-portada" onclick="window.location.href='{{ url_for('index') }}'">Volver a la portada</button>
+</div>
 
-    <!-- Contenedor para foto clickeada -->
-    <div id="foto-clickeada" style="display:none;">
-    </div>
+<!-- Contenedor para foto clickeada -->
+<div id="foto-clickeada" style="display:none;">
+</div>
+{% endblock %}
 
-    <script type="module" src="../static/scripts/javascript/adoption-list.js"></script>
-</main>
-
-<!-- Fin de la pagina -->
-<footer class="footer-bar">
-    <div class="footer-contenido">
-        <p>Desarrollado por Jorge Cummins.</p>
-        <ul class="footer-links">
-            <li>
-                <a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins" class="footer-links-link">
-                    Repositorio de la página
-                </a>
-            </li>
-        </ul>
-    </div>
-</footer>
-</body>
-</html>
+{% block extra_js %}
+<script type="module" src="{{ url_for('static', filename='scripts/javascript/adoption-list.js') }}"></script>
+{% endblock %}
