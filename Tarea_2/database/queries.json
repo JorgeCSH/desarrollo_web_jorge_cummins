@@ -1,0 +1,29 @@
+{
+  "avisos": {
+    "get_ultimos_5": "SELECT a.id, a.fecha_ingreso, c.nombre as comuna, a.sector, a.cantidad, a.tipo, a.edad, a.unidad_medida, (SELECT ruta_archivo FROM foto WHERE aviso_id = a.id LIMIT 1) as primera_foto FROM aviso_adopcion a JOIN comuna c ON a.comuna_id = c.id ORDER BY a.fecha_ingreso DESC LIMIT 5",
+
+    "count_total": "SELECT COUNT(*) as total FROM aviso_adopcion",
+
+    "get_paginados": "SELECT a.id, a.fecha_ingreso, a.fecha_entrega, c.nombre as comuna, a.sector, a.cantidad, a.tipo, a.edad, a.unidad_medida, a.nombre as nombre_contacto, COUNT(f.id) as total_fotos FROM aviso_adopcion a JOIN comuna c ON a.comuna_id = c.id LEFT JOIN foto f ON a.id = f.aviso_id GROUP BY a.id ORDER BY a.fecha_ingreso DESC LIMIT :limit OFFSET :offset",
+
+    "get_detalle": "SELECT a.*, c.nombre as comuna, r.nombre as region FROM aviso_adopcion a JOIN comuna c ON a.comuna_id = c.id JOIN region r ON c.region_id = r.id WHERE a.id = :aviso_id",
+
+    "insert_aviso": "INSERT INTO aviso_adopcion (fecha_ingreso, comuna_id, sector, nombre, email, celular, tipo, cantidad, edad, unidad_medida, fecha_entrega, descripcion) VALUES (NOW(), :comuna_id, :sector, :nombre, :email, :celular, :tipo, :cantidad, :edad, :unidad_medida, :fecha_entrega, :descripcion)"
+  },
+
+  "comuna": {
+    "get_by_nombre": "SELECT id FROM comuna WHERE nombre = :nombre"
+  },
+
+  "foto": {
+    "get_by_aviso": "SELECT ruta_archivo, nombre_archivo FROM foto WHERE aviso_id = :aviso_id",
+
+    "insert_foto": "INSERT INTO foto (ruta_archivo, nombre_archivo, aviso_id) VALUES (:ruta_archivo, :nombre_archivo, :aviso_id)"
+  },
+
+  "contactar_por": {
+    "get_by_aviso": "SELECT nombre as red_social, identificador FROM contactar_por WHERE aviso_id = :aviso_id",
+
+    "insert_red": "INSERT INTO contactar_por (aviso_id, nombre, identificador) VALUES (:aviso_id, :nombre, :identificador)"
+  }
+}

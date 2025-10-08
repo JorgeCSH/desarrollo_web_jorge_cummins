@@ -8,6 +8,18 @@
 
 {% block content %}
 <div class="contenido-adopc-home">
+    {% if mensaje %}
+    <div class="mensaje-exito" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        {{ mensaje }}
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="mensaje-error" style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        {{ error }}
+    </div>
+    {% endif %}
+
     <div class="introduccion-pagina">
         <div>
             <h1 class="titulo-pagina">Bienvenido a la página de adopcion de mascotas</h1>
@@ -22,11 +34,25 @@
         <div class="item-contenedor titulo">Sector</div>
         <div class="item-contenedor titulo">Cantidad, Tipo y Edad</div>
         <div class="item-contenedor titulo">Foto</div>
-        <!-- Las ultimas 5 publicaciones se cargan con JS -->
+
+        <!-- Mostrar últimos 5 avisos desde la base de datos -->
+        {% for aviso in avisos %}
+        <div class="item-contenedor">{{ aviso.fecha_ingreso.strftime('%Y-%m-%d %H:%M') if aviso.fecha_ingreso else 'N/A' }}</div>
+        <div class="item-contenedor">{{ aviso.comuna }}</div>
+        <div class="item-contenedor">{{ aviso.sector or 'No especificado' }}</div>
+        <div class="item-contenedor">{{ aviso.cantidad }} {{ aviso.tipo }}(s) de {{ aviso.edad }} {{ 'años' if aviso.unidad_medida == 'a' else 'meses' }}</div>
+        <div class="item-contenedor">
+            {% if aviso.primera_foto %}
+            <img src="{{ url_for('static', filename=aviso.primera_foto) }}" alt="Foto mascota" style="max-width: 100px; max-height: 100px;">
+            {% else %}
+            Sin foto
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
-<script type="module" src="{{ url_for('static', filename='scripts/javascript/last-five.js') }}"></script>
+<!-- Ya no necesitamos cargar con JS, los datos vienen del servidor -->
 {% endblock %}
