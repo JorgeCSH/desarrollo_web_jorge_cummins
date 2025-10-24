@@ -4,27 +4,29 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/stats.css') }}">
 {% endblock %}
 
-{% block title %}Estadísticas{% endblock %}
+{% block title %}Estadísticas de Adopción{% endblock %}
 
 {% block content %}
 <div class="contenido-adopc-home">
     <div class="introduccion-pagina">
-        <h1>Estadisticas de adopcion Registradas</h1>
-        <p>A continuacion se despliegan graficos donde de informacion recopilada y expuesta sobre los avisos, adopcion y las caracteristicas que estos poseen.</p>
+        <h1>Estadísticas de adopción registradas</h1>
+        <p>A continuación se despliegan gráficos con información recopilada y expuesta sobre los avisos, adopciones y sus características.</p>
     </div>
+
     <div class="stats-container">
-        <div class="cajas">
-            <img src="{{ url_for('static', filename='img/stats/avisos-dia.png') }}" alt="" class="graficos">
-        </div>
-        <div class="cajas">
-            <img src="{{ url_for('static', filename='img/stats/avisos-torta.png') }}" alt="" class="graficos">
-        </div>
-        <div class="cajas">
-            <img src="{{ url_for('static', filename='img/stats/mascota-mes.png') }}" alt="" class="graficos">
-        </div>
+        <div class="cajas chart-wrapper" id="grafico-avisos-dia"></div>
+        <div class="cajas chart-wrapper" id="grafico-avisos-tipo"></div>
+        <div class="cajas chart-wrapper" id="grafico-avisos-mes"></div>
     </div>
+
     <div class="inicio-container">
         <a href="{{ url_for('index') }}" class="volver-portada">Volver a la portada</a>
     </div>
 </div>
+{% endblock %}
+
+<!-- eto e pal highcharts -->
+{% block scripts %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="{{ url_for('static', filename='scripts/javascript/stats.js') }}"></script>
 {% endblock %}

@@ -273,3 +273,71 @@ def crear_red_social(aviso_id, nombre_red, identificador):
     session.add(nueva_red)
     session.commit()
     session.close()
+
+
+def get_avisos_por_dia():
+    session = SessionLocal()
+
+    avisos = session.query(
+        func.date(AvisoAdopcion.fecha_ingreso).label('fecha'),
+        func.count(AvisoAdopcion.id).label('cantidad')
+    ).group_by(func.date(AvisoAdopcion.fecha_ingreso)).order_by('fecha').all()
+
+    resultado = {
+        'fechas': [aviso.fecha.strftime('%Y-%m-%d') for aviso in avisos],
+        'cantidades': [aviso.cantidad for aviso in avisos]
+    }
+
+    session.close()
+    return resultado
+
+
+def get_avisos_por_tipo():
+    session = SessionLocal()
+
+    avisos = session.query(
+        AvisoAdopcion.tipo,
+        func.count(AvisoAdopcion.id).label('cantidad')
+    ).group_by(AvisoAdopcion.tipo).all()
+
+    resultado = {
+        'tipos': [aviso.tipo for aviso in avisos],
+        'cantidades': [aviso.cantidad for aviso in avisos]
+    }
+
+    session.close()
+    return resultado
+
+
+def get_avisos_por_mes():
+    session = SessionLocal()
+
+    avisos = session.query(
+        func.date_format(AvisoAdopcion.fecha_ingreso, '%Y-%m').label('mes'),
+        AvisoAdopcion.tipo,
+        func.count(AvisoAdopcion.id).label('cantidad')
+    ).group_by('mes', AvisoAdopcion.tipo).order_by('mes', AvisoAdopcion.tipo).all()
+
+    # Organizar datos por mes
+    meses_dict = {}
+    for aviso in avisos:
+        mes = aviso.mes
+        tipo = aviso.tipo
+        cantidad = aviso.cantidad
+
+        if mes not in meses_dict:
+            meses_dict[mes] = {'perro': 0, 'gato': 0}
+
+        meses_dict[mes][tipo] = cantidad
+
+    # Ordenar por mes
+    meses_ordenados = sorted(meses_dict.items())
+
+    resultado = {
+        'meses': [mes for mes, _ in meses_ordenados],
+        'perros': [data['perro'] for _, data in meses_ordenados],
+        'gatos': [data['gato'] for _, data in meses_ordenados]
+    }
+
+    session.close()
+    return resultado

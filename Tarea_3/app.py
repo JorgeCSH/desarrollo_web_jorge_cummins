@@ -1,5 +1,6 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, jsonify
 from utils.validations import *
+from flask_cors import cross_origin
 import database.db as db
 from werkzeug.utils import secure_filename
 import hashlib
@@ -90,6 +91,31 @@ def add_adoption():
 def adoption_stats():
     return render_template('adoption-stats.html', active_page='adoption_stats')
 
+# Aca es para los graficos
+@app.route("/stats", methods=["GET"])
+def stats():
+    return render_template("adoption-stats.html")
+
+
+@app.route("/api/stats/avisos-por-dia", methods=["GET"])
+@cross_origin(origin="127.0.0.1", supports_credentials=True)
+def avisos_por_dia():
+    datos = db.get_avisos_por_dia()
+    return jsonify(datos)
+
+
+@app.route("/api/stats/avisos-por-tipo", methods=["GET"])
+@cross_origin(origin="127.0.0.1", supports_credentials=True)
+def avisos_por_tipo():
+    datos = db.get_avisos_por_tipo()
+    return jsonify(datos)
+
+
+@app.route("/api/stats/avisos-por-mes", methods=["GET"])
+@cross_origin(origin="127.0.0.1", supports_credentials=True)
+def avisos_por_mes():
+    datos = db.get_avisos_por_mes()
+    return jsonify(datos)
 
 if __name__ == "__main__":
     app.run(debug=True)
