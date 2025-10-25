@@ -3,6 +3,7 @@ from utils.validations import *
 from flask_cors import cross_origin
 import database.db as db
 from werkzeug.utils import secure_filename
+
 import hashlib
 import filetype
 import os
@@ -116,6 +117,33 @@ def avisos_por_tipo():
 def avisos_por_mes():
     datos = db.get_avisos_por_mes()
     return jsonify(datos)
+
+
+@app.route('/api/avisos/<int:aviso_id>/comentarios', methods=['POST'])
+@cross_origin(origin="*", supports_credentials=True)
+def agregar_comentario(aviso_id):
+    aviso = db.get_aviso_detalle(aviso_id)
+    if not aviso:
+        return jsonify({'success': False, 'errores': ['El aviso no existe']}), 404
+    errores = validar_comentario(request.form)
+    if errores:
+        return jsonify({'success': False, 'errores': errores}), 400
+    comentario_id = db.crear_comentario(
+        aviso_id=aviso_id,
+        nombre=request.form['nombre'].strip(),
+        texto=request.form['texto'].strip()
+    )
+    if not comentario_id:
+        return jsonify({'success': False, 'errores': ['Error al guardar el comentario']}), 500
+    return jsonify({'success': True, 'mensaje': 'Comentario agregado exitosamente'}), 201
+
+
+@app.route('/api/avisos/<int:aviso_id>/comentarios', methods=['GET'])
+@cross_origin(origin="*", supports_credentials=True)
+def obtener_comentarios(aviso_id):
+    comentarios = db.get_comentarios_por_aviso(aviso_id)
+    return jsonify({'success': True, 'comentarios': comentarios}), 200
+
 
 if __name__ == "__main__":
     app.run(debug=True)

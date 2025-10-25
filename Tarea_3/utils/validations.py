@@ -95,3 +95,28 @@ def validar_formulario_adopcion(form_data, files, allowed_extensions):
                 errores.append(f"El archivo {foto.filename} no tiene una extensión válida")
 
     return errores
+
+
+# Validar comentarios, incluido aparte porque vienen de diferente tarea.
+def validar_comentario(form_data):
+    errores = []
+
+    # Validar nombre
+    nombre = form_data.get('nombre', '').strip()
+    if not nombre:
+        errores.append('El nombre es obligatorio')
+    elif len(nombre) < 3:
+        errores.append('El nombre debe tener al menos 3 caracteres')
+    elif len(nombre) > 80:
+        errores.append('El nombre no puede tener más de 80 caracteres')
+
+    # Validar texto del comentario
+    texto = form_data.get('texto', '').strip()
+    if not texto:
+        errores.append('El texto del comentario es obligatorio')
+    elif len(texto) < 5:
+        errores.append('El comentario debe tener al menos 5 caracteres')
+    elif len(texto) > 300:
+        errores.append('El comentario no puede tener más de 300 caracteres')
+
+    return errores

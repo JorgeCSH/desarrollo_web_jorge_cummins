@@ -58,6 +58,7 @@ class AvisoAdopcion(Base):
     comuna = relationship("Comuna", back_populates="avisos")
     fotos = relationship("Foto", back_populates="aviso", cascade="all, delete")
     redes = relationship("ContactarPor", back_populates="aviso", cascade="all, delete")
+    comentarios = relationship("Comentario", back_populates="aviso", cascade="all, delete")
 
 
 class Foto(Base):
@@ -80,6 +81,18 @@ class ContactarPor(Base):
     aviso_id = Column(Integer, ForeignKey('aviso_adopcion.id'), nullable=False)
 
     aviso = relationship("AvisoAdopcion", back_populates="redes")
+
+
+class Comentario(Base):
+    __tablename__ = 'comentario'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nombre = Column(String(80), nullable=False)
+    texto = Column(String(300), nullable=False)
+    fecha = Column(DateTime, nullable=False)
+    aviso_id = Column(Integer, ForeignKey('aviso_adopcion.id'), nullable=False)
+
+    aviso = relationship("AvisoAdopcion", back_populates="comentarios")
 
 
 # Funciones
@@ -339,5 +352,38 @@ def get_avisos_por_mes():
         'gatos': [data['gato'] for _, data in meses_ordenados]
     }
 
+    session.close()
+    return resultado
+
+
+
+def crear_comentario(aviso_id, nombre, texto):
+    session = SessionLocal()
+    nuevo_comentario = Comentario(
+        nombre=nombre,
+        texto=texto,
+        fecha=func.now(),
+        aviso_id=aviso_id
+    )
+    session.add(nuevo_comentario)
+    session.commit()
+    comentario_id = nuevo_comentario.id
+    session.close()
+    return comentario_id
+
+
+def get_comentarios_por_aviso(aviso_id):
+    session = SessionLocal()
+    comentarios = session.query(Comentario).filter_by(
+        aviso_id=aviso_id
+    ).order_by(Comentario.fecha.desc()).all()
+    resultado = []
+    for comentario in comentarios:
+        resultado.append({
+            'id': comentario.id,
+            'nombre': comentario.nombre,
+            'texto': comentario.texto,
+            'fecha': comentario.fecha
+        })
     session.close()
     return resultado
