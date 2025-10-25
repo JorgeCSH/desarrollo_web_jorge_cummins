@@ -1,3 +1,4 @@
+// Funcion para cargar los comentarios del servidor.
 const cargarComentarios = (avisoId) => {
     const lista = document.getElementById('lista-comentarios');
 
@@ -16,9 +17,10 @@ const cargarComentarios = (avisoId) => {
         });
 };
 
+// Funcion para mostrar los comentarios
 const mostrarComentarios = (comentarios) => {
     const lista = document.getElementById('lista-comentarios');
-    lista.innerHTML = ''; // limpiar antes
+    lista.innerHTML = '';
 
     if (!comentarios || comentarios.length === 0) {
         lista.innerHTML = '<p class="sin-comentarios">No hay comentarios.</p>';
@@ -49,6 +51,7 @@ const mostrarComentarios = (comentarios) => {
     }
 };
 
+// Validacion del comentario APARTE a la del backend. Inspirada en aquellas de la T1.
 const validarComentario = (nombre, texto) => {
     const errores = [];
 
@@ -68,6 +71,7 @@ const validarComentario = (nombre, texto) => {
     return errores;
 };
 
+// Mostrar mensaje en caso de errores de validaciones o en el backend. Use los isAlgo aunque segun memes es un pecado.
 const mostrarMensaje = (mensaje, tipo) => {
     const erroresDiv = document.getElementById('comentario-errores');
     erroresDiv.innerHTML = '';
@@ -93,6 +97,7 @@ const mostrarMensaje = (mensaje, tipo) => {
     }
 };
 
+// Funcion para poder inicializar el formulario de comentarios. Se inicia automaticamente apenas se abre un aviso.
 const inicializarFormulario = (avisoId) => {
     const form = document.getElementById('form-comentario');
 
@@ -131,6 +136,8 @@ const inicializarFormulario = (avisoId) => {
     });
 };
 
+
+// Estuve un buen rato peleando con esto, encontre en la wiki de mozilla el DOMContentLoaded. TODO: cambiarlo.
 document.addEventListener('DOMContentLoaded', () => {
     const partes = window.location.pathname.split('/');
     const avisoId = partes[partes.length - 1];
