@@ -126,7 +126,7 @@ De esta forma, cualquier llamado de atención, error, sugerencia, etc. Es totalm
 - https://www.w3schools.com/howto/howto_js_topnav.asp
 - https://www.google.com/search?q=hex+color&oq=hex+color&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIMCAEQABhDGIAEGIoFMgwIAhAAGEMYgAQYigUyBwgDEAAYgAQyBwgEEAAYgAQyDAgFEAAYQxiABBiKBTIMCAYQABhDGIAEGIoFMgwIBxAAGEMYgAQYigUyDAgIEAAYQxiABBiKBTIMCAkQABhDGIAEGIoF0gEIMTEzNGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8
 ### Misc.
-- https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event[^2]
+- https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event [^2]
 
 
 [^1]: Mismas referencias de la tarea 1.
