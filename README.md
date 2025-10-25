@@ -10,37 +10,23 @@
 - Jorge Cummins
 
 ## Sobre el Repositorio 
-El siguiente repositorio contiene los desarrollos realizados para la "Tarea 2" del ramo "Desarrollo de Aplicaciones Web" impartido en la "Facultad de Ciencias Físicas y Matemáticas" de la Universidad de Chile. El objetivo de esta tarea fue la implementacion o una primera aproximación al "backend" utilizando el lenguaje de programación `python` en conjunto con el "framework" `flask` y `MySql` con el fin de agregar funcionalidades y manejo de bases de datos a la página creada en la tarea 1.
+El siguiente repositorio contiene los desarrollos realizados para la "Tarea 3" del ramo "Desarrollo de Aplicaciones Web" impartido en la "Facultad de Ciencias Físicas y Matemáticas" de la Universidad de Chile. El objetivo de esta tarea era seguir el desarrollo del "backend" de la aplicación web, esta vez haciendo uso de llamadas asincrónicas al servidor.
 
-La estructura en la que se desarrolló la tarea fue la siguiente (por directorio):
+Comparado con otras ocasiones, esta vez se mantuvo la misma estructura, pero con las siguientes peculiaridades:
 
-### database
-Directorio el cual contiene los archivos relacionados a la base de datos. En este se incluyeron tres archivos, dos otorgados por el cuerpo docente para crear la base de datos y un tercer archivo creado en este caso por el desarrollador de la tarea (es decir, yo) llamado `db.py` el cual tenía como propósito contener funciones y clases para manipular los datos y tablas respectivamente.
+### Cambios sobre Archivos
+Se agregaron nuevos códigos a archivos ya existentes para poder realizar las llamadas al servidor. Entre estas se destacan modificaciones a las vistas, modificaciones a los `templates` de `adption-list.html` y sus respectivos estilos `css` y su análogo para las estadísticas (`stats.html`), que en un inicio había sido omitido. Además de incluir nuevas validaciones y funciones asociadas (`utils/`).
 
-### static
-Directorio, el cual tuvo dos principales propósitos: 
-1. Servir como directorio que contenderá los archivos creados para la tarea 1 relacionada con el front end y que pudieran ser de utilidad. En este se encuentran archivos de estilo (`css`) y archivos para agregar dinamismo (`js`).
-2. Directorio `uploads` el cual contiene las imágenes que los usuarios vayan ingresando. Por consistencia con el desarrollo inicial, se decidió dejar este directorio en esta dirección antes de incluirla finalmente en `database/`.
-
-Es importante destacar que no todos los archivos aquí están en utilización, más aún, algunos fueron eliminados. Particularmente, se tiene el caso de:
-- `avisos.js`: que intentaba emular una base de datos temporal, eliminado, pues en esta entrega se implementó una base de datos.
-- `adoption-list.js`: archivo no eliminado, pero sí en desuso. Este archivo, dado a su relación con el archivo `avisos.js` tuvo que ser reacondicionado, en este caso aprovechando el motor `jinja2` e incluyéndolo en el archivo `adoption-list.html` que será explicado más adelante.
-
-### templates 
-Directorio el cual contiene los "templates" o archivos `html` que dan estructura a la página creada. Estos hacen uso del motor `jinja2` por su relación con `flask` y son adaptaciones de los que originalmente fueron creados para la tarea 1 con sus análogos de igual nombre. La principal diferencia radica en que se incluyó el archivo `base.html` que contiene fragmentos de código repetidos y la adaptación del archivo `adoption-list.html` al cual se hizo referencia previamente.
-
-### utils
-Directorio que contiene y contendrá los archivos de utilidades. Particularmente, cuenta con el archivo incluido para realizar las verificaciones respectivas.
-
-### Archivos "sueltos"
-Dado a la naturaleza del trabajo realizado, al utilizarse el framework `flask`, este desarrollo requirió un archivo `app.py` escrito en lenguaje `python` que permitiera ejecutar la tarea y manejar las direcciones de cada página. 
-Además, se incluyó un archivo `requirements.txt` que contiene las librerías que son utilizadas/necesarias para la ejecución de la tarea.
+### Nuevos archivos
+Se incluyeron nuevos archivos para poder realizar la implementación.
+- `stats.js`: archivo para poder implementar los gráfico haciendo uso de `highcharts`.
+- `comments.js`: archivo para poder incluir los comentarios (funciones asincrónicas).
 
 ## Arbol de archivos
 ```
 desarrollo-aplicaciones-web
 ├── README.md
-└── Tarea_2
+└── Tarea_3
     ├── __pycache__
     │   └── app.cpython-311.pyc
     ├── app.py
@@ -49,6 +35,7 @@ desarrollo-aplicaciones-web
     │   │   └── db.cpython-311.pyc
     │   ├── db.py
     │   ├── region-comuna.sql
+    │   ├── tabla-comentario.sql
     │   └── tarea2.sql
     ├── requirements.txt
     ├── static
@@ -77,12 +64,14 @@ desarrollo-aplicaciones-web
     │   ├── scripts
     │   │   └── javascript
     │   │       ├── adoption-list.js
+    │   │       ├── comentarios.js
     │   │       ├── db
     │   │       │   └── region_comuna.js
     │   │       ├── form
     │   │       │   ├── adoption-form.js
     │   │       │   └── validation.js
-    │   │       └── last-five.js
+    │   │       ├── last-five.js
+    │   │       └── stats.js
     │   └── uploads
     │       └── fotos
     │           ├── 20251008194510_gato51.jpg
@@ -106,7 +95,7 @@ desarrollo-aplicaciones-web
 ```
 
 ## Palabras Finales
-La tarea fue desarrollada siguiendo las soluciones de auxiliares (específicamente 4, 5 y 6). Esta tarea no es ajena a errores y cualquier detalle que se encuentre es totalmente bienvenido para poder realizar mejoras. Es importante aclarar que, dado los problemas con respecto a los tiempos, una cierta cantidad de errores arrastrados de la tarea 1 no pudieron ser arreglados y por ende prevalecen en el desarrollo, además de archivos no eliminados (uno mencionado previamente) no fue eliminado lo que puede llevar a confusión, todo lo relacionado a la funcionalidad de este fue traspasada al archivo también mencionado con anterioridad (`adoption-list.js` y `adoption-list.html` respectivamente)
+La tarea fue desarrollada siguiendo las soluciones de auxiliares (específicamente 7 y 8). Esta tarea no es ajena a errores y cualquier detalle que se encuentre es totalmente bienvenido para poder realizar mejoras. Es importante aclarar que, dado los problemas con respecto a los tiempos, una cierta cantidad de errores arrastrados de la tarea 1 y tarea 2 no pudieron ser arreglados y por ende prevalecen en el desarrollo, además de archivos no eliminados (uno mencionado previamente) no fue eliminado lo que puede llevar a confusión, todo lo relacionado a la funcionalidad de este fue traspasada al archivo también mencionado con anterioridad (`adoption-list.js` y `adoption-list.html` respectivamente). También se hace mención a posibles errores posibles heredados de la tarea 2 que, dado al tiempo, no se pudo corregir.
 
 De esta forma, cualquier llamado de atención, error, sugerencia, etc. Es totalmente bienvenido y será recibido con la mejor de las intenciones para mejorar el desarrollo de tareas futuras o desarrollos futuros.
 
@@ -136,6 +125,10 @@ De esta forma, cualquier llamado de atención, error, sugerencia, etc. Es totalm
 ### Estilo
 - https://www.w3schools.com/howto/howto_js_topnav.asp
 - https://www.google.com/search?q=hex+color&oq=hex+color&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIMCAEQABhDGIAEGIoFMgwIAhAAGEMYgAQYigUyBwgDEAAYgAQyBwgEEAAYgAQyDAgFEAAYQxiABBiKBTIMCAYQABhDGIAEGIoFMgwIBxAAGEMYgAQYigUyDAgIEAAYQxiABBiKBTIMCAkQABhDGIAEGIoF0gEIMTEzNGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8
+### Misc.
+- https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event[^2]
+
 
 [^1]: Mismas referencias de la tarea 1.
+[^2]: incluido, pues no se había trabajado antes con esto y fue lo único que me permitió solucionar errores con tiempo.
 
