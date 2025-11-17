@@ -1,16 +1,39 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/layout :: layout(~{::title}, ~{::content})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Estadísticas - Adopción de Mascotas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Extra CSS -->
-    <th:block th:fragment="extraCss">
-        <link rel="stylesheet" th:href="@{/css/stats.css}">
-    </th:block>
+    <!-- CSS para todas las páginas -->
+    <link rel="stylesheet" th:href="@{/css/body.css}">
+    <link rel="stylesheet" th:href="@{/css/top-footer.css}">
+
+    <!-- CSS específico -->
+    <link rel="stylesheet" th:href="@{/css/stats.css}">
+
+    <title>Estadísticas - Adopción de Mascotas</title>
 </head>
 <body>
-<div th:fragment="content">
+<!-- Barra superior de la página -->
+<nav>
+    <ul class="nav-bar">
+        <li>
+            <a class="nav-link home" th:href="@{/}">Inicio</a>
+        </li>
+        <li>
+            <a class="nav-link" th:href="@{/adoption-list}">Listado</a>
+        </li>
+        <li>
+            <a class="nav-link actual" th:href="@{/adoption-stats}">Estadísticas</a>
+        </li>
+        <li>
+            <a class="nav-link" th:href="@{/add-adoption}">Publicar Aviso</a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Contenido de la página -->
+<main>
     <div class="contenido-adopc-home">
         <div class="introduccion-pagina">
             <h1>Estadísticas de adopción registradas</h1>
@@ -28,12 +51,26 @@
             <a th:href="@{/}" class="volver-portada">Volver a la portada</a>
         </div>
     </div>
-</div>
+</main>
 
-<!-- Scripts específicos -->
-<th:block th:fragment="scripts">
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script th:src="@{/scripts/javascript/stats.js}"></script>
-</th:block>
+<!-- Scripts para Highcharts -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script th:src="@{/scripts/javascript/stats.js}"></script>
+
+<!-- Fin de la página -->
+<footer class="footer-bar">
+    <div class="footer-contenido">
+        <p>Desarrollado por Jorge Cummins.</p>
+        <ul class="footer-links">
+            <li>
+                <a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins"
+                   class="footer-links-link"
+                   rel="noopener noreferrer">
+                    Repositorio de la página
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
 </body>
 </html>

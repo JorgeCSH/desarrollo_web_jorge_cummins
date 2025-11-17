@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" th:href="@{/css/body.css}">
+    <link rel="stylesheet" th:href="@{/css/top-footer.css}">
+
+    <th:block th:replace="~{fragments/layout :: extra_css}"></th:block>
+
+    <title><th:block th:replace="~{fragments/layout :: title}"></th:block></title>
+</head>
+
+<body>
+
+<nav>
+    <ul class="nav-bar">
+        <li><a class="nav-link home" th:classappend="${active_page}=='index'?' actual'" th:href="@{/}">Inicio</a></li>
+        <li><a class="nav-link" th:classappend="${active_page}=='adoption_list'?' actual'" th:href="@{/adoption/list}">Listado</a></li>
+        <li><a class="nav-link" th:classappend="${active_page}=='adoption_stats'?' actual'" th:href="@{/adoption/stats}">Estadísticas</a></li>
+        <li><a class="nav-link" th:classappend="${active_page}=='add_adoption'?' actual'" th:href="@{/adoption/add}">Publicar Aviso</a></li>
+    </ul>
+</nav>
+
+<main>
+    <th:block th:fragment="content"></th:block>
+</main>
+
+<th:block th:replace="~{fragments/layout :: scripts}"></th:block>
+
+<footer class="footer-bar">
+    <div class="footer-contenido">
+        <p>Desarrollado por Jorge Cummins.</p>
+        <ul class="footer-links">
+            <li>
+                <a href="https://github.com/JorgeCSH/desarrollo_web_jorge_cummins" class="footer-links-link">
+                    Repositorio de la página
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>
