@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Inicio - Adopción de Mascotas</title>
+
+    <!-- Extra CSS -->
+    <th:block th:fragment="extraCss">
+        <link rel="stylesheet" th:href="@{/css/recent-five.css}">
+    </th:block>
+</head>
+<body>
+<div th:fragment="content">
+    <div class="contenido-adopc-home">
+        <div class="introduccion-pagina">
+            <div>
+                <h1 class="titulo-pagina">Bienvenido a la página de adopción de mascotas</h1>
+                <p>Esta página fue creada con el fin de dar un medio cómodo para la adopción de mascotas,
+                    desde el proceso de adoptar como de dar en adopción. Acá encontrarás desde las posibilidades
+                    de adoptar con toda la información de la mascota (que en caso de querer dar en adopción deberás
+                    de ingresar) como estadísticas de estos procesos.</p>
+            </div>
+        </div>
+
+        <p>Últimas 5 mascotas puestas en adopción</p>
+
+        <!-- Usar el fragment de avisos -->
+        <div th:replace="~{fragments/avisos :: ultimos-avisos(${avisos})}"></div>
+    </div>
+</div>
+
+<!-- Scripts especificos (si los hay) -->
+<th:block th:fragment="scripts"></th:block>
+</body>
+</html>

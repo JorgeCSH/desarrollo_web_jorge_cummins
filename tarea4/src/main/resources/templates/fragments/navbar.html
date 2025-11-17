@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="navbar">
+    <ul class="nav-bar">
+        <li>
+            <a class="nav-link home"
+               th:classappend="${activePage == 'index'} ? 'actual' : ''"
+               th:href="@{/}">Inicio</a>
+        </li>
+        <li>
+            <a class="nav-link"
+               th:classappend="${activePage == 'adoption_list'} ? 'actual' : ''"
+               th:href="@{/adoption-list}">Listado</a>
+        </li>
+        <li>
+            <a class="nav-link"
+               th:classappend="${activePage == 'adoption_stats'} ? 'actual' : ''"
+               th:href="@{/adoption-stats}">Estadísticas</a>
+        </li>
+        <li>
+            <a class="nav-link"
+               th:classappend="${activePage == 'add_adoption'} ? 'actual' : ''"
+               th:href="@{/add-adoption}">Publicar Aviso</a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

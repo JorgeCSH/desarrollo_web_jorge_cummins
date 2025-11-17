@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" th:fragment="layout (title, content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS para todas las paginas -->
+    <link rel="stylesheet" th:href="@{/css/body.css}">
+    <link rel="stylesheet" th:href="@{/css/top-footer.css}">
+
+    <!-- CSS especifico de cada pagina -->
+    <th:block th:replace="${extraCss}"></th:block>
+
+    <title th:replace="${title}">Adopción de Mascotas</title>
+</head>
+<body>
+<!-- Barra superior de la psgina -->
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<!-- Contenido de la pagina -->
+<main>
+    <th:block th:replace="${content}"></th:block>
+</main>
+
+<!-- Scripts comunes -->
+<th:block th:replace="${scripts}"></th:block>
+
+<!-- Fin de la pagina -->
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

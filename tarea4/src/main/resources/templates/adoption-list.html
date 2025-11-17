@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Listado - Adopción de Mascotas</title>
+
+    <!-- Extra CSS -->
+    <th:block th:fragment="extraCss">
+        <link rel="stylesheet" th:href="@{/css/adoption-list.css}">
+        <link rel="stylesheet" th:href="@{/css/adoption-form.css}">
+    </th:block>
+</head>
+<body>
+<div th:fragment="content">
+    <!-- Mostrar detalle si esta activo -->
+    <div th:if="${mostrarDetalle and detalle != null}">
+        <div th:replace="~{fragments/detalle-aviso :: detalle-aviso(${detalle}, ${page})}"></div>
+    </div>
+
+    <!-- Mostrar listado si no hay detalle -->
+    <div th:unless="${mostrarDetalle and detalle != null}" class="listado-casilla">
+        <!-- Listado de avisos -->
+        <div th:replace="~{fragments/avisos :: listado-avisos(${avisos}, ${page})}"></div>
+
+        <!-- Paginacion -->
+        <div th:replace="~{fragments/avisos :: paginacion(${page}, ${totalPages})}"></div>
+    </div>
+</div>
+
+<!-- Scripts especificos -->
+<th:block th:fragment="scripts">
+    <script th:src="@{/scripts/javascript/comentarios.js}"></script>
+</th:block>
+</body>
+</html>

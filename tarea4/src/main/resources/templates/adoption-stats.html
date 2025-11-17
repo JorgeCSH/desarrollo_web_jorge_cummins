@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Estadísticas - Adopción de Mascotas</title>
+
+    <!-- Extra CSS -->
+    <th:block th:fragment="extraCss">
+        <link rel="stylesheet" th:href="@{/css/stats.css}">
+    </th:block>
+</head>
+<body>
+<div th:fragment="content">
+    <div class="contenido-adopc-home">
+        <div class="introduccion-pagina">
+            <h1>Estadísticas de adopción registradas</h1>
+            <p>A continuación se despliegan gráficos con información recopilada y expuesta sobre
+                los avisos, adopciones y sus características.</p>
+        </div>
+
+        <div class="stats-container">
+            <div class="cajas chart-wrapper" id="grafico-avisos-dia"></div>
+            <div class="cajas chart-wrapper" id="grafico-avisos-tipo"></div>
+            <div class="cajas chart-wrapper" id="grafico-avisos-mes"></div>
+        </div>
+
+        <div class="inicio-container">
+            <a th:href="@{/}" class="volver-portada">Volver a la portada</a>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts específicos -->
+<th:block th:fragment="scripts">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script th:src="@{/scripts/javascript/stats.js}"></script>
+</th:block>
+</body>
+</html>

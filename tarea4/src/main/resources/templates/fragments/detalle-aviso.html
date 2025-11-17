@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- Fragment para mostrar el detalle completo de un aviso -->
+<div th:fragment="detalle-aviso (detalle, page)" id="detalle-container">
+    <h2>Detalle del Aviso</h2>
+
+    <!-- Informacion basica del aviso -->
+    <div id="detalle-info">
+        <p><strong>Fecha Publicación:</strong>
+            <span th:text="${detalle.fechaIngreso != null ? #temporals.format(detalle.fechaIngreso, 'yyyy-MM-dd HH:mm') : 'N/A'}"></span>
+        </p>
+        <p><strong>Fecha Entrega:</strong>
+            <span th:text="${detalle.fechaEntrega != null ? #temporals.format(detalle.fechaEntrega, 'yyyy-MM-dd HH:mm') : 'N/A'}"></span>
+        </p>
+        <p><strong>Región:</strong> <span th:text="${detalle.region}"></span></p>
+        <p><strong>Comuna:</strong> <span th:text="${detalle.comuna}"></span></p>
+        <p><strong>Sector:</strong>
+            <span th:text="${detalle.sector != null ? detalle.sector : 'No especificado'}"></span>
+        </p>
+        <p><strong>Tipo:</strong> <span th:text="${detalle.tipo}"></span></p>
+        <p><strong>Cantidad:</strong> <span th:text="${detalle.cantidad}"></span></p>
+        <p><strong>Edad:</strong>
+            <span th:text="${detalle.edad}"></span>
+            <span th:text="${detalle.unidadMedida == 'a' ? 'años' : 'meses'}"></span>
+        </p>
+        <p><strong>Nombre Contacto:</strong> <span th:text="${detalle.nombre}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${detalle.email}"></span></p>
+        <p th:if="${detalle.celular != null}">
+            <strong>Celular:</strong> <span th:text="${detalle.celular}"></span>
+        </p>
+        <p th:if="${detalle.descripcion != null}">
+            <strong>Descripción:</strong> <span th:text="${detalle.descripcion}"></span>
+        </p>
+
+        <!-- Redes sociales -->
+        <div th:if="${detalle.redes != null and not #lists.isEmpty(detalle.redes)}"
+             class="redes-sociales">
+            <h3>Contactar por:</h3>
+            <ul>
+                <li th:each="red : ${detalle.redes}">
+                    <strong th:text="${red.redSocial}"></strong>:
+                    <span th:text="${red.identificador}"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Fotos del aviso -->
+    <div th:replace="~{fragments/detalle-aviso :: fotos-aviso (${detalle.fotos})}"></div>
+
+    <!-- Seccion de comentarios -->
+    <div th:replace="~{fragments/comentarios :: seccion-comentarios}"></div>
+
+    <!-- Botones de navegacion -->
+    <div style="margin-top: 20px;">
+        <a th:href="@{/adoption-list(page=${page})}"
+           style="padding: 10px 20px; background-color: #2c3e50; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px;">
+            Volver al listado
+        </a>
+        <a th:href="@{/}"
+           style="padding: 10px 20px; background-color: #2c3e50; color: white; text-decoration: none; border-radius: 5px;">
+            Volver a la portada
+        </a>
+    </div>
+</div>
+
+<!-- Fragment para mostrar las fotos del aviso -->
+<div th:fragment="fotos-aviso (fotos)" id="detalle-fotos">
+    <h3>Fotos:</h3>
+    <div class="fotos-grid"
+         style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
+        <th:block th:if="${fotos != null and not #lists.isEmpty(fotos)}">
+            <div class="foto-item" th:each="foto : ${fotos}">
+                <img th:src="@{${foto.rutaArchivo}}"
+                     th:alt="${foto.nombreArchivo}"
+                     style="max-width: 100%; height: auto; cursor: pointer;"
+                     th:onclick="'window.open(\'' + @{${foto.rutaArchivo}} + '\', \'_blank\')'">
+            </div>
+        </th:block>
+        <p th:unless="${fotos != null and not #lists.isEmpty(fotos)}">
+            No hay fotos disponibles
+        </p>
+    </div>
+</div>
+</body>
+</html>
