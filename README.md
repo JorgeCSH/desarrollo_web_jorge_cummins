@@ -14,14 +14,19 @@ El siguiente repositorio contiene los desarrollos realizados para la "Tarea 4" d
 
 Esta implementación difirió de otras realizadas en tareas pasadas principalmente en el hecho de que no se desarrolló por sobre el proyecto original; sin embargo, sí se usó la que debería ser la base de datos análoga del respectivo proyecto.
 
+## Composición del proyecto
 
-### Cambios sobre Archivos
-Se agregaron nuevos códigos a archivos ya existentes para poder realizar las llamadas al servidor. Entre estas se destacan modificaciones a las vistas, modificaciones a los `templates` de `adption-list.html` y sus respectivos estilos `css` y su análogo para las estadísticas (`stats.html`), que en un inicio había sido omitido. Además de incluir nuevas validaciones y funciones asociadas (`utils/`).
+### Controllers y Services
+Se incluyeron dos `controllers` y dos `services` análogos a los desarrollados en clase auxiliar.
 
-### Nuevos archivos
-Se incluyeron nuevos archivos para poder realizar la implementación.
-- `stats.js`: archivo para poder implementar los gráfico haciendo uso de `highcharts`.
-- `comments.js`: archivo para poder incluir los comentarios (funciones asincrónicas).
+### Models
+Dado que se trataba de un proyecto que funcionaba bajo la lógica de un patrón de diseño vista-modelo-controlador, este contó con modelos para poder implementar diversas funcionalidades. Cada uno de estos modelos contó con una interfaz que, siguiendo lo visto en clase auxiliar, se denominó `Repository`, siendo todo archivo terminado bajo este sufijo las interfaces. Es importante destacar que cada modelo es notoriamente diferente a los otros; la razón es que algunos son más extensos y contienen más funcionalidades que no fueron necesariamente utilizadas, pero que se incorporaron dado que, en un inicio, la tarea se empezó a desarrollar bajo el supuesto de que debía continuarse con los desarrollos de las tareas anteriores, esto es, migrar todo el proyecto realizado en `Flask` a `Spring Boot` y después desarrollar lo solicitado. En última instancia me percaté de que no era así[^1] y hubo algunos archivos que, para evitar problemas, se dejaron sin mayores modificaciones (particularmente `Aviso.java`).
+
+### Static
+En este directorio se incluyeron archivos relacionados al aspecto estático de la página. Son importantes destacar:
+- `index.html`: archivo HTML implementado, el cual hace uso de `thymeleaf` en vez de `jinja2` (eso sí, no usa `fragments/`).
+- `style.css`: archivo de diseño de la página. Comparado con otras versiones de la tarea (y en vigor del tiempo), se optó por mantener un diseño minimalista y funcional.
+- `evaluacion.js`: archivo `JavaScript` que dio dinamismo y permitió realizar llamadas asíncronas.
 
 ## Arbol de archivos
 ```
@@ -144,11 +149,11 @@ desarrollo-aplicaciones-web
 ```
 
 ## Palabras Finales
-La tarea fue desarrollada siguiendo las soluciones de auxiliares (específicamente 7 y 8). Esta tarea no es ajena a errores y cualquier detalle que se encuentre es totalmente bienvenido para poder realizar mejoras. Es importante aclarar que, dado los problemas con respecto a los tiempos, una cierta cantidad de errores arrastrados de la tarea 1 y tarea 2 no pudieron ser arreglados y por ende prevalecen en el desarrollo, además de archivos no eliminados (uno mencionado previamente) no fue eliminado lo que puede llevar a confusión, todo lo relacionado a la funcionalidad de este fue traspasada al archivo también mencionado con anterioridad (`adoption-list.js` y `adoption-list.html` respectivamente). También se hace mención a posibles errores posibles heredados de la tarea 2 que, dado al tiempo, no se pudo corregir.
+La tarea tomó gran inspiración de los desarrollos del auxiliar 10, como puede verse en su estructura. Es importante mencionar que, dadas las condiciones en que se desarrolló esta tarea, donde inicialmente se migró todo el proyecto, cuando se realizó la versión final esta fue realizada de manera menos precavida y, por ende, no está exenta de errores. Otro caso particular se puede ver en la inconsistencia de algunos archivos, donde pueden encontrarse métodos o funcionalidades que no son usadas, las cuales eran usadas (o esperaban a ser usadas) en el proyecto final usando `Spring Boot`.
 
-De esta forma, cualquier llamado de atención, error, sugerencia, etc. Es totalmente bienvenido y será recibido con la mejor de las intenciones para mejorar el desarrollo de tareas futuras o desarrollos futuros.
+De esta forma, cualquier llamado de atención, error, sugerencia, etc., es totalmente bienvenido y será recibido con la mejor de las intenciones para mejorar el desarrollo de tareas futuras o desarrollos futuros.
 
-## Referencias[^1]:
+## Referencias[^2]:
 ### Imagenes: 
 - https://commons.wikimedia.org/wiki/File:1_Year_old_male_Siberian_cat.jpg
 - https://itoldya420.getarchive.net/amp/media/dogs-beach-wet-travel-vacation-1ec6b6
@@ -175,9 +180,9 @@ De esta forma, cualquier llamado de atención, error, sugerencia, etc. Es totalm
 - https://www.w3schools.com/howto/howto_js_topnav.asp
 - https://www.google.com/search?q=hex+color&oq=hex+color&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIMCAEQABhDGIAEGIoFMgwIAhAAGEMYgAQYigUyBwgDEAAYgAQyBwgEEAAYgAQyDAgFEAAYQxiABBiKBTIMCAYQABhDGIAEGIoFMgwIBxAAGEMYgAQYigUyDAgIEAAYQxiABBiKBTIMCAkQABhDGIAEGIoF0gEIMTEzNGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8
 ### Misc.
-- https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event [^2]
+- https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event 
 
 
-[^1]: Mismas referencias de la tarea 1.
-[^2]: incluido, pues no se había trabajado antes con esto y fue lo único que me permitió solucionar errores con tiempo.
+[^1]: Si se explora en los commits anteriores, puede percatarse de que se habia logrado migrar todo el proyecto de `Flask` a `Spring Boot`, me di cuenta....2 horas antes de la entrega.
+[^2]: Se dejaron las mismas referencias de las tareas 1, 2 y 3 en caso de que fueran necesarias pues todo medio que podria haber sido usado, tambien fue obtenido de estas bibliografias.
 
