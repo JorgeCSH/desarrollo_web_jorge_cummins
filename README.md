@@ -10,9 +10,10 @@
 - Jorge Cummins
 
 ## Sobre el Repositorio 
-El siguiente repositorio contiene los desarrollos realizados para la "Tarea 3" del ramo "Desarrollo de Aplicaciones Web" impartido en la "Facultad de Ciencias Físicas y Matemáticas" de la Universidad de Chile. El objetivo de esta tarea era seguir el desarrollo del "backend" de la aplicación web, esta vez haciendo uso de llamadas asincrónicas al servidor.
+El siguiente repositorio contiene los desarrollos realizados para la "Tarea 4" del ramo "Desarrollo de Aplicaciones Web" impartido en la "Facultad de Ciencias Físicas y Matemáticas" de la Universidad de Chile. El objetivo de esta tarea era implementar una aplicación web haciendo uso del framework Spring Boot junto al lenguaje de programación `java` como backend, donde se pudieran calificar diferentes posts de adopción de mascotas.
 
-Comparado con otras ocasiones, esta vez se mantuvo la misma estructura, pero con las siguientes peculiaridades:
+Esta implementación difirió de otras realizadas en tareas pasadas principalmente en el hecho de que no se desarrolló por sobre el proyecto original; sin embargo, sí se usó la que debería ser la base de datos análoga del respectivo proyecto.
+
 
 ### Cambios sobre Archivos
 Se agregaron nuevos códigos a archivos ya existentes para poder realizar las llamadas al servidor. Entre estas se destacan modificaciones a las vistas, modificaciones a los `templates` de `adption-list.html` y sus respectivos estilos `css` y su análogo para las estadísticas (`stats.html`), que en un inicio había sido omitido. Además de incluir nuevas validaciones y funciones asociadas (`utils/`).
