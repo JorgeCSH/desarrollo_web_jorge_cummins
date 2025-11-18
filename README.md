@@ -25,73 +25,121 @@ Se incluyeron nuevos archivos para poder realizar la implementación.
 ## Arbol de archivos
 ```
 desarrollo-aplicaciones-web
-├── README.md
-└── Tarea_3
-    ├── __pycache__
-    │   └── app.cpython-311.pyc
-    ├── app.py
-    ├── database
-    │   ├── __pycache__
-    │   │   └── db.cpython-311.pyc
-    │   ├── db.py
-    │   ├── region-comuna.sql
-    │   ├── tabla-comentario.sql
-    │   └── tarea2.sql
-    ├── requirements.txt
-    ├── static
-    │   ├── css
-    │   │   ├── adoption-form.css
-    │   │   ├── adoption-list.css
-    │   │   ├── body.css
-    │   │   ├── recent-five.css
-    │   │   ├── stats.css
-    │   │   └── top-footer.css
-    │   ├── img
-    │   │   ├── adopcion
-    │   │   │   ├── gato11.jpg
-    │   │   │   ├── gato41.jpeg
-    │   │   │   ├── gato42.jpg
-    │   │   │   ├── gato43.jpeg
-    │   │   │   ├── gato51.jpg
-    │   │   │   ├── perro21.jpg
-    │   │   │   ├── perro22.jpg
-    │   │   │   ├── perro31.jpg
-    │   │   │   └── perro32.jpeg
-    │   │   └── stats
-    │   │       ├── avisos-dia.png
-    │   │       ├── avisos-torta.png
-    │   │       └── mascota-mes.png
-    │   ├── scripts
-    │   │   └── javascript
-    │   │       ├── adoption-list.js
-    │   │       ├── comentarios.js
-    │   │       ├── db
-    │   │       │   └── region_comuna.js
-    │   │       ├── form
-    │   │       │   ├── adoption-form.js
-    │   │       │   └── validation.js
-    │   │       ├── last-five.js
-    │   │       └── stats.js
-    │   └── uploads
-    │       └── fotos
-    │           ├── 20251008194510_gato51.jpg
-    │           ├── 20251008194704_perro22.jpg
-    │           ├── 20251008195052_gato11.jpg
-    │           ├── 20251008195052_gato41.jpeg
-    │           ├── 20251008195052_gato42.jpg
-    │           ├── 20251008195218_perro21.jpg
-    │           ├── 20251008195218_perro31.jpg
-    │           └── 20251008195501_gato43.jpeg
-    ├── templates
-    │   ├── add-adoption.html
-    │   ├── adoption-list.html
-    │   ├── adoption-stats.html
-    │   ├── base.html
-    │   └── index.html
-    └── utils
-        ├── __pycache__
-        │   └── validations.cpython-311.pyc
-        └── validations.py
+│   README.md
+└───Tarea_4
+    │   HELP.md
+    │   mvnw
+    │   mvnw.cmd
+    │   pom.xml
+    │
+    ├───.mvn
+    │   └───wrapper
+    │           maven-wrapper.properties
+    │
+    ├───src
+    │   ├───main
+    │   │   ├───java
+    │   │   │   └───com
+    │   │   │       └───tarea4
+    │   │   │           └───Tarea_4
+    │   │   │               │   Tarea4Application.java
+    │   │   │               │
+    │   │   │               ├───controllers
+    │   │   │               │       ApiController.java
+    │   │   │               │       AppController.java
+    │   │   │               │       
+    │   │   │               ├───models
+    │   │   │               │       Aviso.java
+    │   │   │               │       AvisoRepository.java
+    │   │   │               │       Comuna.java
+    │   │   │               │       ComunaRepository.java
+    │   │   │               │       Nota.java
+    │   │   │               │       NotaRepository.java
+    │   │   │               │
+    │   │   │               └───services
+    │   │   │                       ApiService.java
+    │   │   │                       AppService.java
+    │   │   │
+    │   │   └───resources
+    │   │       │   application.properties
+    │   │       │
+    │   │       ├───static
+    │   │       │   ├───css
+    │   │       │   │       styles.css
+    │   │       │   │
+    │   │       │   ├───db
+    │   │       │   │       region-comuna.sql
+    │   │       │   │       tabla-comentario.sql
+    │   │       │   │       tabla-nota.sql
+    │   │       │   │       tarea2.sql
+    │   │       │   │
+    │   │       │   └───js
+    │   │       │           evaluacion.js
+    │   │       │
+    │   │       └───templates
+    │   │           │   index.html
+    │   │           │
+    │   │           └───fragments
+    │   └───test
+    │       └───java
+    │           └───com
+    │               └───tarea4
+    │                   └───Tarea_4
+    │                           Tarea4ApplicationTests.java
+    │
+    └───target
+        ├───classes
+        │   │   application.properties
+        │   │
+        │   ├───com
+        │   │   └───tarea4
+        │   │       └───Tarea_4
+        │   │           │   Tarea4Application.class
+        │   │           │   
+        │   │           ├───controllers
+        │   │           │       ApiController.class
+        │   │           │       AppController.class
+        │   │           │
+        │   │           ├───models
+        │   │           │       Aviso$TipoMascota.class
+        │   │           │       Aviso$UnidadMedida.class
+        │   │           │       Aviso.class
+        │   │           │       AvisoRepository.class
+        │   │           │       Comuna.class
+        │   │           │       ComunaRepository.class
+        │   │           │       Nota.class
+        │   │           │       NotaRepository.class
+        │   │           │
+        │   │           └───services
+        │   │                   ApiService.class
+        │   │                   AppService.class
+        │   │
+        │   ├───static
+        │   │   ├───css
+        │   │   │       styles.css
+        │   │   │
+        │   │   ├───db
+        │   │   │       region-comuna.sql
+        │   │   │       tabla-comentario.sql
+        │   │   │       tabla-nota.sql
+        │   │   │       tarea2.sql
+        │   │   │
+        │   │   └───js
+        │   │           evaluacion.js
+        │   │
+        │   └───templates
+        │           index.html
+        │
+        ├───generated-sources
+        │   └───annotations
+        ├───generated-test-sources
+        │   └───test-annotations
+        └───test-classes
+            └───com
+                └───tarea4
+                    └───Tarea_4
+                            Tarea4ApplicationTests.class
+
 ```
 
 ## Palabras Finales
