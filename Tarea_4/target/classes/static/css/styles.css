@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#tabla-avisos {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #000000;
+}
+
+#tabla-avisos thead {
+    background-color: #ffffff;
+}
+
+#tabla-avisos th {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #000000;
+    font-weight: bold;
+    font-size: 14px;
+    color: #000000;
+}
+
+#tabla-avisos td {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #000000;
+    font-size: 14px;
+}
+
+#tabla-avisos tbody tr {
+    background-color: #ffffff;
+}
+
+#tabla-avisos tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.btn-evaluar {
+    background: none;
+    color: #4285f4;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.btn-evaluar:hover {
+    color: #1a73e8;
+}
+
+.btn-evaluar:disabled {
+    color: #999999;
+    cursor: not-allowed;
+    text-decoration: none;
+}

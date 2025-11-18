@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Avisos de Adopción</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <table id="tabla-avisos">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha<br>publicación</th>
+            <th>Sector</th>
+            <th>Cantidad Tipo<br>Edad</th>
+            <th>Comuna</th>
+            <th>nota</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aviso : ${avisos}">
+            <td th:text="${aviso.id}">1</td>
+            <td th:text="${#temporals.format(aviso.fechaIngreso, 'yyyy-MM-dd')}">2025-06-02</td>
+            <td th:text="${aviso.sector}">Beauchef 859, terraza</td>
+            <td>
+                <span th:text="${aviso.cantidad + ' ' + aviso.tipo + (aviso.cantidad > 1 ? 's' : '') + ' ' + aviso.edad + ' ' + (aviso.getUnidadMedida == 'a' ? (aviso.edad > 1 ? 'años' : 'año') : 'meses')}"> - </span>
+            </td>
+            <td th:text="${aviso.nombreComuna}">Santiago</td>
+            <td class="nota-cell" th:attr="data-aviso-id=${aviso.id}">
+                <span th:if="${aviso.promedio != null}"
+                      th:text="${#numbers.formatDecimal(aviso.promedio, 1, 1)}">6.0</span>
+                <span th:if="${aviso.promedio == null}">-</span>
+            </td>
+            <td>
+                <button class="btn-evaluar" th:attr="data-aviso-id=${aviso.id}" onclick="evaluarAviso(this)"> evaluar </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script th:src="@{/js/evaluacion.js}"></script>
+</body>
+</html>
